@@ -13,4 +13,4 @@ window.onload = setTimeout(() => {
     update.innerHTML = UpdateTime;
     output0.innerHTML = innerDelay;
     output1.innerHTML = innerStop;
-}, 2000);
+}, 2500);
