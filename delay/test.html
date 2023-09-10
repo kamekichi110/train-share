@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type=”text/javascript” src=”http://code.jquery.com/jquery-1.8.2.min.js”></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="./display.js"></script>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
 </head>
@@ -22,11 +21,14 @@
       <article>
         <br>
         <section>
-          <h3></h3>
-          <p></p>
+          <h3>遅延情報</h3>
+          <p>遅延情報を表示します。</p>
         </section>
         <br>
-        <main></main>
+        <main>
+          <div id="yamanote"></div>
+        </main>
+        <script src="./display.js"></script>
         <br>
         <div class="footer">
           <p><p id="day"></p>
@@ -38,18 +40,5 @@
           </p>
         </div>
       </article>
-      <script type=text/javascript>
-        $(function() {
-        $.ajax({
-        url: ‘http://transit.yahoo.co.jp/diainfo/area/4’,
-        type: ‘GET’,
-        success: function(data) {
-        $(‘#container’).html(data.responseText);
-        $table = $(‘table’, $(‘#container’));
-        $(‘#header’).html($table.parent().prev().html());
-        }
-        });
-        });
-        </script>
 </body>
 </html>
