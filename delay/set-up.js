@@ -9,7 +9,7 @@ window.onload = setTimeout(() => {
     var UpMonth = "09";
     var UpDay = "10";
     var UpTime = "15:20更新";
-    var UpdateTime = UpTime + "/" + UpMonth + "/" + UpDay + "/" + UpTime;
+    var UpdateTime = UpYear + "/" + UpMonth + "/" + UpDay + "/" + UpTime;
     update.innerHTML = UpdateTime;
     output0.innerHTML = innerNot;
     output1.innerHTML = innerNot;
