@@ -8,9 +8,9 @@ window.onload = setTimeout(() => {
     var UpYear = "2023";
     var UpMonth = "09";
     var UpDay = "10";
-    var UpTime = "00:13更新";
+    var UpTime = "15:20更新";
     var UpdateTime = UpTime + "/" + UpMonth + "/" + UpDay + "/" + UpTime;
     update.innerHTML = UpdateTime;
     output0.innerHTML = innerNot;
-    output1.innerHTML = innerStop;
+    output1.innerHTML = innerNot;
 }, 2500);
