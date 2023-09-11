@@ -32,7 +32,7 @@
         <br>
         <main>
             <h4>路線選択</h4>
-            <select name="line-list" id="line-list" onchange="result()">
+            <select name="line-list" id="line-list">
                 <optgroup label="JR東日本">
                     <option value="yamanote">山手線</option>
                     <option value="keihin">京浜東北線</option>
@@ -49,6 +49,7 @@
                     <option value="tokyo-sky">東京スカイツリーライン</option>
                 </optgroup>
             </select>
+            <button type="button" onclick="result()">表示</button>
             <div id="result"></div>
         </main>
         <br>
