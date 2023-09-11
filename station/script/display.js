@@ -13,36 +13,27 @@ function result() {
     var noda = "大宮<br>北大宮<br>大宮公園<br>大和田<br>七里<br>岩槻<br>東岩槻<br>豊春<br>八木崎<br>春日部<br>藤の牛島<br>南桜井<br>川間<br>七光台<br>清水公園<br>愛宕<br>野田市<br>梅郷<br>運河<br>江戸川台<br>初石<br>流山おおたかの森<br>豊四季<br>柏<br>新柏<br>増尾<br>逆井<br>高柳<br>六実<br>新鎌ヶ谷<br>鎌ヶ谷<br>馬込沢<br>塚田<br>新船橋<br>船橋";
     if (SelectLine = "yamanote") {
         ResultData.innerHTML = yamanote;
-    } else {
-        if (SelectLine = "keihin") {
+    }
+    if (SelectLine = "keihin") {
             ResultData.innerHTML = errorResult;
             alert(error0000);
-        } else {
-            if (SelectLine = "ssl") {
+        }
+    if (SelectLine = "ssl") {
                 ResultData.innerHTML = errorResult;
                 alert(error0000);
-            } else {
-                if (SelectLine = "stl") {
+            }
+    if (SelectLine = "stl") {
                     ResultData.innerHTML = errorResult;
                     alert(error0000);
-                } else {
-                    if (SelectLine = "saikyo") {
+                }
+    if (SelectLine = "saikyo") {
                         ResultData.innerHTML = errorResult;
                         alert(error0000);
-                    } else {
-                        if (SelectLine = "tojo") {
+                    }
+    if (SelectLine = "tojo") {
                             ResultData.innerHTML = tojo;
-                        } else {
-                            if (SelectLine = "noda") {
+                        }
+    if (SelectLine = "noda") {
                                 ResultData.innerHTML = noda;
-                            } else {
-                                ResultData.innerHTML = errorResult;
-                                alert(error0000);
                             }
                         }
-                    }
-                }
-            }
-        }
-    }
-}
