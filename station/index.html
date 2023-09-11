@@ -31,25 +31,21 @@
         </section>
         <br>
         <main>
-            <h4>路線選択</h4>
-            <select name="line-list" id="line-list">
-                <optgroup label="JR東日本">
-                    <option value="yamanote">山手線</option>
-                    <option value="keihin">京浜東北線</option>
-                    <option value="ssl">湘南新宿ライン</option>
-                    <option value="stl">上野東京ライン</option>
-                    <option value="saikyo">埼京線・川越線</option>
-                </optgroup>
-                <optgroup label="東武鉄道">
-                    <option value="tojo">東上線</option>
-                    <option value="noda">野田線</option>
-                    <option value="daishi">大師線</option>
-                    <option value="kameido">亀戸線</option>
-                    <option value="ogose">越生線</option>
-                    <option value="tokyo-sky">東京スカイツリーライン</option>
-                </optgroup>
-            </select>
-            <button type="button" onclick="result()">表示</button>
+            <details>
+              <summary>路線選択</summary>
+              <details>
+                <summary>JR東日本</summary>
+                <button type="button" onclick="yamanote()">山手線</button>
+              </details>
+              <details>
+                <summary>東武鉄道</summary>
+                <button type="button" onclick="tojo()">東上線</button>
+                <button type="button" onclick="noda()">野田線</button>
+              </details>
+            </details>
+            <br>
+            <hr>
+            <br>
             <div id="result"></div>
         </main>
         <br>
