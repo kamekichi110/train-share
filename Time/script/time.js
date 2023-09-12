@@ -7,5 +7,6 @@ window.onload = setTimeout(() => {
     setTimeout(() => {
         var TimeList = document.getElementById("TimeList");
         TimeList.style.display = "block";
+        window.location.href = "#" + time;
     }, 640);
 }, 1000);
