@@ -3,7 +3,7 @@ window.onload = setTimeout(() => {
     var year = "2023";
     var month = "09";
     var day = "12";
-    var time = "08:00"
+    var time = "11:30"
     out.innerText = year + "/" + month + "/" + day + "/" + time + "更新";
 }, 2000);
 window.onload = setTimeout(() => {
