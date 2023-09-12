@@ -1,2 +1,8 @@
 div.unJust {
+    background-color: azure;
+    text-align: left;
+}
+div.Just {
+    background-color: aquamarine;
+    text-align: left;
 }
