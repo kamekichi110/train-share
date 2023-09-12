@@ -19,7 +19,7 @@ function noda() {
     var noda = "大宮<hr>北大宮<hr>大宮公園<hr>大和田<hr>七里<hr>岩槻<hr>東岩槻<hr>豊春<hr>八木崎<hr>春日部<hr>藤の牛島<hr>南桜井<hr>川間<hr>七光台<hr>清水公園<hr>愛宕<hr>野田市<hr>梅郷<hr>運河<hr>江戸川台<hr>初石<hr>流山おおたかの森<hr>豊四季<hr>柏<hr>新柏<hr>増尾<hr>逆井<hr>高柳<hr>六実<hr>新鎌ヶ谷<hr>鎌ヶ谷<hr>馬込沢<hr>塚田<hr>新船橋<hr>船橋";
     ResultData.innerHTML = noda;
     var name = document.getElementById("line-name");
-    name.innerHTML = "<a href='./data/TD.html'>東武野田線</a><br>(東武アーバンパークライン)"
+    name.innerHTML = "<a href='./data/noda/TD.html'>東武野田線</a><br>(東武アーバンパークライン)"
     ListClose();
 }
 function ListClose() {
