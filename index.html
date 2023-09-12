@@ -10,17 +10,8 @@
     <link rel="shortcut icon" href="./asset/icon/favicon.ico" type="image/x-icon">
     <link rel="icon" href="./asset/icon/favicon.ico">
     <script src="./js/main.js"></script>
-    <link rel="manifest" href="./manifest.webmanifest">
-    <script src="./service-worker.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js').then(function(registration) {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                        }).catch(function(err) {
-                                console.log('ServiceWorker registration failed: ', err);
-                                    });
-                                        }
-    </script>
+    <link rel="manifest" href="./app-script/manifest.json">
+    <script src="./app-script/app.js"></script>
 </head>
 <body>
     <header>
