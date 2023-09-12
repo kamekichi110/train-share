@@ -4,6 +4,7 @@ function yamanote() {
     ResultData.innerHTML = yamanote;
     var name = document.getElementById("line-name");
     name.innerHTML = "JR山手線";
+    ListClose();
 }
 function tojo() {
     var ResultData = document.getElementById("result");
@@ -11,6 +12,7 @@ function tojo() {
     ResultData.innerHTML = tojo;
     var name = document.getElementById("line-name");
     name.innerHTML = "東武東上線"
+    ListClose();
 }
 function noda() {
     var ResultData = document.getElementById("result");
@@ -18,4 +20,9 @@ function noda() {
     ResultData.innerHTML = noda;
     var name = document.getElementById("line-name");
     name.innerHTML = "東武野田線<br>(東武アーバンパークライン)"
+    ListClose();
+}
+function ListClose() {
+    var list = document.getElementsByTagName("details");
+    list.open = false;
 }
