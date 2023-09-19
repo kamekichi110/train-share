@@ -37,6 +37,11 @@ window.onload = setTimeout(() => {
     } else if (35.7755 < ido && ido < 35.7795 && 139.7195 < keido && keido < 139.7235) {
         result.innerHTML = "赤羽駅"
       }
+      else if (35.8855 < ido && ido < 35.9055 && 139.6315 < keido && keido < 139.6355) {
+        result.innerHTML = "さいたま新都心駅"
+      } else if (35.8825 < ido && ido < 35.8905 && 139.6355 < keido && keido < 139.6505) {
+        result.innerHTML = "与野駅";
+      }
       else {
       result.innerHTML ="最寄りの駅が見つかりません";
     };
