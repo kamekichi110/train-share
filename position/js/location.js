@@ -189,6 +189,7 @@ else if (35.6795 < ido && 35.6835 < ido && 139.7645 < keido && keido < 139.7685)
   } else if (35.6335 < ido && ido < 35.6375 && 139.7385 < keido && keido < 139.7425) {
     result.innerHTML = "高輪ゲートウェイ駅"
   }
+  //野田線
       else {
       result.innerHTML ="最寄りの駅が見つかりません";
     };
