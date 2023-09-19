@@ -36,18 +36,24 @@ window.onload = setTimeout(() => {
        line = "乗り換え案内<br>東武東上線<br>西武池袋線<br>丸ノ内線<br>有楽町線<br>副都心線<br>山手線<br>埼京線<br>湘南新宿ライン"
     } else if (35.7765 < ido && ido < 35.7825 && 139.7185 < keido && keido < 139.7225) {
       result.innerHTML = "赤羽駅";
+      line = "乗り換え案内<br>埼京線<br>京浜東北線<br>湘南新宿ライン<br>上野東京ライン"
     } else if (35.7185 < ido && ido < 35.73 && 139.705 < keido && keido < 139.745) {
       result.innerHTML = "護国寺駅";
+      line = "乗り換え案内<br>有楽町線"
     } else if (35.7245 < ido && ido < 35.7285 && 139.7165 < keido && keido < 139.7205) {
       result.innerHTML = "東池袋";
+      line = "乗り換え案内<br>有楽町線<br>付近の駅<br>都電荒川線<br>東池袋4丁目"
     }
      else if (35.7755 < ido && ido < 35.7795 && 139.7195 < keido && keido < 139.7235) {
         result.innerHTML = "赤羽駅";
+        line = "乗り換え案内<br>埼京線<br>京浜東北線<br>湘南新宿ライン<br>上野東京ライン"
       }
       else if (35.8855 < ido && ido < 35.9055 && 139.6315 < keido && keido < 139.6355) {
         result.innerHTML = "さいたま新都心駅";
+        line = "乗り換え案内<br>京浜東北線<br>上野東京ライン"
       } else if (35.8825 < ido && ido < 35.8905 && 139.6355 < keido && keido < 139.6505) {
         result.innerHTML = "与野駅";
+        line = "乗り換え案内<br>京浜東北線"
       } else if(35.8705 < ido && ido < 35.8745 && 139.6435 < keido && keido < 139.6475) {
         result.innerHTML = "北浦和";
       } else if (35.8565 < ido && ido < 35.8605 && 139.6555 < keido && keido < 139.6595) {
