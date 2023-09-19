@@ -30,8 +30,10 @@ window.onload = setTimeout(() => {
       document.getElementById("seido").innerHTML = "位置精度:" + position.coords.accuracy;
     if (35.9045 < ido && ido < 35.9065 && 139.6235 < keido && keido < 139.6265) {
       result.innerHTML = "大宮駅";
+      line = "乗り換え案内<br>野田線<br>ニューシャトル<br>埼京線<br>京浜東北線<br>高崎線<br>宇都宮線<br>湘南新宿ライン<br>上野東京ライン<br>新幹線"
     } else if (35.7285 < ido && ido < 35.7325 && 139.7095 < keido && keido < 139.7135) {
       result.innerHTML = "池袋駅";
+       line = "乗り換え案内<br>東武東上線<br>西武池袋線<br>丸ノ内線<br>有楽町線<br>副都心線<br>山手線<br>埼京線<br>湘南新宿ライン"
     } else if (35.7765 < ido && ido < 35.7825 && 139.7185 < keido && keido < 139.7225) {
       result.innerHTML = "赤羽駅";
     } else if (35.7185 < ido && ido < 35.73 && 139.705 < keido && keido < 139.745) {
