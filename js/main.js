@@ -8,5 +8,10 @@ window.onload = setTimeout(() => {
 }, 2000);
 window.onload = setTimeout(() => {
     var out = document.getElementById("day");
-    out.innerHTML = "情報取得中…"
+    out.innerHTML = "情報取得中…";
+    var icon = document.getElementsByClassName("icon");
+    icon.onclick = "home()";
 }, 200);
+function home() {
+    window.location.href = "https://kamekichi110.github.io/train-share/index.html"
+}
