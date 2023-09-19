@@ -20,9 +20,11 @@ window.onload = setTimeout(() => {
     var text_keido = "経度：" + keido;
     var output_ido = document.getElementById("ido");
     var output_keido = document.getElementById("keido");
+    document.getElementById("result-line").innerHTML = "";
     
     //駅情報出力
     var result = document.getElementById("result-station");
+    var line = document.getElementById("result-line").innerHTML;
     output_ido.innerHTML = text_ido;
     output_keido.innerHTML = text_keido;
       document.getElementById("seido").innerHTML = "位置精度:" + position.coords.accuracy;
