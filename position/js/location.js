@@ -34,7 +34,10 @@ window.onload = setTimeout(() => {
       result.innerHTML = "赤羽駅"
     } else if (35.7185 < ido && ido < 35.73 && 139.705 < keido && keido < 139.745) {
       result.innerHTML = "護国寺駅";
-    } else if (35.7755 < ido && ido < 35.7795 && 139.7195 < keido && keido < 139.7235) {
+    } else if (35.7245 < ido && ido < 35.7285 && 139.7165 < keido && keido < 139.7205) {
+      result.innerHTML = "東池袋";
+    }
+     else if (35.7755 < ido && ido < 35.7795 && 139.7195 < keido && keido < 139.7235) {
         result.innerHTML = "赤羽駅"
       }
       else if (35.8855 < ido && ido < 35.9055 && 139.6315 < keido && keido < 139.6355) {
@@ -47,9 +50,17 @@ window.onload = setTimeout(() => {
         result.innerHTML = "浦和";
       } else if (35.8455 < ido && ido < 35.8495 && 139.6675 < keido && keido < 139.6715) {
         result.innerHTML = "南浦和"
-      } else if (35.8255 < ido && ido < 35.8295 && 139.6885 < keido && keido < 139.925) {
+      } else if (35.8255 < ido && ido < 35.8295 && 139.6885 < keido && keido < 139.6925) {
         result.innerHTML = "蕨";
-      } else if
+      } else if (35.8135 < ido && ido < 35.8175 && 139.7025 < keido && keido < 139.7065) {
+        result.innerHTML = "西川口";
+      } else if (35.7995 < ido && ido < 35.8035 && 139.7155 < keido && keido < 139.7195) {
+        result.innerHTML = "川口";
+      } else if (35.7585 < ido && ido < 35.7625 && 139.7205 < keido && keido < 139.7245) {
+        result.innerHTML = "十条"
+      } else if (35.7425 < ido && idi < 35.7465 && 139.7175 < keido && keido < 139.7215) {
+        result.innerHTML = "板橋"
+      }
       else {
       result.innerHTML ="最寄りの駅が見つかりません";
     };
