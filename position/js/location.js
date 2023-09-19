@@ -41,7 +41,15 @@ window.onload = setTimeout(() => {
         result.innerHTML = "さいたま新都心駅"
       } else if (35.8825 < ido && ido < 35.8905 && 139.6355 < keido && keido < 139.6505) {
         result.innerHTML = "与野駅";
-      }
+      } else if(35.8705 < ido && ido < 35.8745 && 139.6435 < keido && keido < 139.6475) {
+        result.innerHTML = "北浦和";
+      } else if (35.8565 < ido && ido < 35.8605 && 139.6555 < keido && keido < 139.6595) {
+        result.innerHTML = "浦和";
+      } else if (35.8455 < ido && ido < 35.8495 && 139.6675 < keido && keido < 139.6715) {
+        result.innerHTML = "南浦和"
+      } else if (35.8255 < ido && ido < 35.8295 && 139.6885 < keido && keido < 139.925) {
+        result.innerHTML = "蕨";
+      } else if
       else {
       result.innerHTML ="最寄りの駅が見つかりません";
     };
