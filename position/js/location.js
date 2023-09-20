@@ -30,64 +30,81 @@ window.onload = setTimeout(() => {
       document.getElementById("seido").innerHTML = "位置精度:" + position.coords.accuracy;
     if (35.9045 < ido && ido < 35.9065 && 139.6235 < keido && keido < 139.6265) {
       result.innerHTML = "大宮駅";
-      line = "乗り換え案内<br>野田線<br>ニューシャトル<br>埼京線<br>京浜東北線<br>高崎線<br>宇都宮線<br>湘南新宿ライン<br>上野東京ライン<br>新幹線"
+      line = ""
     } else if (35.7285 < ido && ido < 35.7325 && 139.7095 < keido && keido < 139.7135) {
       result.innerHTML = "池袋駅";
-       line = "乗り換え案内<br>東武東上線<br>西武池袋線<br>丸ノ内線<br>有楽町線<br>副都心線<br>山手線<br>埼京線<br>湘南新宿ライン"
+       line = ""
     } else if (35.7765 < ido && ido < 35.7825 && 139.7185 < keido && keido < 139.7225) {
       result.innerHTML = "赤羽駅";
-      line = "乗り換え案内<br>埼京線<br>京浜東北線<br>湘南新宿ライン<br>上野東京ライン"
+      line = ""
     } else if (35.7185 < ido && ido < 35.73 && 139.705 < keido && keido < 139.745) {
       result.innerHTML = "護国寺駅";
-      line = "乗り換え案内<br>有楽町線"
+      line = ""
     } else if (35.7245 < ido && ido < 35.7285 && 139.7165 < keido && keido < 139.7205) {
       result.innerHTML = "東池袋";
-      line = "乗り換え案内<br>有楽町線<br>付近の駅<br>都電荒川線<br>東池袋4丁目"
+      line = "付近の駅<br>東池袋4丁目駅"
     }
      else if (35.7755 < ido && ido < 35.7795 && 139.7195 < keido && keido < 139.7235) {
         result.innerHTML = "赤羽駅";
-        line = "乗り換え案内<br>埼京線<br>京浜東北線<br>湘南新宿ライン<br>上野東京ライン"
+        line = ""
       }
       else if (35.8855 < ido && ido < 35.9055 && 139.6315 < keido && keido < 139.6355) {
         result.innerHTML = "さいたま新都心駅";
-        line = "乗り換え案内<br>京浜東北線<br>上野東京ライン"
+        line = ""
       } else if (35.8825 < ido && ido < 35.8905 && 139.6355 < keido && keido < 139.6505) {
         result.innerHTML = "与野駅";
-        line = "乗り換え案内<br>京浜東北線"
+        line = ""
       } else if(35.8705 < ido && ido < 35.8745 && 139.6435 < keido && keido < 139.6475) {
         result.innerHTML = "北浦和";
+        line = ""
       } else if (35.8565 < ido && ido < 35.8605 && 139.6555 < keido && keido < 139.6595) {
         result.innerHTML = "浦和";
+        line = ""
       } else if (35.8455 < ido && ido < 35.8495 && 139.6675 < keido && keido < 139.6715) {
         result.innerHTML = "南浦和";
+        line = ""
       } else if (35.8255 < ido && ido < 35.8295 && 139.6885 < keido && keido < 139.6925) {
         result.innerHTML = "蕨";
+        line = ""
       } else if (35.8135 < ido && ido < 35.8175 && 139.7025 < keido && keido < 139.7065) {
         result.innerHTML = "西川口";
+        line = ""
       } else if (35.7995 < ido && ido < 35.8035 && 139.7155 < keido && keido < 139.7195) {
         result.innerHTML = "川口";
+        line = ""
       } else if (35.7585 < ido && ido < 35.7625 && 139.7205 < keido && keido < 139.7245) {
         result.innerHTML = "十条";
+        line = ""
       } else if (35.7425 < ido && ido < 35.7465 && 139.7175 < keido && keido < 139.7215) {
         result.innerHTML = "板橋";
+        line = ""
       } else if (35.7845 < ido && ido < 35.7885 && 139.7035 < keido && keido < 139.7075) {
         result.innerHTML = "北赤羽";
+        line = ""
       } else if (35.8055 < ido && ido < 35.8095 && 139.6765 < keido && keido < 139.6805) {
         result.innerHTML = "戸田公園";
+        line = ""
       } else if (35.8155 < ido && ido < 35.8195 && 139.6675 < keido && keido < 139.6715) {
         result.innerHTML = "戸田";
+        line = ""
       } else if (35.8255 < ido && ido < 35.8295 && 139.6585 < keido && keido < 139.6625) {
         result.innerHTML = "北戸田";
+        line = ""
       } else if (35.8445 < ido && ido < 35.8485 && 139.6435 < keido && keido < 139.6475) {
         result.innerHTML = "武蔵浦和";
+        line = ""
       } else if (35.8515 < ido && ido < 35.8555 && 139.6355 < keido && keido < 139.6395) {
         result.innerHTML = "中浦和";
+        line = ""
       } else if (35.8655 < ido && ido < 35.8695 && 139.6295 < keido && keido < 139.6335) {
         result.innerHTML = "南与野";
+        line = ""
       } else if (35.8795 < ido && ido < 35.8825 && 139.6245 < keido && keido < 139.6285) {
         result.innerHTML = "与野本町";
+        line = ""
       } else if (35.8885 < ido && ido < 35.8925 && 139.6265 < keido && keido < 139.6305) {
         result.innerHTML = "北与野"
+        line = ""
       }
       //山手線
 else if (35.6795 < ido && 35.6835 < ido && 139.7645 < keido && keido < 139.7685) {
@@ -198,6 +215,13 @@ else if (35.6795 < ido && 35.6835 < ido && 139.7645 < keido && keido < 139.7685)
   result.innerHTML = "神田駅";
   } else if (35.6335 < ido && ido < 35.6375 && 139.7385 < keido && keido < 139.7425) {
     result.innerHTML = "高輪ゲートウェイ駅"
+  }
+  else if (35.9155 < ido && ido < 35.9195 && 139.6225 < keido && keido < 193.6265) {
+    result.innerHTML = "北大宮駅";
+  } else if (35.9215 < ido && ido < 35.9255 && 139.6305 < keido && keido < 139.6345) {
+    result.innerHTML = "大宮公園駅"
+  } else if (35.9275 < ido && ido < 35.9315 && 139.6485 < keido && keido < 139.6525) {
+    result.innerHTML = "大和田"
   }
   //野田線
       else {
