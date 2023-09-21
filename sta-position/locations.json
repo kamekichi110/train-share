@@ -6,30 +6,30 @@
         "name": "大宮駅",
         "num": 1,
         "latitude": 35.9063,
-        "longittude": 139.6240
+        "longitude": 139.6240
     },
     {
         "name": "北大宮駅",
         "num": 2,
         "latitude": 35.91716,
-        "longittude": 139.6247
+        "longitude": 139.6247
     },
     {
         "name": "大宮公園駅",
         "num": 3,
         "latitude": 35.92351,
-        "longittude": 139.6324
+        "longitude": 139.6324
     },
     {
         "name": "大和田駅",
         "num": 4,
         "latitude": 35.92935,
-        "longittude": 139.6504
+        "longitude": 139.6504
     },
     {
         "name": "七里",
         "num": 5,
         "latitude": 35.9363,
-        "longittude": 139.6658
+        "longitude": 139.6658
     }
 ]
