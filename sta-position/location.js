@@ -29,6 +29,7 @@ function findClosestLocation(userLat, userLon, locationsData) {
 
 // ページ読み込み後に位置情報の許可を求める
 window.addEventListener('load', function() {
+    setTimeout(() => {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
             const userLatitude = position.coords.latitude;
@@ -45,6 +46,7 @@ window.addEventListener('load', function() {
         document.getElementById('locationResult').textContent = 'ブラウザが位置情報をサポートしていません。';
     }
 });
+}, 500);
 
 // ボタンクリック時に最も近い地点を検索
 function getLocationAndFindClosestLocation() {
