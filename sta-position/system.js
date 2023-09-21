@@ -1,7 +1,6 @@
 window.onload = setTimeout(() => {
     setting();
 }, 500);
-function setting() {
 // ハバーサイン法を使用して2点間の距離を計算
 function calculateDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // 地球の半径（km）
@@ -30,7 +29,7 @@ function findClosestLocation(userLat, userLon, locationsData) {
 
     return closestLocation;
 }
-
+function setting() {
 // ユーザーの現在位置を取得
 navigator.geolocation.getCurrentPosition(function(position) {
     const userLatitude = position.coords.latitude;
