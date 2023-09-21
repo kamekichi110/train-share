@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
     <script src="../js/main.js"></script>
-    <script src="./script.js"></script>
+    <script src="./location.js"></script>
+    <script src="./locations.json"></script>
 </head>
 <body>
     <header>
@@ -26,7 +27,7 @@
         </section>
         <br>
         <main>
-          <button onclick="findClosestLocationFromButton()">最も近い駅を再検索</button>
+          <button onclick="getLocationAndFindClosestLocation()">最も近い駅の検索</button>
             <p id="closestLocation"></p>
         </main>
         <br>
