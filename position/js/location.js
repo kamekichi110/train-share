@@ -221,7 +221,19 @@ else if (35.6795 < ido && 35.6835 < ido && 139.7645 < keido && keido < 139.7685)
   } else if (35.9215 < ido && ido < 35.9255 && 139.6305 < keido && keido < 139.6345) {
     result.innerHTML = "大宮公園駅"
   } else if (35.9275 < ido && ido < 35.9315 && 139.6485 < keido && keido < 139.6525) {
-    result.innerHTML = "大和田"
+    result.innerHTML = "大和田駅"
+  } else if (35.9345 < ido && ido < 35.9385 && 139.6635 < keido && keido < 139.6675) {
+    result.innerHTML = "七里駅"
+  } else if (35.9475 < ido && ido < 35.9515 && 139.6915 < keido && keido < 139.6955) {
+    result.innerHTML = "岩槻駅"
+  } else if (35.9615 < ido && ido < 35.9655 && 139.7105 < keido && keido < 139.7145) {
+    result.innerHTML = "東岩槻駅"
+  } else if (35.9655 < ido && ido < 35.9695 && 139.7245 < keido && keido < 139.7285) {
+    result.innerHTML = "豊春駅"
+  } else if (35.9765 < ido && ido < 35.9805 && 139.7395 < keido && keido < 139.7435) {
+    result.innerHTML = "八木崎駅"
+  } else if (35.9775 < ido && ido < 35.9815 && 139.7505 < keido && keido < 139.7545) {
+    result.innerHTML = "春日部駅"
   }
   //野田線
       else {
