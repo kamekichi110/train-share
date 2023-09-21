@@ -31,5 +31,64 @@
         "num": 5,
         "latitude": 35.9363,
         "longitude": 139.6658
+    },
+
+
+
+    { "line": "yurakutyo" },
+    {
+        "name": "和光市駅",
+        "latitude": 35.78852,
+        "longitude": 139.6123
+    },
+    {
+        "name": "地下鉄成増駅",
+        "latitude": 35.77656,
+        "longitude": 139.6315
+    },
+    {
+        "name": "地下鉄赤塚駅",
+        "latitude": 35.77053,
+        "longitude": 139.6445
+    },
+    {
+        "name": "平和台駅",
+        "latitude": 35.757863,
+        "longitude": 139.6538
+    },
+    {
+        "name": "氷川台駅",
+        "latitude": 35.749822,
+        "longitude": 139.665
+    },
+    {
+        "name": "小竹向原駅",
+        "latitude": 35.743803,
+        "longitude": 139.6786
+    },
+    {
+        "name": "千川駅",
+        "latitude": 35.738418,
+        "longitude": 139.6892
+    },
+    {
+        "name": "要町駅",
+        "latitude": 35.73323,
+        "longitude": 139.6987
+    },
+    {
+        "name": "池袋駅",
+        "latitude": 35.728926,
+        "longitude": 139.7104
+    },
+    {
+        "name": "東池袋駅",
+        "latitude": 35.725362,
+        "longitude": 139.7204
+    },
+    {
+        "name": "護国寺駅",
+        "latitude": 35.719044,
+        "longitude": 139.7275
     }
 ]
