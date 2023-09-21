@@ -41,9 +41,9 @@ window.addEventListener('load', function() {
                 const closestLocation = findClosestLocation(userLatitude, userLongitude, locationsData);
 
                 if (closestLocation) {
-                    document.getElementById('closestLocation').textContent = `最も近い地点: ${closestLocation.name}`;
+                    document.getElementById('closestLocation').textContent = `最も近い最寄り駅: ${closestLocation.name}`;
                 } else {
-                    document.getElementById('closestLocation').textContent = '近くの地点は見つかりませんでした。';
+                    document.getElementById('closestLocation').textContent = '最寄り駅がない、または位置情報が正しく認識されていない可能性があります。';
                 }
             }, function(error) {
                 console.error('位置情報の取得エラー:', error);
@@ -62,9 +62,9 @@ function findClosestLocationFromButton() {
         const closestLocation = findClosestLocation(userLatitude, userLongitude, locationsData);
 
         if (closestLocation) {
-            document.getElementById('closestLocation').textContent = `最も近い地点: ${closestLocation.name}`;
+            document.getElementById('closestLocation').textContent = `最も近い最寄り駅: ${closestLocation.name}`;
         } else {
-            document.getElementById('closestLocation').textContent = '近くの地点は見つかりませんでした。';
+            document.getElementById('closestLocation').textContent = '近くに最寄り駅がない、または位置情報が正しく認識されていない可能性があります。';
         }
     }, function(error) {
         console.error('位置情報の取得エラー:', error);
