@@ -60,9 +60,9 @@ function getLocationAndFindClosestLocation() {
                 const closestLocation = findClosestLocation(userLatitude, userLongitude, locationsData);
 
                 if (closestLocation) {
-                    document.getElementById('closestLocation').textContent = `最も近い地点: ${closestLocation.name}`;
+                    document.getElementById('closestLocation').textContent = `最も近い最寄り駅: ${closestLocation.name}`;
                 } else {
-                    document.getElementById('closestLocation').textContent = '近くの地点は見つかりませんでした。';
+                    document.getElementById('closestLocation').textContent = '近くの最寄り駅は見つかりませんでした。';
                 }
             })
             .catch(error => console.error('JSONデータの読み込みエラー:', error));
