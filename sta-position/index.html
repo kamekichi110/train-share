@@ -89,7 +89,8 @@
                 });
             } else {
                 document.getElementById('locationResult').textContent = 'ブラウザが位置情報をサポートしていません。';
-            }
+            };
+            getLocationAndFindClosestLocation();
         });
 
         // ボタンクリック時に最も近い地点を検索
