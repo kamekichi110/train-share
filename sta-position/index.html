@@ -84,9 +84,6 @@
         // ページ読み込み後に位置情報の許可を求める
         window.addEventListener('load', function() {
             setTimeout(() => {
-            document.getElementById('btn').disabled = false;
-            }, 200);
-            setTimeout(() => {
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const userLatitude = position.coords.latitude;
@@ -161,7 +158,7 @@
             window.location.href = map + target + "駅";
             setTimeout(() => {
                 document.getElementById('btn').disabled = true;
-            }, 500);
+            }, 50);
         }
     </script>
 </body>
