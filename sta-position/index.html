@@ -74,6 +74,7 @@
 
         // ページ読み込み後に位置情報の許可を求める
         window.addEventListener('load', function() {
+            setTimeout(() => {
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const userLatitude = position.coords.latitude;
@@ -91,10 +92,12 @@
                 document.getElementById('locationResult').textContent = 'ブラウザが位置情報をサポートしていません。';
             };
             getLocationAndFindClosestLocation();
+        }, 500);
         });
 
         // ボタンクリック時に最も近い地点を検索
         function getLocationAndFindClosestLocation() {
+            setTimeout(() => {
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const userLatitude = position.coords.latitude;
@@ -135,6 +138,7 @@
             }, function(error) {
                 console.error('位置情報の取得エラー:', error);
             });
+        }, 500);
         }
     </script>
 </body>
