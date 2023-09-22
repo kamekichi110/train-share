@@ -115,5 +115,45 @@
         "name": "永田町駅",
         "latitude": 35.678757,
         "longitude": 139.740258
+    },
+    {
+        "name": "桜田門駅",
+        "latitude": 35.677366,
+        "longitude": 139.751757
+    },
+    {
+        "name": "有楽町駅",
+        "latitude": 35.675069,
+        "longitude": 139.763328
+    },
+    {
+        "name": "銀座一丁目駅",
+        "latitude": 35.67435,
+        "longitude": 139.767045
+    },
+    {
+        "name": "新富町駅",
+        "latitude": 35.670462,
+        "longitude": 139.773711
+    },
+    {
+        "name": "月島駅",
+        "latitude": 35.66381998,
+        "longitude": 139.78391
+    },
+    {
+        "name": "豊洲",
+        "latitude": 35.654908,
+        "longitude": 139.79621
+    },
+    {
+        "name": "辰巳",
+        "latitude": 35.645576,
+        "longitude": 139.81052
+    },
+    {
+        "name": "新木場",
+        "latitude": 35.646157,
+        "longitude": 139.827426
     }
 ]
