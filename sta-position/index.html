@@ -83,7 +83,9 @@
 
         // ページ読み込み後に位置情報の許可を求める
         window.addEventListener('load', function() {
+            setTimeout(() => {
             document.getElementById('btn').disabled = false;
+            }, 100);
             setTimeout(() => {
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(function(position) {
