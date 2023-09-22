@@ -30,8 +30,9 @@
         <main>
     <h1>最寄り駅検索結果</h1>
     <p id="seido">最寄り駅検索中…</p>
-    <p id="locationResult"></p>
+    <p id="locationResult">緯度経度計測中…</p>
     <p id="closestLocation"></p>
+    <p id="distance">距離計算中…</p>
     <br>
     <button type="button" onclick="maps()">駅までの経路表示(GoogleMap)</button>
     <br>
@@ -136,9 +137,8 @@
 
                         if (location) {
                             document.getElementById('closestLocation').innerHTML = `
-                                最も近い地点: ${location.name}<br>
-                                距離: ${distance.toFixed(2)} km
-                            `;
+                                最も近い地点: ${location.name}`;
+                                document.getElementById('distance')`距離: ${distance.toFixed(2)} km`;
                         } else {
                             document.getElementById('closestLocation').textContent = '近くの地点は見つかりませんでした。';
                         }
