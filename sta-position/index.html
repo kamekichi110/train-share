@@ -112,7 +112,7 @@
                 const userLongitude = position.coords.longitude;
 
                 // JSONデータを読み込む（Ajaxを使用）
-                fetch('locations.json')
+                fetch('location.json')
                     .then(response => response.json())
                     .then(locationsData => {
                         // 最も近い地点を検索
