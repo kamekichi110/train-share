@@ -27,10 +27,160 @@
         "longitude": 139.6504
     },
     {
-        "name": "七里",
+        "name": "七里駅",
         "num": 5,
         "latitude": 35.9363,
         "longitude": 139.6658
+    },
+    {
+        "name": "岩槻駅",
+        "latitude": 35.949975,
+        "longitude": 139.693
+    },
+    {
+        "name": "東岩槻駅",
+        "latitude": 35.963345,
+        "longitude": 139.712261
+    },
+    {
+        "name": "豊春駅",
+        "latitude": 35.967983,
+        "longitude": 139.726179
+    },
+    {
+        "name": "八木崎駅",
+        "latitude": 35.978376,
+        "longitude": 139.741785
+    },
+    {
+        "name": "春日部駅",
+        "latitude": 35.979745,
+        "longitude": 139.752353
+    },
+    {
+        "name": "藤の牛島駅",
+        "latitude": 35.980182,
+        "longitude": 139.777674
+    },
+    {
+        "name": "南桜井駅",
+        "latitude": 35.980441,
+        "longitude": 139.807988
+    },
+    {
+        "name": "川間駅",
+        "latitude": 35.979172,
+        "longitude": 139.83385
+    },
+    {
+        "name": "七光台駅",
+        "latitude": 35.97087,
+        "longitude": 139.852773
+    },
+    {
+        "name": "清水公園駅",
+        "latitude": 35.959214,
+        "longitude": 139.860031
+    },
+    {
+        "name": "愛宕駅",
+        "latitude": 35.950146,
+        "longitude": 139.864817
+    },
+    {
+        "name": "野田市駅",
+        "latitude": 35.943394,
+        "longitude": 139.870792
+    },
+    {
+        "name": "梅郷駅",
+        "latitude": 35.931311,
+        "longitude": 139.891253
+    },
+    {
+        "name": "運河駅",
+        "latitude": 35.914642,
+        "longitude": 139.905797
+    },
+    {
+        "name": "江戸川台駅",
+        "latitude": 35.897489,
+        "longitude": 139.9101
+    },
+    {
+        "name": "初石",
+        "latitude": 35.884086,
+        "longitude": 139.91758
+    },
+    {
+        "name": "流山おおたかの森駅",
+        "latitude": 35.871782,
+        "longitude": 139.925013
+    },
+    {
+        "name": "豊四季駅",
+        "latitude": 35.866545,
+        "longitude": 139.939532
+    },
+    {
+        "name": "柏駅",
+        "latitude": 35.862222,
+        "longitude": 139.971054
+    },
+    {
+        "name": "新柏駅",
+        "latitude": 35.8381,
+        "longitude": 139.967116
+    },
+    {
+        "name": "増尾駅",
+        "latitude": 35.829568,
+        "longitude": 139.976746
+    },
+    {
+        "name": "逆井駅",
+        "latitude": 35.823222,
+        "longitude": 139.983892
+    },
+    {
+        "name": "高柳駅",
+        "latitude": 35.808452,
+        "longitude": 139.999019
+    },
+    {
+        "name": "六実駅",
+        "latitude": 35.793698,
+        "longitude": 139.999084
+    },
+    {
+        "name": "新鎌ヶ谷駅",
+        "latitude": 35.7794897,
+        "longitude": 139.998405
+    },
+    {
+        "name": "鎌ヶ谷駅",
+        "latitude": 35.7637249,
+        "longitude": 139.9972711
+    },
+    {
+        "name": "馬込沢駅",
+        "latitude": 35.741639,
+        "longitude": 139.992324
+    },
+    {
+        "name": "塚田駅",
+        "latitude": 35.722016,
+        "longitude": 139.982823
+    },
+    {
+        "name": "新船橋駅",
+        "latitude": 35.710937,
+        "longitude": 139.979779
+    },
+    {
+        "name": "船橋駅",
+        "latitude": 35.701735,
+        "longitude": 139.985218
     },
 
 
