@@ -90,5 +90,30 @@
         "name": "護国寺駅",
         "latitude": 35.719044,
         "longitude": 139.7275
+    },
+    {
+        "name": "江戸川橋駅",
+        "latitude": 35.709485,
+        "longitude": 139.733538
+    },
+    {
+        "name": "飯田橋駅",
+        "latitude": 35.702065,
+        "longitude": 139.745015
+    },
+    {
+        "name": "市ヶ谷駅",
+        "latitude": 35.69121073,
+        "longitude": 139.7364902
+    },
+    {
+        "name": "麹町駅",
+        "latitude": 35.684006,
+        "longitude": 139.737613
+    },
+    {
+        "name": "永田町駅",
+        "latitude": 35.678757,
+        "longitude": 139.740258
     }
 ]
