@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>車両情報検索</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
+    <script src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <img src="https://kamekichi110.github.io/train-share/asset/icon/main.png" class="icon">
+        <h2>
+          Train-Share
+          <br>
+          鉄道情報掲載サイト
+        </h2>
+      </header>
+      <article>
+        <br>
+        <section>
+          <h3>車両情報検索</h3>
+          <p>車両の情報を検索できます。</p>
+        </section>
+        <br>
+        <main>
+            <input type="text" id="searchInput" placeholder="検索キーワードを入力">
+            <button onclick="searchJSON()">検索</button>
+            <div id="results"></div>
+
+            <script src="./station-info.json"></script>
+            <script src="./station-search.js"></script>
+        </main>
+        <br>
+        <div class="footer">
+          <p><p id="day"></p>
+            <br>管理者X(旧Twitter)<a href="https://twitter.com/sirokuma_8110F">link</a>
+            <br>各種ツール
+            <br><a href="https://kamekichi110.github.io/train-share/view/train-info.html">列車情報ビューアー</a>
+            <a href="https://kamekichi110.github.io/train-share/photo/index.html">思い出写真</a>
+          <a href="https://kamekichi110.github.io/train-share/index.html">home</a>
+          </p>
+        </div>
+      </article>
+</body>
+</html>
