@@ -15,7 +15,7 @@ function searchJSON() {
             } else {
                 filteredData.forEach(item => {
                     const resultItem = document.createElement('div');
-                    resultItem.innerHTML = `<p>車両形式: ${item.name}<br>運用会社: ${item.group}<br>編成: ${item.formation}<br>記録など:<br>${item.record}`;
+                    resultItem.innerHTML = `<p>車両形式: ${item.name}<br>運用会社: ${item.group}<br>編成: ${item.formation}<br> 制御機器: ${item.control}<br>記録など:<br>${item.record}`;
                     resultsDiv.appendChild(resultItem);
                 });
             }
