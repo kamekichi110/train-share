@@ -3,7 +3,7 @@
     "background_color": "#417505",
     "display": "standalone",
     "scope": "/",
-    "start_url": "https://kamekichi110.github.io/train-share/",
+    "start_url": "https://train-share.f5.si/",
     "name": "Train-Share",
     "short_name": "train-share",
     "icons": [
