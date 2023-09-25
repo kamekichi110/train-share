@@ -166,6 +166,14 @@
             var TargetFile = ConvertFile.replace("最寄り駅:", "");
             var DisplayArea = document.getElementById('LocationInfo');
             DisplayArea.src = URL + TargetFile;
+        };
+        function setLocation() {
+            var URL = "https://www.google.com/maps?q=";
+            var location = document.getElementById("box").value;
+            var set = document.getElementById("closestLocation");
+            var convert = set.textContent;
+            var target = convert.replace("最寄り駅:", "");
+            window.location.href = URL + target + "から" + location;
         }
     </script>
 </body>
