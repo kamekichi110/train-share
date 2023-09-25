@@ -26,5 +26,12 @@
         "formation": "10・5両",
         "control": "IGBT素子VVVFインバータ制御",
         "record": "ローレル賞(2007年)"
+    },
+    {
+        "name": "E231系",
+        "group": "JR東日本",
+        "formation": "10・5両",
+        "control": "",
+        "record": ""
     }
 ]
