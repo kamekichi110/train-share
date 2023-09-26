@@ -1,7 +1,7 @@
 {
  "name": "トレインシェア-Home",
  "short_name": "トレインシェア-Home",
- "start_url": "https://kamekichi110.github.io/train-share",
+ "start_url": "https://train-share.f5.si/train-share",
  "description": "鉄道情報掲載サイト【トレインシェア】！鉄道に関することを掲載しております！",
  "display": "standalone",
  "orientation": "any",
