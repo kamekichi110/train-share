@@ -9,10 +9,10 @@
  "background_color": "#165E36",
  "icons": [
   {
-   "src": "https://kamekichi110.github.io/train-share/asset/icon/main.png",
+   "src": "https://train-share.f5.si/asset/icon/main.png",
    "sizes": "512x512",
    "type": "image/png"
   }
  ],
- "scope": "https://kamekichi110.github.io/train-share"
+ "scope": "https://train-share.f5.si/"
 }
