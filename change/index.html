@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
     <script src="../js/main.js"></script>
+    <script src="./script.js"></script>
 </head>
 <body>
     <header>
@@ -22,12 +23,52 @@
         <section>
           <h3>乗り換え案内</h3>
           <p>ただいま準備中です。</p>
+          <p>駅名で同じ名前がある時は<br>県を指定してください</p>
+          <p>それ以外の場合は指定なし<br>を選択してください。</p>
         </section>
         <br>
         <main>
           <input type="text" id="from" placeholder="出発駅を入力">
+          <select name="listFrom" id="location1">
+            <option value="">指定なし</option>
+            <optgroup label="北海道地方">
+            <option value="(北海道)">北海道</option>
+            </optgroup>
+            <optgroup label="東北地方">
+            <option value="(青森県)">青森県</option>
+            <option value="(岩手県)">岩手県</option>
+            <option value="(宮城県)">宮城県</option>
+            <option value="(秋田県)">秋田県</option>
+            <option value="(山形県)">山形県</option>
+            <option value="(福島県)">福島県</option>
+            </optgroup>
+            <optgroup label="関東地方">
+            <option value="(茨城県)">茨城県</option>
+            <option value="(栃木県)">栃木県</option>
+            <option value="(群馬県)">群馬県</option>
+            <option value="(埼玉県)">埼玉県</option>
+            <option value="(千葉県)">千葉県</option>
+            <option value="(東京都)">東京都</option>
+            <option value="(神奈川県)">神奈川県</option>
+            </optgroup>
+            <optgroup label="中部地方">
+              <option value="(新潟県)">新潟県</option>
+              <option value="(富山県)">富山県</option>
+              <option value="(石川県)">石川県</option>
+              <option value="(福井県)">福島県</option>
+              <option value="(山梨県)">山梨県</option>
+              <option value="(長野県)">長野県</option>
+              <option value="(岐阜県)">岐阜県</option>
+              <option value="(静岡県)">静岡県</option>
+              <option value="(愛知県)">愛知県</option>
+            </optgroup>
+            <optgroup label="近畿地方"></optgroup>
+            <optgroup label="中国・四国地方"></optgroup>
+            <optgroup label="九州・沖縄地方"></optgroup>
+          </select>
           <br>
           <input type="text" id="for" placeholder="到着駅を入力">
+          <select name="listFor" id="location2"></select>
           <br>
           <button onclick="searchTRAIN()">検索！</button>
           <br>
