@@ -1,7 +1,7 @@
 {
  "name": "トレインシェア-Home",
  "short_name": "トレインシェア-Home",
- "start_url": "https://train-share.f5.si/train-share",
+ "start_url": "https://train-share.f5.si/index.html",
  "description": "鉄道情報掲載サイト【トレインシェア】！鉄道に関することを掲載しております！",
  "display": "standalone",
  "orientation": "any",
@@ -14,5 +14,5 @@
    "type": "image/png"
   }
  ],
- "scope": "https://train-share.f5.si/"
+ "scope": "https://train-share.f5.si/index.html"
 }
