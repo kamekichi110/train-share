@@ -7,19 +7,9 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
     <script src="../js/main.js"></script>
+    <script src="./sw-sys.js"></script>
     <script>
-        if (navigator.serviceWorker) {
-    navigator.serviceWorker
-             .register('/sw-sys.js')
-             .then((registration) => { // 登録成功
-               console.log('scope:', registration.scope);
-               alert('プログラムが正常にロードされました。');
-             })
-             .catch((error) => { // 登録失敗
-               console.log('failed: ', error);
-               alert('プログラムのロードが失敗しました。再読みしてください。');
-             });
-  }
+    navigator.serviceWorker.register('./sw-sys.js')
     </script>
 </head>
 <body>
