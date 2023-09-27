@@ -1,5 +1,5 @@
 self.addEventListener('install', function(event) {
-const indexPage = new Request('https://kamekichi110.github.io/train-share');
+const indexPage = new Request('https://train-share.f5.si/');
 event.waitUntil(
 fetch(indexPage).then(function(response) {
 return caches.open('pwabuilder-offline').then(function(cache) {
