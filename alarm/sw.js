@@ -9,7 +9,14 @@ function alarm() {
     if (time = set) {
         document.getElementById("mp3").play();
     } else {
-        
+        document.getElementById("mp3").pause();
+        document.getElementById("mp3").currentTime = 0;
     }
 };
-function stop()
+function stop() {
+    document.getElementById("mp3").pause();
+    document.getElementById("mp3").currentTime = 0;
+}
+setInterval(() => {
+    alarm();
+}, 500);
