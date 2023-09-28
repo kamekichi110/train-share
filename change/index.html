@@ -179,7 +179,8 @@
           <iframe src="./wait.html" frameborder="0" id="result"></iframe>
           <p id="version">API-version:取得中…</p>
           <br>
-          <textarea name="url" id="url" cols="30" rows="50"></textarea>
+          <div id="url"></div>
+          <br>
         </main>
         <br>
         <div class="footer">
@@ -233,10 +234,7 @@
                 var requestURL = item.ResultSet.ResourceURI;
                 result.src = requestURL;
                 ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
-                document.getElementById("url").value = encode;
-                setTimeout(() => {
-                  window.location.href = requestURL;
-                }, 500);
+                document.getElementById("url").innerHTML = encode;
             }
         }
     }
