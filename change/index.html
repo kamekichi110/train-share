@@ -179,7 +179,7 @@
           <iframe src="./wait.html" frameborder="0" id="result"></iframe>
           <p id="version">API-version:取得中…</p>
           <br>
-          <div id="url"></div>
+          <iframe src="./wait.html" frameborder="0" id="result"></iframe>
           <br>
         </main>
         <br>
@@ -217,7 +217,7 @@
     const xhr = new XMLHttpRequest;
 
     //リクエスト
-    xhr.open("get", encode);
+    xhr.open('get', `${encode}`);
 
     //リクエスト送信
     xhr.send();
@@ -233,7 +233,6 @@
                 var requestURL = item.ResultSet.ResourceURI;
                 result.src = requestURL;
                 ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
-                document.getElementById("url").value = encode;
             }
         }
     }
