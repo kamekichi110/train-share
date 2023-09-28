@@ -181,6 +181,7 @@
           <br>
           <iframe src="./wait.html" frameborder="0" id="result"></iframe>
           <br>
+          <p id="url"></p>
         </main>
         <br>
         <div class="footer">
@@ -233,6 +234,7 @@
                 var requestURL = item.ResultSet.ResourceURI;
                 result.src = requestURL;
                 ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
+                document.getElementById("url").innerHTML = encode;
             }
         }
     }
