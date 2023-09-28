@@ -6,12 +6,16 @@ function searchTRAIN() {
     var location2 = document.getElementById("location2").value;
     var set1 = "https://api.ekispert.jp/v1/json/search/course/light?from=";
     var set2 = "&to";
-    var set3 = "&searchType=departure&shinkansen=true&limitedExpress=true&redirect=false&contentsMode=pc&key=LE_DDLV9n4GxgPku";
+    var set3 = "&searchType=departure&shinkansen=";
+    var set3_list = document.getElementById("set3").value;
+    var set4 = "&limitedExpress=";
+    var set4_list = document.getElementById("set4").value;
+    var set5 = "&redirect=false&contentsMode=sp&key=LE_DDLV9n4GxgPku"
     var fromData = document.getElementById("from").value;
     var forData = document.getElementById("for").value;
     var fromText = fromData + location1;
     var forText = forData + location2;
-    var url = set1 + fromText + set2 + forText + set3;
+    var url = set1 + fromText + set2 + forText + set3 + set3_list + set4 + set4_list +set5;
     var encode = encodeURI(url);
     setTimeout(() => {
     //リクエストオブジェクト生成
@@ -31,10 +35,9 @@ function searchTRAIN() {
             const jsonData = JSON.parse(xhr.responseText);
 
             for (let item of jsonData) {
-                var requestURL = item.ResourceURI;
+                var requestURL = item.ResultSet.ResourceURI;
                 result.src = requestURL;
-                ver.innerHTML = "API-version:" + item.apiVersion;
-                window.location.href = requestURL;
+                ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
             }
         }
     }
