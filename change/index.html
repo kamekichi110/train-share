@@ -194,7 +194,6 @@
         </div>
       </article>
       <script>
-        function searchTRAIN() {
     var result = document.getElementById("result");
     var ver = document.getElementById("version");
     result.src = "wait.html";
@@ -211,9 +210,9 @@
     var forData = document.getElementById("for").value;
     var fromText = fromData + location1;
     var forText = forData + location2;
-    var encodeFrom = unescape(encodeURIComponent(fromData));
-    var encodeFor = unescape(encodeURIComponent(forData));
-    var encode = set1 + encodeFrom + set2 + encodeFor + set3 + set3_list + set4 + set4_list + set5;
+    var url = set1 + fromText + set2 + forText + set3 + set3_list + set4 + set4_list +set5;
+    var encode = encodeURI(url);
+    setTimeout(() => {
     //リクエストオブジェクト生成
     const xhr = new XMLHttpRequest;
 
@@ -222,16 +221,23 @@
 
     //リクエスト送信
     xhr.send();
-    setTimeout(() => {
-      document.getElementById("url").innerHTML = encode;
+
+    //自動的に実行される関数
+    xhr.onreadystatechange = function () {
+        // readyState XMLHttpRequest の状態 4: リクエストが終了して準備完了
+        // status httpステータス
+        if (xhr.readyState == 4 && xhr.status == 200) {
             const jsonData = JSON.parse(xhr.responseText);
+
             for (let item of jsonData) {
-                window.location.href = item.ResultSet.ResourceURI;
+                var requestURL = item.ResultSet.ResourceURI;
+                result.src = requestURL;
                 ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
-                document.getElementById("url").innerHTML = encode;
+                document.getElementById("url").value = encode;
             }
-    }, 1200);
-  }
-      </script>
+        }
+    }
+}, 1500);
+</script>
 </body>
 </html>
