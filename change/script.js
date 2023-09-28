@@ -33,6 +33,7 @@ function searchTRAIN() {
             for (let item of jsonData) {
                 result.src = item.ResourceURI;
                 ver.innerHTML = "API-version:" + item.apiVersion;
+                window.location.href = item.ResourceURI;
             }
         }
     }
