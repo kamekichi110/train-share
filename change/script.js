@@ -38,6 +38,7 @@ function searchTRAIN() {
                 var requestURL = item.ResultSet.ResourceURI;
                 result.src = requestURL;
                 ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
+                document.getElementById("url").value = encode;
             }
         }
     }
