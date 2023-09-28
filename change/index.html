@@ -194,6 +194,7 @@
         </div>
       </article>
       <script>
+        function searchTRAIN() {
     var result = document.getElementById("result");
     var ver = document.getElementById("version");
     result.src = "wait.html";
@@ -231,9 +232,9 @@
                 var requestURL = item.ResultSet.ResourceURI;
                 result.src = requestURL;
                 ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
-                document.getElementById("url").innerHTML = encode;
             }
     }
+  }
 </script>
 </body>
 </html>
