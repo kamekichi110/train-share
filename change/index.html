@@ -222,11 +222,7 @@
 
     //リクエスト送信
     xhr.send();
-
-    //自動的に実行される関数
-    xhr.onreadystatechange = function () {
-        // readyState XMLHttpRequest の状態 4: リクエストが終了して準備完了
-        // status httpステータス
+    setTimeout(() => {
         if (xhr.readyState == 4 && xhr.status == 200) {
             const jsonData = JSON.parse(xhr.responseText);
 
@@ -237,8 +233,8 @@
                 document.getElementById("url").innerHTML = encode;
             }
         }
-    }
-}
+    }, 200);
+  }
       </script>
 </body>
 </html>
