@@ -210,8 +210,9 @@
     var forData = document.getElementById("for").value;
     var fromText = fromData + location1;
     var forText = forData + location2;
-    var url = set1 + fromText + set2 + forText + set3 + set3_list + set4 + set4_list +set5;
-    var encode = encodeURI(url);
+    var encodeFrom = encodeURI(fromdata);
+    var encodeFor = encodeURI(forData);
+    var encode = set1 + encodeFrom + set2 + encodeFor + set3 + set3_list + set4 + set4_list + set5;
     //リクエストオブジェクト生成
     const xhr = new XMLHttpRequest;
 
