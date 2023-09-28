@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alarm</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <body>
+        <form action="" method="">
+            <div id="jsalarmclock">
+            <div><div class="leftcolumn">現在時刻:</div> <span id="jsalarm_ct" style="letter-spacing: 2px"></span></div>
+            <div><div class="leftcolumn">アラーム設定:</div> <span><select></select> Hour</span> <span><select></select> Minutes</span> <span><select></select> Seconds</span></div>
+            <div><div class="leftcolumn">音楽はデフォルト設定以外使用できません。</div>
+            <input type="submit" value="Set Alarm!" id="submitbutton" /> <input type="reset" value="reset" id="resetbutton" onclick="stop()" />
+            </div>
+            </form>
+            <audio src="https://train-share.f5.si/alarm/000.mp3" preload="auto" loop id="sound"></audio>
+            <br>
+            <button type="button" onclick="stop()">stop</button>
+            <script type="text/javascript">
+    
+            jsalarm.init()
+    
+            </script>
+    </body>
+    
+    <script src="./main.js"></script>
+</body>
+</html>
