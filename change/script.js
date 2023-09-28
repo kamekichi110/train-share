@@ -34,6 +34,7 @@ function searchTRAIN() {
                 var requestURL = item.ResourceURI;
                 result.src = requestURL;
                 ver.innerHTML = "API-version:" + item.apiVersion;
+                window.location.href = requestURL;
             }
         }
     }
