@@ -224,17 +224,13 @@
     xhr.send();
     setTimeout(() => {
       document.getElementById("url").innerHTML = encode;
-        if (xhr.readyState == 4 && xhr.status == 200) {
             const jsonData = JSON.parse(xhr.responseText);
-
             for (let item of jsonData) {
-                var requestURL = item.ResultSet.ResourceURI;
-                result.src = requestURL;
+                window.location.href = item.ResultSet.ResourceURI;
                 ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
                 document.getElementById("url").innerHTML = encode;
             }
-        }
-    }, 200);
+    }, 1200);
   }
       </script>
 </body>
