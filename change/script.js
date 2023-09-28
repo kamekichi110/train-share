@@ -31,9 +31,9 @@ function searchTRAIN() {
             const jsonData = JSON.parse(xhr.responseText);
 
             for (let item of jsonData) {
-                result.src = item.ResourceURI;
+                var requestURL = item.ResourceURI;
+                result.src = requestURL;
                 ver.innerHTML = "API-version:" + item.apiVersion;
-                window.location.href = item.ResourceURI;
             }
         }
     }
