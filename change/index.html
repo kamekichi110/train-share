@@ -223,9 +223,6 @@
     xhr.send();
 
     //自動的に実行される関数
-    xhr.onreadystatechange = (e) => {
-        // readyState XMLHttpRequest の状態 4: リクエストが終了して準備完了
-        // status httpステータス
             const jsonData = JSON.parse(xhr.responseText);
 
             for (let item of jsonData) {
