@@ -10,7 +10,7 @@ function searchTRAIN() {
     var set3_list = document.getElementById("set3").value;
     var set4 = "&limitedExpress=";
     var set4_list = document.getElementById("set4").value;
-    var set5 = "&redirect=false&contentsMode=sp&key=LE_DDLV9n4GxgPku"
+    var set5 = "&redirect=true&contentsMode=sp&key=LE_DDLV9n4GxgPku"
     var fromData = document.getElementById("from").value;
     var forData = document.getElementById("for").value;
     var fromText = fromData + location1;
