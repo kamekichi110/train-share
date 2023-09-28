@@ -212,21 +212,19 @@
     var forText = forData + location2;
     var url = set1 + fromText + set2 + forText + set3 + set3_list + set4 + set4_list +set5;
     var encode = encodeURI(url);
-    setTimeout(() => {
     //リクエストオブジェクト生成
     const xhr = new XMLHttpRequest;
 
     //リクエスト
-    xhr.open('GET', `${encode}`);
+    xhr.open('GET', encode);
 
     //リクエスト送信
     xhr.send();
 
     //自動的に実行される関数
-    xhr.onreadystatechange = function () {
+    xhr.onreadystatechange = (e) => {
         // readyState XMLHttpRequest の状態 4: リクエストが終了して準備完了
         // status httpステータス
-        if (xhr.readyState == 4 && xhr.status == 200) {
             const jsonData = JSON.parse(xhr.responseText);
 
             for (let item of jsonData) {
@@ -235,9 +233,7 @@
                 ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
                 document.getElementById("url").innerHTML = encode;
             }
-        }
     }
-}, 1500);
 </script>
 </body>
 </html>
