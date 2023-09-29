@@ -25,5 +25,4 @@ function search() {
     var key = "LE_DDLV9n4GxgPku";
     var url = URL0 + from + URL1 + for0 + URL2 + type + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
     window.location.href = url;
-    document.getElementById(result).src = url;
 }
