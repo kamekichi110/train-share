@@ -17,7 +17,7 @@ function searchTRAIN() {
     var forText = forData + location2;
     var url = set1 + fromText + set2 + forText + set3 + set3_list + set4 + set4_list +set5;
     var encodeData = encodeURI(url);
-    var encode = encodeData + "LE_DDLV9n4GxgPku";
+    const encode = encodeData + "LE_DDLV9n4GxgPku";
     //リクエストオブジェクト生成
     const xhr = new XMLHttpRequest;
 
