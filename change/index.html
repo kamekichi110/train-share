@@ -14,8 +14,8 @@ function search_list() {
     var forTXT = document.getElementById("for");
     var forAREA = document.getElementById("location1");
     var via = document.getElementById("via-sec").value + document.getElementById("via").value;
-    var from = fromTXT.value + fromAREA.value;
-    var for0 = forTXT.value + forAREA.value;
+    var form = encodeURI(fromTXT.value) + encodeURI(fromAREA.value);
+    var for0 = encodeURI(forTXT.value) + encodeURI(forAREA.value);
     var URL0 = "https://api.ekispert.jp/v1/xml/search/course/light?from=";
     var URL1 = "&to=";
     var URL2 = "&searchType=";
@@ -78,7 +78,7 @@ function search_list() {
             <hr>
             <p>検索設定</p>
             <p>新幹線:
-                <select name="type_" id="type">
+                <select name="type_" id="shinkansen">
                     <option value="false">利用しない</option>
                     <option value="true">利用する</option>
                 </select>
