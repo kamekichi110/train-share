@@ -2,8 +2,8 @@ window.onload = setTimeout(() => {
     var out = document.getElementById("day");
     var year = "2023";
     var month = "09";
-    var day = "22";
-    var time = "15:25"
+    var day = "30";
+    var time = "08:00"
     out.innerText = year + "/" + month + "/" + day + "/" + time + "更新";
 }, 2000);
 window.onload = setTimeout(() => {
