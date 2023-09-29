@@ -69,7 +69,7 @@
     var url = set1 + fromText + set2 + forText + set3 + set3_list + set4 + set4_list +set5;
     var encodeData = encodeURI(url);
     const encode = encodeData + "LE_DDLV9n4GxgPku";
-        const url = encode;
+    const url = encode;
 
 //操作したいHTML領域を取得
 const name = document.getElementById('name');
@@ -78,7 +78,7 @@ const age = document.getElementById('age');
 //APIからJSONデータを取得する
 fetch(url)
    .then((response) => {
-       return response.json()　//ここでBodyからJSONを返す
+       return response.json() //ここでBodyからJSONを返す
    })
    .then((result) => {
        Example(result);  //取得したJSONデータを関数に渡す 
@@ -86,7 +86,7 @@ fetch(url)
    .catch((e) => {
        console.log(e)  //エラーをキャッチし表示     
    })
-}
+};
 
 //JSONデータを引数に受け取ってDOM操作を行う関数を作成
 function Example(jsonObj){
