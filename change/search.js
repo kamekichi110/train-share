@@ -26,4 +26,5 @@ function search() {
     var url = URL0 + from + URL1 + for0 + URL2 + type + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
     location = url;
     document.getElementById("link").href = url;
+    document.getElementById("link").innerHTML = url;
 }
