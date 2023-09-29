@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/index.css">
     <script src="../js/main.js"></script>
     <script>
-        function search_list() {
+function search_list() {
     var fromTXT = document.getElementById("from");
     var fromAREA = document.getElementById(location0);
     var forTXT = document.getElementById("for").value;
@@ -16,8 +16,8 @@
     var viaSec = document.getElementById("via-sec");
     var viaTXT = document.getElementById("via");
     var via = "";
-    if (viaSec = "true") {
-        via = viaSec + encodeURI(viaTXT);
+    if (viaSec.value = "true") {
+        via = viaSec.value + encodeURI(viaTXT.value);
     } else {
         via = "";
     }
