@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
     <script src="../js/main.js"></script>
-    <script src="./script.js"></script>
+    <script   src="https://code.jquery.com/jquery-3.7.1.js"   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="   crossorigin="anonymous"></script>
     <script>
         function searchTRAIN() {
     var result = document.getElementById("result");
@@ -29,24 +29,28 @@
     var url = set1 + fromText + set2 + forText + set3 + set3_list + set4 + set4_list +set5;
     var encodeData = encodeURI(url);
     const encode = encodeData + "LE_DDLV9n4GxgPku";
-    //リクエストオブジェクト生成
-    const xhr = new XMLHttpRequest;
-
-    //リクエスト
-    xhr.open("get", encode);
-
-    //リクエスト送信
-    xhr.send();
-
-
-            for (let item of jsonData) {
-                var requestURL = item.ResultSet.ResourceURI;
-                result.src = requestURL;
-                ver.innerHTML = "API-version:" + item.ResultSet.apiVersion;
-                document.getElementById("url").value = encode;
-            }
-        }
-    </script>
+    $(function () {
+        $.ajax({
+          url: encode,
+          type: "GET",
+          dataType: "json",
+        })
+          .done(function (data) {
+            // success
+            //取得jsonデータ
+            var data_stringify = JSON.stringify(data);
+            var data_json = JSON.parse(data_stringify);
+            //jsonデータから各データを取得
+            var data = data_json.ResultSet.ResourceURI;
+            //出力
+            $("#result").src(data);
+          })
+          .fail(function (data) {
+            // error
+            console.log("error");
+          });
+      });
+      </script>
 </head>
 <body>
     <header>
