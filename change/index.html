@@ -7,7 +7,43 @@
     <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/index.css">
     <script src="../js/main.js"></script>
-    <script src="./search.js" charset="UTF-8"></script>
+    <script>
+        function search() {
+    var fromTXT = document.getElementById("from");
+    var fromAREA = document.getElementById(location0);
+    var forTXT = document.getElementById("for").value;
+    var forAREA = document.getElementById(location1);
+    var viaSec = document.getElementById("via-sec");
+    var viaTXT = document.getElementById("via");
+    var via = "";
+    if (viaSec = "true") {
+        via = viaSec + encodeURI(viaTXT);
+    } else {
+        via = "";
+    }
+    //utf-8 encode
+    var fromData = fromTXT.value + fromAREA.value;
+    var forData = forTXT.value + forAREA.value;
+    var from = encodeURI(fromData);
+    var for0 = encodeURI(forData);
+
+    var URL0 = "https://api.ekispert.jp/v1/xml/search/course/light?from=";
+    var URL1 = "&to=";
+    var URL2 = "&searchType=";
+    var type = "departure";
+    var URL3 = "&shinkansen=";
+    var shinkansen = document.getElementById("shinkansen").value;
+    var URL4 = "&limitedExpress=";
+    var exp = document.getElementById("exp").value;
+    var URL5 = "&redirect=true&contentsMode=sp";
+    var URL6 = "&key=";
+    var key = "LE_DDLV9n4GxgPku";
+    var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
+    var textURL = document.getElementById("url");
+    textURL.innerHTML = urlLink;
+    alert('検索完了。表示します。')
+}
+    </script>
 </head>
 <body>
     <header>
@@ -41,6 +77,12 @@
             <select name="forArea" id="location1">
                 <option value="">選択なし</option>
             </select>
+            </p>
+            <p><select name="" id="">
+                <option value="">経由地なし</option>
+                <option value="&via=">経由地あり</option>
+            </select>
+                <input type="text" id="via">
             </p>
             <hr>
             <p>検索設定</p>
