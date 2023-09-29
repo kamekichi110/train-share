@@ -1,7 +1,0 @@
-{
-    "ResultSet": {
-      "apiVersion": "1.27.0.0",
-      "engineVersion": "202310_02a",
-      "ResourceURI": "https://roote.ekispert.net/sp/result?arr=%E5%93%81%E5%B7%9D&arr_code=22709&connect=true&dep=%E6%B1%A0%E8%A2%8B&dep_code=22513&express=true&highway=true&hour&liner=true&local=true&minute&plane=true&shinkansen=true&ship=true&sleep=false&sort=time&surcharge=3&type=dep&via1=&via1_code=&via2=&via2_code="
-    }
-  }
