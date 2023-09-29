@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>乗り換え案内</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link class="css" rel="stylesheet" type="text/css" href="../expGuiDateTime/expCss/expGuiDateTime.css">
+<link class="css" rel="stylesheet" type="text/css" href="../expGuiStation/expCss/expGuiStation.css">
+<link class="css" rel="stylesheet" type="text/css" href="../expGuiCondition/expCss/expGuiCondition.css">
+<link class="css" rel="stylesheet" type="text/css" href="../expGuiCourse/expCss/expGuiCourse.css">
+<link class="css" rel="stylesheet" type="text/css" href="expSample.css">
+<link rel="stylesheet" href="../css/index.css">
+<link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
+<script src="../js/main.js"></script>
+<script type="text/javascript" src="../expGuiDateTime/expGuiDateTime.js?key=LE_DDLV9n4GxgPku" charset="UTF-8"></script>
+<script type="text/javascript" src="../expGuiCondition/expGuiCondition.js?key=LE_DDLV9n4GxgPku" charset="UTF-8"></script>
+<script type="text/javascript" src="../expGuiStation/expGuiStation.js?key=LE_DDLV9n4GxgPku" charset="UTF-8"></script>
+<script type="text/javascript" src="../expGuiCourse/expGuiCourse.js?key=LE_DDLV9n4GxgPku" charset="UTF-8"></script>
+<script type="text/javascript" src="expSample.js?key=LE_DDLV9n4GxgPku" charset="UTF-8"></script>
+<script type="text/javascript">
+<!--
+    var key = "LE_DDLV9n4GxgPku";
+// -->
+</script>
+</head>
+<body onLoad="Javascript:init();">
+    <header>
+        <img src="https://kamekichi110.github.io/train-share/asset/icon/main.png" class="icon">
+        <h2>
+          Train-Share
+          <br>
+          鉄道情報掲載サイト
+        </h2>
+      </header>
+      <article>
+        <br>
+        <section>
+          <h3>乗り換え案内</h3>
+          <p>乗り換え案内を表示します</p>
+          <p>使用API:駅すぱあとWebサービス</p>
+        </section>
+        <br>
+        <main>
+    <!-- 日付入力パーツ -->
+    <h3 class="exp_sample_header">出発日</h3>
+    <div id="dateTime"></div>
+    
+    <!-- 探索条件パーツ -->
+    <h3 class="exp_sample_header">探索条件</h3>
+    <div id="condition"></div>
+
+    <!-- 駅名入力パーツ -->
+    <h3 class="exp_sample_header">地点情報</h3>
+    <div class="exp_sample_title">
+        出発地
+    </div>
+    <div id="station1" style="width:100%;"></div>
+    <div class="exp_sample_title">
+        目的地
+    </div>
+    <div id="station2" style="width:100%;"></div>
+
+    <!-- 探索実行ボタン -->
+    <div class="exp_sample_btn_area">
+        <input class="exp_sample_btn" type="button" value="探索" onClick="Javascript:search();">
+    </div>
+
+    <!-- 経路表示パーツ -->
+    <div id="result"></div>
+</main>
+<br>
+<div class="footer">
+  <p><p id="day"></p>
+    <br>管理者X(旧Twitter)<a href="https://twitter.com/sirokuma_8110F">link</a>
+    <br>各種ツール
+    <br><a href="https://kamekichi110.github.io/train-share/view/train-info.html">列車情報ビューアー</a>
+    <a href="https://kamekichi110.github.io/train-share/photo/index.html">思い出写真</a>
+  <a href="https://kamekichi110.github.io/train-share/index.html">home</a>
+  </p>
+</div>
+</article>
+</body>
+</html>
