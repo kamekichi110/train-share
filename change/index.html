@@ -43,13 +43,16 @@
             //jsonデータから各データを取得
             var data = data_json.ResultSet.ResourceURI;
             //出力
-            $("#result").src = data;
+            $("#output").text(data);
           })
           .fail(function (data) {
             // error
             console.log("error");
           });
       });
+      const json = document.getElementById("output").textContent;
+      console.log = json;
+      result.src = json.ResultSet.ResourceURI;
     }
       </script>
 </head>
@@ -78,6 +81,7 @@
             <button type="button" onclick="searchTRAIN()">検索</button>
             <hr>
             <br>
+            <p id="output"></p>
             <iframe src="./wait.html" frameborder="0" id="result"></iframe>
         </main>
         <br>
