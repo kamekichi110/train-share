@@ -34,10 +34,11 @@ function search_list() {
     var URL5 = "&redirect=true&contentsMode=sp";
     var URL6 = "&key=";
     var key = "LE_DDLV9n4GxgPku";
-    window.location = URL0 + from + URL1 + for0 + via + URL2 + type + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
+    var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
     var textURL = document.getElementById("url");
     console.log(urlLink);
     alert('検索完了。表示します。');
+    textURL.innerHTML = `<p><a href='${urlLink}'>検索結果を見る</a></p>`;
 }
     </script>
 </head>
@@ -97,7 +98,7 @@ function search_list() {
             <br>
             <button onclick="search_list()">検索</button>
             <br>
-            <p id="url">wait...</p>
+            <div id="url"></div>
             <br>
             <hr>
             <br>
