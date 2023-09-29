@@ -7,20 +7,13 @@
     <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../css/index.css">
     <script src="../js/main.js"></script>
-    <script>
+    <script charset="UTF-8">
 function search_list() {
     var fromTXT = document.getElementById("from");
     var fromAREA = document.getElementById("location0");
     var forTXT = document.getElementById("for");
     var forAREA = document.getElementById("location1");
-    var viaSec = document.getElementById("via-sec");
-    var viaTXT = document.getElementById("via");
-    var via = "";
-    if (viaSec.value = "true") {
-        via = viaSec.value + encodeURI(viaTXT.value);
-    } else {
-        via = "";
-    }
+    var via = document.getElementById("via-sec").value + document.getElementById("via").value;
     var form = fromTXT.value + fromAREA.value;
     var for0 = forTXT.value + forAREA.value
     var URL0 = "https://api.ekispert.jp/v1/xml/search/course/light?from=";
