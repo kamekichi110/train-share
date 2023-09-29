@@ -342,7 +342,7 @@
             var position = set.replace("最寄り駅", "") + location0.value;
             var forTXT = document.getElementById("for");
             var location1 = document.getElementById(location1).value;
-            var station = forTXT + location1;
+            var station = forTXT.value + location1;
             var URL0 = "https://api.ekispert.jp/v1/xml/search/course/light?from=";
             var URL1 = "&to=";
             var URL2 = "&searchType=departure";
