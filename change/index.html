@@ -43,7 +43,7 @@
             //jsonデータから各データを取得
             var data = data_json.ResultSet.ResourceURI;
             //出力
-            $("#result").src(data);
+            $("#result").src = data;
           })
           .fail(function (data) {
             // error
