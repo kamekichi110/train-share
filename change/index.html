@@ -38,10 +38,9 @@ function search_list() {
     var URL5 = "&redirect=true&contentsMode=sp";
     var URL6 = "&key=";
     var key = "LE_DDLV9n4GxgPku";
-    var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
+    window.location.assign = URL0 + from + URL1 + for0 + via + URL2 + type + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
     var textURL = document.getElementById("url");
     console.log(urlLink);
-    textURL.innerHTML = urlLink;
     alert('検索完了。表示します。');
 }
     </script>
