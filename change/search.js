@@ -1,14 +1,14 @@
 function search() {
-    var fromTXT = document.getElementById("from").value;
-    var fromAREA = document.getElementById(location0).value;
+    var fromTXT = document.getElementById("from");
+    var fromAREA = document.getElementById(location0);
     var forTXT = document.getElementById("for").value;
-    var forAREA = document.getElementById(location1).value;
-    var viaSec = document.getElementById("via-sec").value;
-    var viaTXT = document.getElementById("via").value;
+    var forAREA = document.getElementById(location1);
+    var viaSec = document.getElementById("via-sec");
+    var viaTXT = document.getElementById("via");
 
     //utf-8 encode
-    var fromData = fromTXT + fromAREA;
-    var forData = forTXT + forAREA;
+    var fromData = fromTXT.value + fromAREA.value;
+    var forData = forTXT.value + forAREA.value;
     var from = encodeURI(fromData);
     var for0 = encodeURI(forData);
 
