@@ -32,6 +32,7 @@ function search_list() {
     console.log(urlLink);
     alert('検索完了。表示します。');
     textURL.innerHTML = `<p><a href='${urlLink}'>検索結果を見る</a></p>`;
+    document.location.href = urlLink;
 }
     </script>
 </head>
