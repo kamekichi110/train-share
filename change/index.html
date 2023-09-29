@@ -10,9 +10,9 @@
     <script>
 function search_list() {
     var fromTXT = document.getElementById("from");
-    var fromAREA = document.getElementById(location0);
-    var forTXT = document.getElementById("for").value;
-    var forAREA = document.getElementById(location1);
+    var fromAREA = document.getElementById("location0");
+    var forTXT = document.getElementById("for");
+    var forAREA = document.getElementById("location1");
     var viaSec = document.getElementById("via-sec");
     var viaTXT = document.getElementById("via");
     var via = "";
@@ -41,13 +41,13 @@ function search_list() {
     var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
     var textURL = document.getElementById("url");
     textURL.innerHTML = urlLink;
-    alert('検索完了。表示します。')
+    alert('検索完了。表示します。');
 }
     </script>
 </head>
 <body>
     <header>
-        <img src="https://kamekichi110.github.io/train-share/asset/icon/main.png" class="icon">
+        <img src="https://kamekichi110.github.io/train-share/asset/icon/main.png" class="icon" alt="icon">
         <h2>
           Train-Share
           <br>
@@ -108,7 +108,8 @@ function search_list() {
         </main>
         <br>
         <div class="footer">
-          <p><p id="day"></p>
+          <p id="day"></p>
+          <p>
             <br>管理者X(旧Twitter)<a href="https://twitter.com/sirokuma_8110F">link</a>
             <br>各種ツール
             <br><a href="https://kamekichi110.github.io/train-share/view/train-info.html">列車情報ビューアー</a>
