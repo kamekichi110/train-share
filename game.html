@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tetris Game</title>
+  <style>
+    /* ゲームボードのスタイルを追加 */
+    #game-board {
+      width: 300px;
+      height: 600px;
+      border: 2px solid black;
+      position: relative;
+    }
+
+    /* ブロックのスタイルを追加 */
+    .block {
+      width: 29.9px;
+      height: 29.9px;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tetris Game</h1>
+  <div id="game-board"></div>
+  
+  <script>
+    // ゲームボードのサイズを設定
+    const ROWS = 20;
+    const COLS = 10;
+
+    // ゲームボードの状態を表す2次元配列
+    const board = [];
+
+    // 初期化関数
+    function initializeBoard() {
+      for (let row = 0; row < ROWS; row++) {
+        board[row] = [];
+        for (let col = 0; col < COLS; col++) {
+          board[row][col] = 0;
+        }
+      }
+    }
+
+    // ランダムな色を生成する関数
+    function getRandomColor() {
+      const colors = ['#FF5733', '#33FF57', '#5733FF', '#FFFF33', '#33FFFF', '#FF33FF', '#FF5733'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // ブロックを描画する関数
+    function drawBlock() {
+      for (let row = 0; row < tetromino.shape.length; row++) {
+        for (let col = 0; col < tetromino.shape[row].length; col++) {
+          if (tetromino.shape[row][col]) {
+            const boardRow = tetromino.row + row;
+            const boardCol = tetromino.col + col;
+            const block = document.createElement('div');
+            block.className = 'block';
+            block.style.top = boardRow * 30 + 'px';
+            block.style.left = boardCol * 30 + 'px';
+            // ブロックの色を設定
+            block.style.backgroundColor = getRandomColor();
+            document.getElementById('game-board').appendChild(block);
+          }
+        }
+      }
+    }
+
+    // ゲームループ関数
+    function gameLoop() {
+      // テトリスブロックを下に移動
+      // 衝突検出を行い、新しいブロックが追加される場合には新しいブロックを生成する
+      // ブロックが一番下に到達したら、行のクリアを試みる
+
+      // 描画関数を呼び出す
+      drawBlock();
+
+      // ゲームループを再帰的に呼び出す
+      requestAnimationFrame(gameLoop);
+    }
+
+    // ゲームを開始する関数
+    function startGame() {
+      initializeBoard();
+      // 初期位置にテトリスブロックを配置
+      tetromino.shape = [[1, 1], [1, 1]]; // 4x4の四角型ブロック
+      tetromino.row = 0;
+      tetromino.col = 3;
+      // ゲームループを開始
+      gameLoop();
+    }
+
+    // ゲームを開始する
+    startGame();
+  </script>
+</body>
+</html>
