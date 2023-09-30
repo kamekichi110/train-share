@@ -92,8 +92,8 @@
       gameLoop();
     }
 
-    // ゲームを開始する
-    startGame();
+    // ページが読み込まれたときにゲームを開始する
+    window.onload = startGame;
   </script>
 </body>
 </html>
