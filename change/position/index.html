@@ -296,8 +296,7 @@
                         const { location, distance } = findClosestLocation(userLatitude, userLongitude, locationsData);
 
                         if (location) {
-                            document.getElementById('closestLocation').innerHTML = `
-                                最寄り駅:${location.name}`;
+                            document.getElementById('closestLocation').innerHTML = `最寄り駅:${location.name}`;
                                 document.getElementById('distance').innerHTML = `最寄り駅から ${distance.toFixed(2)} km`;
                         } else {
                             document.getElementById('closestLocation').textContent = '近くの地点は見つかりませんでした。';
@@ -339,7 +338,7 @@
         function norikae() {
             var set = document.getElementById("closestLocation").textContent;
             var location0 = document.getElementById("location0");
-            var position = set.replace("最寄り駅:", null) + location0.value;
+            var position = set.replace("最寄り駅:", '') + location0.value;
             var forTXT = document.getElementById("for");
             var location1 = document.getElementById("location1").value;
             var station = forTXT.value + location1;
