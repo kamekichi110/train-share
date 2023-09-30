@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="../../css/index.css">
     <script src="../../js/main.js"></script>
     <script charset="UTF-8">
+        const name = document.getElementById('sample0');
+        var code = docuement.getElementById('fromCode');
+
+        function setFrom() {
+            var searchStation = document.getElementById("from").value;
+        const url = `https://api.ekispert.jp/v1/json/station?name=${searchStation}&type=train&offset=1&limit=100&direction=up&gcs=tokyo&key=LE_DDLV9n4GxgPku`;
+
+//操作したいHTML領域を取得
+//APIからJSONデータを取得する
+fetch(url)
+   .then((response) => {
+       return response.json() //ここでBodyからJSONを返す
+   })
+   .then((result) => {
+       Example(result);  //取得したJSONデータを関数に渡す 
+   })
+   .catch((e) => {
+       console.log(e)  //エラーをキャッチし表示     
+   })
+        };
+
+//JSONデータを引数に受け取ってDOM操作を行う関数を作成
+function Example(jsonObj){
+ const data = jsonObj.ResultSet.Point.Station;
+ name.textContent = data.Name;
+ code.textContent = data.code;
+}
+
 function search_list() {
     var fromTXT = document.getElementById("from");
     var fromAREA = document.getElementById("location0");
