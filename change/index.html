@@ -27,7 +27,8 @@ function search_list() {
     var URL5 = "&redirect=true&contentsMode=sp";
     var URL6 = "&key=";
     var key = "LE_DDLV9n4GxgPku";
-    var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
+    var plane = document.getElementById("plane").value;
+    var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + plane + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
     var textURL = document.getElementById("url");
     console.log(urlLink);
     alert('検索完了しました。表示されるまでお待ちください。');
@@ -293,6 +294,12 @@ function search_list() {
                 <select name="exp_" id="exp">
                     <option value="false">利用しない</option>
                     <option value="true">利用する</option>
+                </select>
+            </p>
+            <p>飛行機:
+                <select name="plane_" id="plane">
+                    <option value="&plane=false"></option>
+                    <option value="&plane=true"></option>
                 </select>
             </p>
             <br>
