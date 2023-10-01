@@ -4,6 +4,9 @@ function area0() {
 function area1() {
     document.getElementById("for").value = document.getElementById("ForArea").value;
 }
+function ViaList() {
+    document.getElementById("via").value = document.getElementById("ViaArea").value
+}
 function box0() {
     // select要素を取得
 var selectElement = document.getElementById('FromArea');
