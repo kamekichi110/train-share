@@ -280,7 +280,7 @@
         function setFrom() {
             var from = document.getElementById("from");
             var set = document.getElementById("closestLocation").textContent;
-            var target = set.replace("最寄り駅:", "");
+            var target = set.replace("最寄り駅: ", "");
             from.value = target;
             setTimeout(() => {
                 area0();
