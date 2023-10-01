@@ -28,9 +28,8 @@ fetch(url)
     var point = resultSet.Point;
 
     point.forEach(item => {
-        var station = point.Station;
-        var code = station.code;
-        var name = station.Name;
+        var code = point.Station.code;
+        var name = point.Station.Name;
 
     var optionElement = document.createElement('option');
     optionElement.value = code; // Optionの値を設定
@@ -66,9 +65,8 @@ fetch(url)
     var point = resultSet.Point;
 
     point.forEach(item => {
-        var station = point.Station;
-        var code = station.code;
-        var name = station.Name;
+        var code = point.Station.code;
+        var name = point.Station.Name;
 
     // 取得したデータを使用してOption要素を生成して追加する
     var optionElement = document.createElement('option');
