@@ -60,7 +60,9 @@ function search_list() {
         </section>
         <br>
         <main>
-            <p><input type="text" id="from" placeholder="出発駅を入力">駅
+            <p><input type="text" id="from" placeholder="出発駅を入力" onchange="box0()">駅
+                <br>
+                <select name="area0" id="FromArea" onchange="area0()"></select>
                 <br>
                 地域:
                 <select name="fromArea_" id="location0">
@@ -133,7 +135,9 @@ function search_list() {
                     </optgroup>
                 </select>
             </p>
-            <p><input type="text" id="for" placeholder="到着駅">駅
+            <p><input type="text" id="for" placeholder="到着駅" onchange="box1()">駅
+                <br>
+                <select name="area1" id="ForArea" onchange="area1"></select>
             <br>
             地域:
             <select name="forArea_" id="location1">
