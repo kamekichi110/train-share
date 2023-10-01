@@ -24,23 +24,31 @@ fetch(url)
   .then(data => {
     // JSONデータを取得した後の処理
     console.log(data);
-    const resultSet = data.ResultSet;
-    const point = resultSet.Point;
 
-    point.forEach(item => {
-        const station = point.Station;
+    // "ResultSet"内の "Point" からデータを取得して Option 要素を生成し、追加する
+    const resultSet = data.ResultSet;
+    const points = resultSet.Point;
+    
+    points.forEach(point => {
+      const station = point.Station;
+      
+      // "Station"がオブジェクトである場合のみ処理を行う
+      if (station && typeof station === 'object') {
         const code = station.code;
         const name = station.Name;
-
-    const optionElement = document.createElement('option');
-    optionElement.value = code; // Optionの値を設定
-    optionElement.text = name;  // Optionの表示テキストを設定
-    selectElement.appendChild(optionElement);
+        
+        // 取得したデータを使用してOption要素を生成して追加する
+        const optionElement = document.createElement('option');
+        optionElement.value = code; // Optionの値を設定
+        optionElement.text = `${name}`;  // Optionの表示テキストを設定
+        selectElement.appendChild(optionElement); // select要素にOption要素を追加
+      }
     });
   })
   .catch(error => {
     console.error('JSONデータの読み込みエラー', error);
   });
+
 }
 function box1() {
     var selectElement = document.getElementById('ForArea');
@@ -62,19 +70,24 @@ fetch(url)
     // JSONデータを取得した後の処理
     console.log(data);
 
+    // "ResultSet"内の "Point" からデータを取得して Option 要素を生成し、追加する
     const resultSet = data.ResultSet;
-    const point = resultSet.Point;
-
-    point.forEach(item => {
-        const station = point.Station;
+    const points = resultSet.Point;
+    
+    points.forEach(point => {
+      const station = point.Station;
+      
+      // "Station"がオブジェクトである場合のみ処理を行う
+      if (station && typeof station === 'object') {
         const code = station.code;
         const name = station.Name;
-
-    // 取得したデータを使用してOption要素を生成して追加する
-    const optionElement = document.createElement('option');
-    optionElement.value = code; // Optionの値を設定
-    optionElement.text = name;  // Optionの表示テキストを設定
-    selectElement.appendChild(optionElement);
+        
+        // 取得したデータを使用してOption要素を生成して追加する
+        const optionElement = document.createElement('option');
+        optionElement.value = code; // Optionの値を設定
+        optionElement.text = `${name}`;  // Optionの表示テキストを設定
+        selectElement.appendChild(optionElement); // select要素にOption要素を追加
+      }
     });
   })
   .catch(error => {
