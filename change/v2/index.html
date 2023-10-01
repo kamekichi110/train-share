@@ -10,8 +10,8 @@
     <script src="./search.js" charset="UTF-8"></script>
     <script charset="UTF-8">
 function search_list() {
-    var from = document.getElementById("from");
-    var for0 = document.getElementById("for");
+    var from = document.getElementById("from").value;
+    var for0 = document.getElementById("for").value;
     var via = document.getElementById("via-sec").value + document.getElementById("via").value;
     var URL0 = "https://api.ekispert.jp/v1/xml/search/course/light?from=";
     var URL1 = "&to=";
