@@ -10,11 +10,9 @@
     <script src="./search.js" charset="UTF-8"></script>
     <script charset="UTF-8">
 function search_list() {
-    var fromTXT = document.getElementById("from");
-    var forTXT = document.getElementById("for");
+    var from = document.getElementById("from");
+    var for0 = document.getElementById("for");
     var via = document.getElementById("via-sec").value + document.getElementById("via").value;
-    var from = fromTXT.value + fromAREA.value;
-    var for0 = forTXT.value + forAREA.value;
     var URL0 = "https://api.ekispert.jp/v1/xml/search/course/light?from=";
     var URL1 = "&to=";
     var URL2 = "&searchType=";
@@ -64,6 +62,7 @@ function search_list() {
                 候補駅を選択:<select name="area0" id="FromArea" onchange="area0()">
                 <option value="">候補駅を選択</option>
                 </select>
+                <br>
                 候補駅がない場合はそのまま
                 <br>              
                 次のステップに進んでください。          
@@ -75,6 +74,10 @@ function search_list() {
                 候補駅を選択:<select name="area1" id="ForArea" onchange="area1()">
                 <option value="">候補駅を選択</option>
                 </select>
+                <br>
+                候補駅がない場合はそのまま
+                <br>
+                次のステップに進んでください。
             <br>
             </p>
             <hr>
@@ -89,6 +92,10 @@ function search_list() {
                 候補駅を選択:<select name="viaArea_" id="ViaArea" onchange="ViaList()">
                 <option value="">候補駅を選択</option>
                 </select>
+                <br>
+                候補駅がない場合はそのまま
+                <br>
+                次のステップに進んでください。
             </p>
             <hr>
             <h4>ステップ4:検索設定</h4>
