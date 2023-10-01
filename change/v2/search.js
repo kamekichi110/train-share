@@ -26,10 +26,9 @@ fetch(url)
     console.log(data);
     var resultSet = data.ResultSet;
     var point = resultSet.Point;
-    var station = point.Station;
 
-    station.forEach(item => {
-
+    point.forEach(item => {
+        var station = point.Station;
         var code = station.code;
         var name = station.Name;
 
@@ -65,9 +64,9 @@ fetch(url)
 
     var resultSet = data.ResultSet;
     var point = resultSet.Point;
-    var station = point.Station;
 
-    station.forEach(item => {
+    point.forEach(item => {
+        var station = point.Station;
         var code = station.code;
         var name = station.Name;
 
