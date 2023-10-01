@@ -90,6 +90,10 @@ fetch(url)
         optionElement.value = code; // Optionの値を設定
         optionElement.text = `${name}`;  // Optionの表示テキストを設定
         selectElement.appendChild(optionElement); // select要素にOption要素を追加
+        const defElement = document.createElement("option");
+        defElement.value = "";
+        defElement.text = "候補駅を選択";
+        selectElement.append(defElement);
       }
     });
   })
@@ -135,6 +139,10 @@ fetch(url)
         optionElement.value = code; // Optionの値を設定
         optionElement.text = `${name}`;  // Optionの表示テキストを設定
         selectElement.appendChild(optionElement); // select要素にOption要素を追加
+        const defElement = document.createElement("option");
+        defElement.value = "";
+        defElement.text = "候補駅を選択";
+        selectElement.append(defElement);
       }
     });
   })
