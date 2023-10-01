@@ -25,10 +25,8 @@
     var key = "LE_DDLV9n4GxgPku";
     var plane = document.getElementById("plane").value;
     var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + plane + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
-    var textURL = document.getElementById("url");
     console.log(urlLink);
     alert('検索完了しました。表示されるまでお待ちください。');
-    textURL.innerHTML = `<p><a href='${urlLink}>表示が変わらない方はこちら</a></p>`;
     setTimeout(() => {
         alert('表示の準備ができました。表示します。')
         window.location.href = urlLink;
