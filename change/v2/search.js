@@ -24,15 +24,15 @@ fetch(url)
   .then(data => {
     // JSONデータを取得した後の処理
     console.log(data);
-    var resultSet = data.ResultSet;
-    var point = resultSet.Point;
+    const resultSet = data.ResultSet;
+    const point = resultSet.Point;
 
     point.forEach(item => {
-        var station = point.Station;
-        var code = station.code;
-        var name = station.Name;
+        const station = point.Station;
+        const code = station.code;
+        const name = station.Name;
 
-    var optionElement = document.createElement('option');
+    const optionElement = document.createElement('option');
     optionElement.value = code; // Optionの値を設定
     optionElement.text = name;  // Optionの表示テキストを設定
     selectElement.appendChild(optionElement);
@@ -62,16 +62,16 @@ fetch(url)
     // JSONデータを取得した後の処理
     console.log(data);
 
-    var resultSet = data.ResultSet;
-    var point = resultSet.Point;
+    const resultSet = data.ResultSet;
+    const point = resultSet.Point;
 
     point.forEach(item => {
-        var station = point.Station;
-        var code = station.code;
-        var name = station.Name;
+        const station = point.Station;
+        const code = station.code;
+        const name = station.Name;
 
     // 取得したデータを使用してOption要素を生成して追加する
-    var optionElement = document.createElement('option');
+    const optionElement = document.createElement('option');
     optionElement.value = code; // Optionの値を設定
     optionElement.text = name;  // Optionの表示テキストを設定
     selectElement.appendChild(optionElement);
