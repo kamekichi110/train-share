@@ -245,11 +245,12 @@
                 console.error('位置情報の取得エラー:', error);
             });
             document.getElementById('btn').disabled = false;
-            var from = document.getElementById("from").value;
-            from = setLocation;
+            setTimeout(() => {
+                setFrom();
             setTimeout(() => {
                 box0();
             }, 200);
+        }, 200);
         }, 1200);
         setFrom();
         };
