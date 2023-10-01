@@ -15,7 +15,7 @@ var url0 = "https://api.ekispert.jp/v1/json/station?name=";
 var url1 = "&offset=1&limit=100&direction=up&gcs=tokyo&key=";
 var key = "LE_DDLV9n4GxgPku";
 var url = url0 + text + url1 + key;
-selectElement.innerHTML = "";
+selectElement.innerHTML = "<option value=''>候補駅選択</option>";
 
 fetch(url)
   .then(response => {
@@ -60,7 +60,7 @@ var url0 = "https://api.ekispert.jp/v1/json/station?name=";
 var url1 = "&offset=1&limit=100&direction=up&gcs=tokyo&key=";
 var key = "LE_DDLV9n4GxgPku";
 var url = url0 + text + url1 + key;
-selectElement.innerHTML = "";
+selectElement.innerHTML = "<option value=''>候補駅選択</option>";
 
 fetch(url)
   .then(response => {
