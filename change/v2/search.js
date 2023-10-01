@@ -24,13 +24,17 @@ fetch(url)
   .then(data => {
     // JSONデータを取得した後の処理
     console.log(data);
+    var resultSet = data.ResultSet;
+    var point = resultSet.Point;
+    var station = point.Station;
+    var code = station.code;
+    var name = station.Name;
 
-    // JSONデータからOption要素を生成し、select要素に追加する
-    data.forEach(item => {
-      const optionElement = document.createElement('option');
-      optionElement.value = item.ResultSet.Point.Station.code; // Optionの値を設定
-      optionElement.text = item.ResultSet.Point.Name;   // Optionの表示テキストを設定
-      selectElement.appendChild(optionElement); // select要素にOption要素を追加
+    station.forEach(item => {
+    var optionElement = document.createElement('option');
+    optionElement.value = code; // Optionの値を設定
+    optionElement.text = name;  // Optionの表示テキストを設定
+    selectElement.appendChild(optionElement);
     });
   })
   .catch(error => {
@@ -57,12 +61,18 @@ fetch(url)
     // JSONデータを取得した後の処理
     console.log(data);
 
-    // JSONデータからOption要素を生成し、select要素に追加する
-    data.forEach(item => {
-      const optionElement = document.createElement('option');
-      optionElement.value = item.ResultSet.Point.Station.code; // Optionの値を設定
-      optionElement.text = item.ResultSet.Point.Name;   // Optionの表示テキストを設定
-      selectElement.appendChild(optionElement); // select要素にOption要素を追加
+    var resultSet = data.ResultSet;
+    var point = resultSet.Point;
+    var station = point.Station;
+    var code = station.code;
+    var name = station.Name;
+
+    dataItems.forEach(item => {
+    // 取得したデータを使用してOption要素を生成して追加する
+    var optionElement = document.createElement('option');
+    optionElement.value = code; // Optionの値を設定
+    optionElement.text = name;  // Optionの表示テキストを設定
+    selectElement.appendChild(optionElement);
     });
   })
   .catch(error => {
