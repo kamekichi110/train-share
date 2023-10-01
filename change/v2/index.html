@@ -58,13 +58,18 @@ function search_list() {
         </section>
         <br>
         <main>
+            <h4>ステップ1:出発駅を入力</h4>
             <p><input type="text" id="from" placeholder="出発駅を入力" onchange="box0()">駅
                 <br>
                 候補駅を選択:<select name="area0" id="FromArea" onchange="area0()">
                 <option value="">候補駅を選択</option>
                 </select>
-                <br>                        
+                候補駅がない場合はそのまま
+                <br>              
+                次のステップに進んでください。          
             </p>
+            <hr>
+            <h4>ステップ2:到着駅を入力</h4>
             <p><input type="text" id="for" placeholder="到着駅" onchange="box1()">駅
                 <br>
                 候補駅を選択:<select name="area1" id="ForArea" onchange="area1()">
@@ -72,6 +77,9 @@ function search_list() {
                 </select>
             <br>
             </p>
+            <hr>
+            <h4>ステップ3:経由地を指定</h4>
+            <p>※ない場合はステップ4へ。</p>
             <p><select name="via-list_" id="via-sec">
                 <option value="">経由地なし</option>
                 <option value="&via=">経由地あり</option>
@@ -83,7 +91,7 @@ function search_list() {
                 </select>
             </p>
             <hr>
-            <p>検索設定</p>
+            <h4>ステップ4:検索設定</h4>
             <p>新幹線:
                 <select name="type_" id="shinkansen">
                     <option value="false">利用しない</option>
@@ -103,6 +111,9 @@ function search_list() {
                 </select>
             </p>
             <br>
+            <hr>
+            <br>
+            <h4>ステップ5:検索ボタンをクリック！</h4>
             <button onclick="search_list()">検索</button>
             <br>
             <div id="url"></div>
