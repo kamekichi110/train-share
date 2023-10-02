@@ -1,7 +1,7 @@
 function test() {
     var num = 0;
   var watch_id;
-      watch_id = navigator.geolocation.watchPosition(test2, function(e) { alert(e.message); }, {"enableHighAccuracy": true, "timeout": 2000, "maximumAge": 2000});
+      watch_id = navigator.geolocation.watchPosition(test2, function(e) { alert(e.message); }, {"enableHighAccuracy": true, "timeout": 20000, "maximumAge": 2000});
   }
   
   function clear() {
