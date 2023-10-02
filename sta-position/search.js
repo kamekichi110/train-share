@@ -146,3 +146,11 @@ fetch(url)
   });
 
 }
+function clearText() {
+  var from = document.getElementById("from").value;
+  var for0 = document.getElementById("for").value;
+  var via = document.getElementById("via").value;
+  from = "";
+  for0 = "";
+  via = "";
+}
