@@ -147,10 +147,10 @@ fetch(url)
 
 }
 function clearText() {
-  var from = document.getElementById("from").value;
-  var for0 = document.getElementById("for").value;
-  var via = document.getElementById("via").value;
-  from = "";
-  for0 = "";
-  via = "";
+  var from = document.getElementById("from");
+  var for0 = document.getElementById("for");
+  var via = document.getElementById("via");
+  from.value = "";
+  for0.value = "";
+  via.value = "";
 }
