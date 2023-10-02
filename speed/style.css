@@ -1,0 +1,17 @@
+div.display {
+    width: 240px;
+    height: 240px;
+    border-radius: 120px;
+    background: grey;
+    margin: auto;
+  }
+  div#speed {
+    width: 100px;
+    height: 12px;
+    transform-origin: 96px 6px;
+    background: orange;
+    border-radius: 6px;
+    position: relative;
+    top: 114px;
+    left: 26px;
+  }
