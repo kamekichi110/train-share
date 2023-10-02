@@ -14,7 +14,7 @@ function test() {
     var num = 0;
   var watch_id;
     var speed = position.coords.speed;
-    var sp0 = speed * 360;
+    var sp0 = speed * 3600;
     var sp1 = sp0 / 1000;
     var speedNum = sp1 - 30;
     var num0 = document.getElementById("speed");
