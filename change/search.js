@@ -27,3 +27,12 @@ function search() {
     document.getElementById("url").innerHTML = url;
     window.location.href = url;
 }
+
+function clearText() {
+    var from = document.getElementById("from").value;
+    var for0 = document.getElementById("for").value;
+    var via = document.getElementById("via").value;
+    from = "";
+    for0 = "";
+    via = "";
+  }
