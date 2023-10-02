@@ -13,8 +13,10 @@ function test() {
   function test2(position) {
     var num = 0;
   var watch_id;
-    var speed = position.coords.speed * 3.6;
-    var speedNum = speed - 30;
+    var speed = position.coords.speed;
+    var sp0 = speed * 360;
+    var sp1 = sp0 / 1000;
+    var speedNum = sp1 - 30;
     var num0 = document.getElementById("speed");
     num0.style.transform = `rotate(${speedNum}deg)`;
     document.getElementById("num").innerHTML = speed + " km/h";
