@@ -20,6 +20,6 @@ function test() {
     var num0 = document.getElementById("speed");
     num0.style.transform = `rotate(${speedNum}deg)`;
     document.getElementById("num").innerHTML = speed + " km/h";
-   var date = new Date(position.timestamp);
+    var date = new Date(position.timestamp);
     document.getElementById("time").innerHTML = date.toLocaleString();
   }
