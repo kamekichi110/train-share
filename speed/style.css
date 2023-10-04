@@ -9,7 +9,7 @@ div.display {
     width: 100px;
     height: 12px;
     transform-origin: 96px 6px;
-    transform: rotate(30deg);
+    transform: rotate(-30deg);
     background: orange;
     border-radius: 6px;
     position: relative;
