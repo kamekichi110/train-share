@@ -155,3 +155,7 @@ function clearText() {
   for0.value = "";
   via.value = "";
 }
+function clearDateTime() {
+  document.getElementById("date").value = "";
+  docuement.getElementById("time").value = "";
+}
