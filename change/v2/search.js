@@ -1,11 +1,25 @@
+window.onload = loadingLog();
+function loadingLog() {
+  var inLog = "page loaded!";
+  console.log(inLog);
+}
+function sendLog(LogText) {
+  console.log(LogText);
+}
 function area0() {
     document.getElementById("from").value = document.getElementById("FromArea").value;
+    var send = "id='from' select data loaded!"
+    sendLog(send);
 }
 function area1() {
     document.getElementById("for").value = document.getElementById("ForArea").value;
+    var send = "id='for' select data loaded!"
+    sendLog(send);
 }
 function ViaList() {
     document.getElementById("via").value = document.getElementById("ViaArea").value
+    var send = "id='via' select data loaded!"
+    sendLog(send);
 }
 function box0() {
     // select要素を取得
@@ -52,7 +66,8 @@ fetch(url)
   .catch(error => {
     console.error('JSONデータの読み込みエラー', error);
   });
-
+  var send = "option data loaded!"
+  sendLog(send);
 }
 function box1() {
     var selectElement = document.getElementById('ForArea');
@@ -98,6 +113,8 @@ fetch(url)
   .catch(error => {
     console.error('JSONデータの読み込みエラー', error);
   });
+  var send = "option data loaded!"
+  sendLog(send);
 }
 function via() {
         // select要素を取得
@@ -144,7 +161,8 @@ fetch(url)
   .catch(error => {
     console.error('JSONデータの読み込みエラー', error);
   });
-
+  var send = "option data loaded!"
+  sendLog(send);
 }
 
 function clearText() {
@@ -154,4 +172,6 @@ function clearText() {
   from.value = "";
   for0.value = "";
   via.value = "";
+  var send = "data clear!"
+  sendLog(send);
 }
