@@ -175,3 +175,12 @@ function clearText() {
   var send = "data clear!"
   sendLog(send);
 }
+function sdw() {
+  setInterval(() => {
+    var logs = "system: ok. loaded file check...: ok.";
+    console.log(logs);
+  }, 500);
+}
+window.onload = setTimeout(() => {
+  sdw();
+}, 200);
