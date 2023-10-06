@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tetris</title>
+    <link rel="shortcut icon" href="../../asset/icon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js"></script>
+</head>
+<body>
+    div(id='outer-board')
+  div(id='board') 
+    div(id='banner')
+      div 
+        div(id='message')
+        div(id='new-game') Tap here to start!
+    - var n=0;
+    while n < 160
+      div(class="empty")
+        div(class="inner-tile")
+          div(class="inner-inner-tile")
+      - n++;
+  div(id='stats')
+    div(class='labels') Scores
+      div(id='score' class='frame') 0        
+    button(class='btn btn-rounded' id="left") 
+      i(class="fa fas fa-arrow-left")
+    button(class='btn btn-rounded' id="right")
+      i(class="fa fas fa-arrow-right")
+    button(class='btn btn-rounded' id="rotate") 
+      i(class="fa fas fa-undo flipx")
+    button(class='btn btn-rounded' id="down") 
+      i(class="fa fas fa-arrow-down")
+</body>
+</html>
