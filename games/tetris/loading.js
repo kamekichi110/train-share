@@ -1,3 +1,3 @@
 window.onload = setTimeout(() => {
     document.getElementById("loading").style.display = "none";
-}, 2500);
+}, 4500);
