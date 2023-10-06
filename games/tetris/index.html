@@ -153,6 +153,11 @@ div#loading {
   display: block;
 }
 </style>
+<script>
+    function bgmStart() {
+        document.getElementById("tetris").play();
+    }
+</script>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 </head>
 <body>
@@ -160,13 +165,13 @@ div#loading {
         <p>loading...</p>
       </div>
 <!-- partial:index.partial.html -->
-<audio src="./tetris.mp3" id="tetris" loop preload="auto" autoplay controls></audio>
+<audio src="./tetris.mp3" id="tetris" loop preload="auto" autoplay></audio>
 <div id="outer-board">
     <div id="board">
         <div id="banner">
             <div>
                 <div id="message"></div>
-                <div id="new-game">Tap here to start!</div>
+                <div id="new-game" onclick="bgmStart()">Tap here to start!</div>
             </div>
         </div>
         <div class="empty">
