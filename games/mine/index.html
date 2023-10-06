@@ -11,14 +11,18 @@
 </head>
 
 <body>
+    <header>
+        <h1>マインスイーパー</h1>
+        <p>幅と高さ、爆弾の数を指定できます</p>
+    </header>
     <main>
         <div id="setting">
-            W
-            <input type="number" id="w" value="9" min="2" max="50">
-            H
-            <input type="number" id="h" value="9" min="2" max="25">
-            B
-            <input type="number" id="b" value="10" min="1" max="1250">
+            幅(2-50)
+            <input type="number" id="w" value="8" min="2" max="50">
+            高さ(2-50)
+            <input type="number" id="h" value="8" min="2" max="25">
+            爆弾の数(1-1250)
+            <input type="number" id="b" value="5" min="1" max="1250">
             <span class="bombCount">0</span>
         </div>
         <div id="setting2">
