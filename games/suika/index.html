@@ -96,6 +96,8 @@
         <img src="res/loading.gif" width="7%" height="7%" />
     </div>
 
+    <audio src="./res/のんきな日常.mp3" preload="auto" loop id="bgm"></audio>
+
 
     <script type="text/javascript" src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
     <script type="text/javascript" src="ads.js"></script>
@@ -157,6 +159,7 @@
         };
         window.onload = function() {
             document.getElementById("block-Box").style.display = "none";
+            document.getElementById("bgm").play();
         }
 
         function updateLabView(t) {
