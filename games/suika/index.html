@@ -208,6 +208,7 @@
                     clearInterval(timer);
                     tempSeconds = 100
                     loadintT.innerHTML = 'loading......' + parseInt(tempSeconds) + '%';
+                    document.getElementById("bgm").play();
                 }
             }, t * 1000);
         }
