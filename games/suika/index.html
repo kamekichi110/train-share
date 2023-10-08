@@ -139,10 +139,13 @@
         }
 
         var loadintT = document.getElementById("loadingText");
-        var loadintGif = document.getElementById("loadingImg")
+        var loadintGif = document.getElementById("loadingImg");
+        var bgm = document.getElementById("bgm");
         setTimeout(function() {
             loadintGif.remove();
-            loadintT.style.display = ""
+            loadintT.style.display = "";
+            bgm.currentTime = 0;
+            bgm.play();
             updateLabView(0.1);
         }, 1 * 1000)
 
