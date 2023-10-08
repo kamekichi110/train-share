@@ -269,7 +269,17 @@
         })();
     </script>
     <script>
-        window.onload = document.getElementById("bgmStart").click;
+        window.onload = setTimeout(() => {
+            var formResult = window.confirm('BGMを鳴らしますか？');
+            var bgm = document.getElementById('bgm');
+            if (formResult) {
+                bgm.currentTime = 0;
+                bgm.play();
+            } else {
+                bgm.pause();
+                bgm.currentTime = 0;
+            }
+        }, 500);
         function bgmStart() {
             document.getElementById("bgm").play();
         }
