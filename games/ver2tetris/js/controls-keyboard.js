@@ -7,7 +7,6 @@ var timeDown = {"left": -1, "up": -1, "down": -1, "right": -1,
 					"A": -1, "B": -1, "drop": -1};
 var keyPressed = {"left":false, "up":false, "down": false, "right": false, 
 					"A": false, "B": false, "drop": false};
-/* thanks to http://stackoverflow.com/a/12444641/1703727  for the key down/up map */
 document.onkeydown = document.onkeyup = function(e){
 	e = e || window.event; // to deal with IE
 	keyDown[map[e.keyCode]] = e.type == 'keydown';
