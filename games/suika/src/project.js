@@ -2146,10 +2146,10 @@ window.__require = function e(t, n, o) {
           this.moreGameUrl = "http://m.wesane.com/"
         },
         gameOverShowText: function (e, t) {
-          this.ajaxLoad("http://www.wesane.com/admin.php/Gamescore/saveGamescore", "gameScore=" + e + "&gameId=" + this.gameHttpId + "&gameType=" + t, this.scoreResult)
+          console.log('game over!');
         },
         gamePV_load: function () {
-          this.ajaxLoad("http://www.wesane.com/admin.php/Activityshow/gamelogo", "gameID=" + this.gameHttpId, this.ajaxOnLogoResult)
+          console.log('data loading...');
         },
         ajaxOnLogoResult: function () {
         },
