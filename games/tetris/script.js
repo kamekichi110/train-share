@@ -470,7 +470,7 @@ class Board {
       document.getElementById("tetris").pause();
       document.getElementById("tetris").currentTime = 0;
       var scoreData = document.getElementById("score").textContent;
-      var scoreOutput = document.getElementById("scoreBox").value;
+      var scoreOutput = document.getElementById("scoreNum").value;
       scoreOutput = scoreData;
       ScoreList();
       document.getElementById("send").click;

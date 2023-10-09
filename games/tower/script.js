@@ -288,7 +288,8 @@ class Game {
     }
     endGame() {
         this.updateState(this.STATES.ENDED);
-        document.getElementById("score").textContent = document.getElementById("scoreBox").value;
+        document.getElementById("scoreNum").value = document.getElementById("score").textContent;
+
         setTimeout(() => {
             document.getElementById("send").click;
             scoreList();
