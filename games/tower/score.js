@@ -47,7 +47,21 @@ fetch(jsonFileUrl)
     console.error("JSONファイルの取得中にエラーが発生しました。", error);
   });
 }
+function scoreList1() {
+  // 別のURLからJSONデータを取得
+fetch('http://trainshare1.starfree.jp/tower/data.json')
+.then(response => response.json())
+.then(data => {
+  // JSONデータ内の"score"値を表示
+  data.forEach(item => {
+    console.log(item.score);
+  });
+})
+.catch(error => {
+  console.error('データの取得に失敗しました', error);
+});
 
+}
 
 const targetElement = document.getElementById("name");
 // 特定の要素がクリックされたときの処理
@@ -90,6 +104,6 @@ targetElement2.addEventListener("click", function() {
 });
 
 window.onload = setTimeout(() => {
-  scoreList();
+  scoreList1();
   userName();
 }, 500);

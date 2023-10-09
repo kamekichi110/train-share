@@ -1,6 +1,3 @@
-window.onload = setTimeout(() => {
-    ScoreList();
-}, 500);
 
 const scoreBox = document.getElementById("scoreNum");
 scoreBox.addEventListener("click", function() {
@@ -55,3 +52,23 @@ fetch(jsonFileUrl)
     console.error("JSONファイルの取得中にエラーが発生しました。", error);
   });
 }
+
+function scorelist1() {
+  // 別のURLからJSONデータを取得
+fetch('http://trainshare1.starfree.jp/tetris/data.json')
+.then(response => response.json())
+.then(data => {
+  // JSONデータ内の"score"値を表示
+  data.forEach(item => {
+    console.log(item.score);
+  });
+})
+.catch(error => {
+  console.error('データの取得に失敗しました', error);
+});
+
+}
+
+window.onload = setTimeout(() => {
+  scoreList1();
+}, 500);
