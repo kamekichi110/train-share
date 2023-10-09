@@ -61,6 +61,7 @@ targetElement.addEventListener("click", function(event) {
   // ここに特定の要素がクリックされたときの処理を追加
 });
 function userName() {
+  window.alert('tower-game\n次のダイアログで\nユーザーネームを入力\n入力しない場合は「名無し」と\n入力してください。')
   var user = window.prompt("ユーザーネームを入力してください。", "名無し");
   var data = document.getElementById("name").value;
   data = user;
