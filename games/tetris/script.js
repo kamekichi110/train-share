@@ -473,6 +473,7 @@ class Board {
       var scoreOutput = document.getElementById("scoreBox").value;
       scoreOutput = scoreData;
       ScoreList();
+      document.getElementById("send").click;
     }
   }
 
