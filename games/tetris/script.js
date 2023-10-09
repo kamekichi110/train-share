@@ -469,6 +469,9 @@ class Board {
       $("#new-game").text("Tap here to start again!");
       document.getElementById("tetris").pause();
       document.getElementById("tetris").currentTime = 0;
+      var scoreData = document.getElementById("score").textContent;
+      var scoreOutput = document.getElementById("scoreBox").value;
+      scoreOutput = scoreData;
     }
   }
 
