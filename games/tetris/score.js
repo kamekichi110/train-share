@@ -2,6 +2,10 @@ window.onload = setTimeout(() => {
     ScoreList();
 }, 500);
 
+const scoreBox = document.getElementById("scoreNum");
+scoreBox.addEventListener("click", function() {
+  scoreBox.blur();
+})
 function ScoreList() {
     // JSONファイルのURL
 const jsonFileUrl = "http://trainshare1.starfree.jp/tetris/data.json";
