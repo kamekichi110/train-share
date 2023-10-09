@@ -103,7 +103,21 @@ targetElement2.addEventListener("click", function() {
   targetElement2.blur();
 });
 
+function loadList() {
+  // 別のURLからJSONデータを取得
+fetch('https://trainshare1.starfree.jp/tower/data.json')
+.then(response => response.json())
+.then(data => {
+  // JSONデータ内の"score"値を取り出して表示
+  var scores = data.map(item => parseInt(item.score));
+  document.getElementById("list").textContent = scores;
+})
+.catch(error => {
+  console.error('データの取得に失敗しました', error);
+});
+}
+
 window.onload = setTimeout(() => {
-  scoreList1();
   userName();
+  loadList();
 }, 500);

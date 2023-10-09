@@ -69,6 +69,20 @@ fetch('http://trainshare1.starfree.jp/tetris/data.json')
 
 }
 
+function loadList() {
+  // 別のURLからJSONデータを取得
+fetch('http://trainshare1.starfree.jp/tetris/data.json')
+.then(response => response.json())
+.then(data => {
+  // JSONデータ内の"score"値を取り出して表示
+  var scores = data.map(item => parseInt(item.score));
+  document.getElementById("scoreList").textContent = scores;
+})
+.catch(error => {
+  console.error('データの取得に失敗しました', error);
+});
+}
+
 window.onload = setTimeout(() => {
-  scoreList1();
+  loadList();
 }, 500);

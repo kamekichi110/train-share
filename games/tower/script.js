@@ -292,7 +292,7 @@ class Game {
 
         setTimeout(() => {
             document.getElementById("send").click;
-            scoreList1();
+            loadList();
         }, 100);
     }
     tick() {
