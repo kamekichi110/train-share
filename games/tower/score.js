@@ -116,8 +116,29 @@ fetch('https://trainshare1.starfree.jp/tower/data.json')
   console.error('データの取得に失敗しました', error);
 });
 }
+function loadList1() {
+  fetch('http://trainshare1.starfree.jp/tower/data.json')
+  .then(response => response.json())
+  .then(data => {
+    // JSONデータ内の"score"値を取り出して配列に格納
+    var scores = data.map(item => parseInt(item.score));
+
+    // "list"というIDを持つdiv要素を取得
+    var listDiv = document.getElementById('list');
+
+    // "list" div内に"score"値を挿入
+    scores.forEach(score => {
+      var scoreElement = document.createElement('p');
+      scoreElement.textContent = 'Score: ' + score;
+      listDiv.appendChild(scoreElement);
+    });
+  })
+  .catch(error => {
+    console.error('データの取得に失敗しました', error);
+  });
+}
 
 window.onload = setTimeout(() => {
   userName();
-  loadList();
+  loadList1();
 }, 500);

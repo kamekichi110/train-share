@@ -470,7 +470,7 @@ class Board {
       document.getElementById("tetris").pause();
       document.getElementById("tetris").currentTime = 0;
       document.getElementById("scoreNum").value = document.getElementById("score").textContent;
-      loadList();
+      loadList1();
       document.getElementById("send").click;
     }
   }
