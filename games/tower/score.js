@@ -60,3 +60,8 @@ targetElement.addEventListener("click", function(event) {
 
   // ここに特定の要素がクリックされたときの処理を追加
 });
+function userName() {
+  var user = window.prompt("ユーザーネームを入力してください。", "名無し");
+  var data = document.getElementById("name").value;
+  data = user;
+}
