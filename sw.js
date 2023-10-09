@@ -85,7 +85,9 @@ var resources = [
 
   //tower game files
   '/games/tower',
-
+  //game bgm
+  '/games/tetris/tetris.mp3',
+  '/games/suika/bgm.mp3',
   //other
   '/speed',
   '/'
