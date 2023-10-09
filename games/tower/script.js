@@ -288,6 +288,11 @@ class Game {
     }
     endGame() {
         this.updateState(this.STATES.ENDED);
+        document.getElementById("score").textContent = document.getElementById("scoreBox").value;
+        setTimeout(() => {
+            document.getElementById("send").click;
+            scoreList();
+        }, 100);
     }
     tick() {
         this.blocks[this.blocks.length - 1].tick();

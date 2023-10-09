@@ -1,10 +1,6 @@
-window.onload = setTimeout(() => {
-    ScoreList();
-}, 500);
-
-function ScoreList() {
+function scoreList() {
     // JSONファイルのURL
-const jsonFileUrl = "http://trainshare1.starfree.jp/tetris/data.json";
+const jsonFileUrl = "http://trainshare1.starfree.jp/tower/data.json";
 
 // JSONファイルを取得
 fetch(jsonFileUrl)
@@ -45,9 +41,13 @@ fetch(jsonFileUrl)
     table.appendChild(tbody);
 
     // テーブルをページに追加
-    document.getElementById("scoreList").appendChild(table);
+    document.getElementById("list").appendChild(table);
   })
   .catch(error => {
     console.error("JSONファイルの取得中にエラーが発生しました。", error);
   });
 }
+
+window.onload = setTimeout(() => {
+    scoreList();
+}, 500);
