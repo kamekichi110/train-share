@@ -986,9 +986,9 @@ div#loading {
 <script  src="./script.js"></script>
 <script src="./loading.js"></script>
 <hr>
-<form action="http://trainshare1.starfree.jp/tetris/add.php">
-<p>UserName: <input type="text" name="user" id="name" value="名無し" placeholder="UserName"></p>
-<p>score: <input type="text" name="score-num" id="scoreNum" placeholder="score"></p>
+<form method="post" action="http://trainshare1.starfree.jp/tetris/add.php">
+<p>UserName: <input type="text" name="name" id="name" value="名無し" placeholder="UserName"></p>
+<p>score: <input type="text" name="scoreNum" id="scoreNum" placeholder="score"></p>
 <button type="submit" id="send">送信</button>
 </form>
 <div id="scoreList"></div>
