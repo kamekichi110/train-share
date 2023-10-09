@@ -287,13 +287,7 @@ class Game {
             this.instructions.classList.add('hide');
     }
     endGame() {
-        this.updateState(this.STATES.ENDED);
-        document.getElementById("scoreNum").value = document.getElementById("score").textContent;
-
-        setTimeout(() => {
-            document.getElementById("send").click;
-            loadList1();
-        }, 100);
+        this.updateState(this.STATES.ENDED);            document.getElementById("send").click;
     }
     tick() {
         this.blocks[this.blocks.length - 1].tick();
