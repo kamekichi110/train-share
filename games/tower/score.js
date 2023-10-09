@@ -51,3 +51,12 @@ fetch(jsonFileUrl)
 window.onload = setTimeout(() => {
     scoreList();
 }, 500);
+
+const targetElement = document.getElementById("name");
+// 特定の要素がクリックされたときの処理
+targetElement.addEventListener("click", function(event) {
+  // クリックイベントの伝播を停止
+  event.stopPropagation();
+
+  // ここに特定の要素がクリックされたときの処理を追加
+});
