@@ -467,6 +467,8 @@ class Board {
       $("#banner").show();
       $("#message").text("Game Over!");
       $("#new-game").text("Tap here to start again!");
+      document.getElementById("tetris").pause();
+      document.getElementById("tetris").currentTime = 0;
     }
   }
 
