@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline-preview</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
+    <script src="../js/main.js"></script>
+</head>
+<body>
+    <header>
+        <img src="https://kamekichi110.github.io/train-share/asset/icon/main.png" class="icon">
+        <h2>
+          Train-Share
+          <br>
+          鉄道情報掲載サイト
+        </h2>
+      </header>
+      <article>
+        <br>
+        <section>
+          <h3>Offline-preview</h3>
+          <p>このサイトにあるページ全てを<br>一度に読み込みます。</p>
+        </section>
+        <br>
+        <main>
+            <button class="btn" onclick="game2048()">2048 Game</button>
+            <button class="btn" onclick="tower()">tower Game</button>
+            <button class="btn" onclick="tetris()">tetris</button>
+            <button class="btn" onclick="osero()">osero</button>
+            <button class="btn" onclick="mine()">マインスイーパー</button>
+            <button class="btn" onclick="suika()">suika</button>
+            <br>
+            <hr>
+            <br>
+            <iframe src="../games/2048/index.html" frameborder="0" id="g-2048"></iframe>
+            <iframe src="../games/tower/index.html" frameborder="0" id="tower"></iframe>
+            <iframe src="../games/tetris/index.html" frameborder="0" id="tetris"></iframe>
+            <iframe src="../games/osero/index.html" frameborder="0" id="osero"></iframe>
+            <iframe src="../games/mine/index.html" frameborder="0" id="mine"></iframe>
+            <iframe src="../games/suika/index.html" frameborder="0" id="suika"></iframe>
+        </main>
+        <br>
+        <div class="footer">
+          <p><p id="day"></p>
+            <br>管理者X(旧Twitter)<a href="https://twitter.com/sirokuma_8110F">link</a>
+            <br>各種ツール
+            <br><a href="https://kamekichi110.github.io/train-share/view/train-info.html">列車情報ビューアー</a>
+            <a href="https://kamekichi110.github.io/train-share/photo/index.html">思い出写真</a>
+          <a href="https://kamekichi110.github.io/train-share/index.html">home</a>
+          </p>
+        </div>
+      </article>
+</body>
+</html>
