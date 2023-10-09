@@ -54,7 +54,7 @@ fetch('http://trainshare1.starfree.jp/tower/data.json')
 .then(data => {
   // JSONデータ内の"score"値を表示
   data.forEach(item => {
-    console.log(item.score);
+    document.getElementById("list").textContent = item.score;
   });
 })
 .catch(error => {

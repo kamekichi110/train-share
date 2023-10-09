@@ -60,7 +60,7 @@ fetch('http://trainshare1.starfree.jp/tetris/data.json')
 .then(data => {
   // JSONデータ内の"score"値を表示
   data.forEach(item => {
-    console.log(item.score);
+    document.getElementById("scoreList").textContent = item.score;
   });
 })
 .catch(error => {
