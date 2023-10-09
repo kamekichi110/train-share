@@ -48,9 +48,6 @@ fetch(jsonFileUrl)
   });
 }
 
-window.onload = setTimeout(() => {
-    scoreList();
-}, 500);
 
 const targetElement = document.getElementById("name");
 // 特定の要素がクリックされたときの処理
@@ -90,4 +87,9 @@ function userName() {
 
 targetElement2.addEventListener("click", function() {
   targetElement2.blur();
-})
+});
+
+window.onload = setTimeout(() => {
+  scoreList();
+  userName();
+}, 500);
