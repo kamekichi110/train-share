@@ -9,12 +9,19 @@ function loaded() {
     var osero = document.getElementById("osero");
     var mine = document.getElementById("mine");
     var suika = document.getElementById("suika");
+    var menja = document.getElementById("menja");
     g2048.style.display = "none";
     tower.style.display = "none";
     tetris.style.display = "none";
     osero.style.display = "none";
     mine.style.display = "none";
     suika.style.display = "none";
+    menja.style.display = "none";
+}
+function menja() {
+    loaded();
+    var menja = document.getElementById("menja");
+    menja.style.display = "block";
 }
 function game2048() {
     loaded();
