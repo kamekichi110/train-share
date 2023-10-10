@@ -5,11 +5,11 @@
 body {
     font-family: Arial;
     font-weight: bold;
-    background: #444;
+    background: black;
 }
 
 #gameframe {
-    background: #999;
+    background: green;
     width: 640px;
     height: 640px;
 }
