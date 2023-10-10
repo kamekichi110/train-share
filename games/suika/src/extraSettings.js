@@ -37,7 +37,7 @@ let clickChangeFruit = true;
 // 广告链接：false 或为空字符串表示不会跳转到广告
 let adLink = '';
 
-// 修改网页标题：将 "スイカゲーム" 进行替换
+// 修改网页标题：将 "train-combination" 进行替换
 document.getElementsByTagName("title")[0].innerText = 'train-combination';
 
 // 开启选分弹窗：将 false 改为 true
