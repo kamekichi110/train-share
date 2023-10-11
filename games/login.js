@@ -12,10 +12,11 @@ window.onload = setTimeout(() => {
         var id = key + result + "f";
         RedirectPage(id);
     } else if (pw = "t8110f") {
-        window.alert("別ページの認証idです。\n他のものを入力してください。");
+        window.alert("認証完了\n移動します。");
         var id = "0000";
         RedirectPage(id);
     } else {
+        window.alert("認証失敗")
         var id = "0000";
         RedirectPage(id);
     }
