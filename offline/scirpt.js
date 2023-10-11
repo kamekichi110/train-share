@@ -12,6 +12,7 @@ function loaded() {
     var menja = document.getElementById("menja");
     var city = document.getElementById("city");
     var run0 = document.getElementById("run");
+    var tarzan = document.getElementById("tarzan");
     g2048.style.display = "none";
     tower.style.display = "none";
     tetris.style.display = "none";
@@ -21,6 +22,7 @@ function loaded() {
     menja.style.display = "none";
     city.style.display = "none";
     run0.style.display = "none";
+    tarzan.style.display = "none";
 }
 function menja() {
     loaded();
@@ -69,4 +71,8 @@ function city() {
 function run0() {
     loaded();
     document.getElementById("run").style.display = "block";
+}
+function tarzan() {
+    loaded();
+    document.getElementById("tarzan").style.display = "block";
 }
