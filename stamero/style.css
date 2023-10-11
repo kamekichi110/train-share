@@ -1,0 +1,52 @@
+.set {
+    background-color:rgba(0,153,255,0.5);
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    top: 159px;
+    left: 80px;
+    border-radius: 80px;
+  }
+  
+  .note {
+
+    width: 32px;
+
+    height: 32px;
+    
+    top: 32px;
+    
+    left: 1600px;
+
+    transition: background-color 1s;
+
+    background-color: grey;
+
+    border: 2px solid grey;
+
+    border-radius: 64px;
+
+    position: absolute;
+
+  }
+
+  div.controll {
+    display: flex;
+    position: absolute;
+    top: 240px;
+  }
+
+  .color-div {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 100px;
+    font-weight: bold;
+}
+#redDiv {
+    background-color: red;
+}
+#blueDiv {
+    background-color: blue;
+}

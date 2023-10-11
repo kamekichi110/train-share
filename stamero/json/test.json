@@ -1,0 +1,8 @@
+[
+
+    { "parameter": 0, "time": 2000, "positionX": -1600, "positionY": 0 },
+    { "parameter": 1, "time": 5000, "positionX": -1600, "positionY": 0 },
+    { "parameter": 0, "time": 8000, "positionX": -1600, "positionY": 0 },
+    { "parameter": 1, "time": 11000, "positionX": -1600, "positionY": 0 },
+    { "parameter": 1, "time": 12000, "positionX": -1600, "positionY": 0}
+]
