@@ -115,6 +115,7 @@ function GameStart() {
     jsonData.forEach(createColorDiv);
   });
   setInterval(() => {
-    document.getElementById("timestamp").value += 1;
+    var timestamp = document.getElementById("timestamp").value;
+    document.getElementById("timestamp").value = Number(timestamp) + 1;
   }, 1);
 }
