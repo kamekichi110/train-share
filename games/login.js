@@ -1,6 +1,6 @@
 window.onload = setTimeout(() => {
     var location = window.location.href;
-    if (location in 'offline') {
+    if ('https://train-share.f5.si/offline/index.html' = location) {
         window.alert("id not found...")
     } else {
     var key = "tobu";
