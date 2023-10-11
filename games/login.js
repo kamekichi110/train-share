@@ -10,14 +10,15 @@ window.onload = setTimeout(() => {
         var pass3 = num * 0;
         var result = pass3 + pass2;
         var id = key + result + "f";
-        RedirectPage(id);
-    } else if (pw = "t8110f") {
-        window.alert("認証完了\n移動します。");
-        var id = "0000";
-        RedirectPage(id);
+        if (id = "tobu8110f") {
+            var page = document.getElementById("page").value;
+            window.location.href = "https://train-share.f5.si/games/" + page + "/" + id + page + ".html";
+        } else {
+            window.alert("ホームに戻ります。");
+            console.log(getURL);
+            window.location.href = "https://train-share.f5.si/index.html"
+        };
     } else {
-        window.alert("認証失敗")
-        var id = "0000";
-        RedirectPage(id);
+        window.alert("認証失敗");
     }
 }, 200);
