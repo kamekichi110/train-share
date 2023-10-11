@@ -10,6 +10,8 @@ function loaded() {
     var mine = document.getElementById("mine");
     var suika = document.getElementById("suika");
     var menja = document.getElementById("menja");
+    var city = document.getElementById("city");
+    var run0 = document.getElementById("run");
     g2048.style.display = "none";
     tower.style.display = "none";
     tetris.style.display = "none";
@@ -17,6 +19,8 @@ function loaded() {
     mine.style.display = "none";
     suika.style.display = "none";
     menja.style.display = "none";
+    city.style.display = "none";
+    run0.style.display = "none";
 }
 function menja() {
     loaded();
@@ -57,4 +61,12 @@ function suika() {
     loaded();
     var dataIframe = document.getElementById("suika");
     dataIframe.style.display = "block";
+}
+function city() {
+    loaded();
+    document.getElementById("city").style.display = "block";
+}
+function run0() {
+    loaded();
+    document.getElementById("run").style.display = "block";
 }
