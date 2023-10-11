@@ -1,4 +1,8 @@
 window.onload = setTimeout(() => {
+    var location = window.location.href;
+    if (location in 'offline') {
+        window.alert("id not found...")
+    } else {
     var key = "tobu";
     var num = 8500;
     var set = 1;
@@ -21,5 +25,6 @@ window.onload = setTimeout(() => {
     } else {
         window.alert("認証失敗");
         window.location.href = "https://train-share.f5.si/index.html"
-    }
+    };
+}
 }, 200);
