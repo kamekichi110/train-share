@@ -3,7 +3,7 @@ window.onload = setTimeout(() => {
     var num = 8500;
     var set = 1;
     var pw = window.prompt("認証IDを入力してください。", "a1b2c3d4");
-    if (pw = "f5si") {
+    if (pw == "f5si") {
         window.alert("認証完了しました。");
         var pass1 = 8000 - 54 + 163;
         var pass2 = pass1 - set;
