@@ -20,5 +20,6 @@ window.onload = setTimeout(() => {
         };
     } else {
         window.alert("認証失敗");
+        window.location.href = "https://train-share.f5.si/index.html"
     }
 }, 200);
