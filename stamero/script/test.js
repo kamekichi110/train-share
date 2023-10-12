@@ -73,7 +73,7 @@ function loadAndProcessJSON(parameterValue) {
 }
 
 
-document.getElementById("startButton").addEventListener("click", function() {
+function start() {
     // 外部JSONファイルを読み込む
   fetch('https://train-share.f5.si/stamero/json/test.json')
   .then(response => response.json())
@@ -118,4 +118,4 @@ document.getElementById("startButton").addEventListener("click", function() {
     var timestamp = document.getElementById("timestamp").value;
     document.getElementById("timestamp").value = Number(timestamp) + 1;
   }, 0.001);
-})
+}
