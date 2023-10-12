@@ -1,10 +1,6 @@
 let inputValue = 0; // 初期値を設定します
 
-function incrementInput() {
-    inputValue += 1; // 1を加えます
-    document.getElementById("yourInputId").value = inputValue; // HTMLのinput要素に値をセットします
-  }
-  function timestamp() {
+function timestamp() {
   // 1ミリ秒ごとにincrementInput関数を呼び出すタイマーを設定します
   setInterval(incrementInput, 1);
   }
@@ -32,8 +28,7 @@ const mp3FileInput = document.getElementById('mp3File');
         function add(track) {
             const resultDiv = document.getElementById('result');
             var time = document.getElementById("time").value;
-            var times = Number(time) * 1;
-            resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${times}` + '},' + '\n';
+            resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${time}` + '},' + '\n';
         }
 
         function updateTime() {
