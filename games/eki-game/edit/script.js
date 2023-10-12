@@ -10,10 +10,10 @@ function incrementInput() {
     setTimeout(incrementInput, 1); // 1ミリ秒後に再度incrementInput関数を呼び出します
 }
 
-const mp3FileInput = document.getElementById('mp3File');
-        const audioPlayer = document.getElementById('audioPlayer');
 
         function changeMP3() {
+            const mp3FileInput = document.getElementById('mp3File');
+            const audioPlayer = document.getElementById('audioPlayer');
             const file = mp3FileInput.files[0];
             if (file) {
                 const objectURL = URL.createObjectURL(file);
