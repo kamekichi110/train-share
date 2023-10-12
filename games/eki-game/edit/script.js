@@ -1,5 +1,14 @@
 let inputValue = 0; // 初期値を設定します
 
+function incrementInput() {
+    inputValue += 1; // 1を加えます
+    document.getElementById("yourInputId").value = inputValue; // HTMLのinput要素に値をセットします
+  }
+  function timestamp() {
+  // 1ミリ秒ごとにincrementInput関数を呼び出すタイマーを設定します
+  setInterval(incrementInput, 1);
+  }
+
 var startTime;
 var timerInterval;
 
@@ -23,7 +32,8 @@ const mp3FileInput = document.getElementById('mp3File');
         function add(track) {
             const resultDiv = document.getElementById('result');
             var time = document.getElementById("time").value;
-            resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${time}` + '},' + '\n';
+            var times = Number(time) * 10;
+            resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${times}` + '},' + '\n';
         }
 
         function updateTime() {
@@ -33,10 +43,7 @@ const mp3FileInput = document.getElementById('mp3File');
         }
         function record() {
             setTimeout(() => {
-                function() {
-                    // ボタンが押されたときの処理
-                    startTime = Date.now(); // 現在の時間を取得
-                    timerInterval = setInterval(updateTime, 10);
+                timestamp();
                 document.getElementById('audioPlayer').play();
             }, 1500);
         }
