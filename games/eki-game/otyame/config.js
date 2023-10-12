@@ -52,11 +52,11 @@ KEYCODE_TO_KEYDATA_MAP.forIn(function(key, val) {
 
 var ASSETS = {
   sound: {
-    music: "./assets/sh1.mp3",
+    music: "./assets/otyame.mp3",
     ring: "./assets/tamborine.mp3",
   },
   json: {
-    beatmap: "./assets/sh1.json"
+    beatmap: "./assets/otyame.json"
   }
 };
 
