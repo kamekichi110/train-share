@@ -22,7 +22,7 @@ document.getElementById("blueDiv").addEventListener("click", function() {
 
 function loadAndProcessJSON(parameterValue) {
     // 外部JSONファイルのURL
-    var jsonFileUrl = "https://train-share.f5.si/stamero/json/test.json";
+    var jsonFileUrl = "test.json";
 
     // HTTPリクエストを作成
     var xhr = new XMLHttpRequest();
@@ -75,7 +75,7 @@ function loadAndProcessJSON(parameterValue) {
 
 function start() {
     // 外部JSONファイルを読み込む
-  fetch('https://train-share.f5.si/stamero/json/test.json')
+  fetch('test.json')
   .then(response => response.json())
   .then(jsonData => {
     function createColorDiv(data) {
