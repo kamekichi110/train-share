@@ -6,8 +6,8 @@ var timerInterval;
 
 function incrementInput() {
     inputValue += 1; // 1を加えます
-    document.getElementById("time").value = inputValue / 10; // HTMLのinput要素に値をセットします
-    setTimeout(incrementInput, 100); // 1ミリ秒後に再度incrementInput関数を呼び出します
+    document.getElementById("time").value = inputValue; // HTMLのinput要素に値をセットします
+    setTimeout(incrementInput, 1); // 1ミリ秒後に再度incrementInput関数を呼び出します
 }
 
 const mp3FileInput = document.getElementById('mp3File');
