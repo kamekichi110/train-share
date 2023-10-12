@@ -25,7 +25,7 @@ const mp3FileInput = document.getElementById('mp3File');
             const resultDiv = document.getElementById('result');
             var time = document.getElementById("time").value;
             var times = Number(time) * 10
-            resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${time}` + '},' + '\n';
+            resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${times}` + '},' + '\n';
         }
 
         function updateTime() {
