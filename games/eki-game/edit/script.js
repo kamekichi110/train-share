@@ -1,5 +1,8 @@
 let inputValue = 0; // 初期値を設定します
 
+var startTime;
+var timerInterval;
+
 function incrementInput() {
     inputValue += 1; // 1を加えます
     document.getElementById("time").value = inputValue; // HTMLのinput要素に値をセットします
@@ -22,9 +25,18 @@ const mp3FileInput = document.getElementById('mp3File');
             var time = document.getElementById("time").value;
             resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${time}` + '},' + '\n';
         }
+
+        function updateTime() {
+            var currentTime = Date.now();
+            var elapsedTime = currentTime - startTime;
+            document.getElementById("time").value = elapsedTime;
+        }
         function record() {
             setTimeout(() => {
-                incrementInput();
+                function() {
+                    // ボタンが押されたときの処理
+                    startTime = Date.now(); // 現在の時間を取得
+                    timerInterval = setInterval(updateTime, 10);
                 document.getElementById('audioPlayer').play();
             }, 1500);
         }
