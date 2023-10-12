@@ -24,7 +24,7 @@ const mp3FileInput = document.getElementById('mp3File');
         function add(track) {
             const resultDiv = document.getElementById('result');
             var time = document.getElementById("time").value;
-            var times = Number(time) / 500;
+            var times = Number(time) / 500 * 1000;
             var value0 = parseInt(times, 10);
             resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '},' + '\n';
         }
