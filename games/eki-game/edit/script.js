@@ -25,8 +25,8 @@ function incrementInput() {
             var time = document.getElementById("time").value;
             var setTime = Number(time) * 1000;
             var value0 = parseInt(setTime, 10);
-            resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '},' + '\n';
-            console.log('{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '},' + '\n');
+            resultDiv.innerHTML += '<p>{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '},</p>';
+            console.log('{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '}');
         }
 
         function updateTime() {
