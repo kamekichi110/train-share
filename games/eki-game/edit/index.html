@@ -4,8 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>edit</title>
+    <script src="./script.js"></script>
 </head>
 <body>
-    
+    <input type="file" id="mp3File" accept=".mp3">
+    <br>
+    <audio id="audioPlayer" controls></audio>
+    <br>
+    <hr>
+    <p>time:<input type="text" id="time" value="0"></p>
+    <br>
+    <div style="display: flex;">
+    <button id="button1" onclick="add(1)">1</button>
+    <button id="button2" onclick="add(2)">2</button>
+    <button id="button3" onclick="add(3)">3</button>
+    <button id="button4" onclick="add(4)">4</button>
+    <button id="button5" onclick="add(5)">5</button>
+    <button id="button6" onclick="add(6)">6</button>
+    <button id="button7" onclick="add(7)">7</button>
+    <button id="button8" onclick="add(8)">8</button>
+    </div>
+    <!-- 結果を表示する div 要素 -->
+    <p>{ "offset": 0,<br>"notes": [</p>
+    <div id="result">
+    </div>
+    <p>]}</p>
 </body>
 </html>
