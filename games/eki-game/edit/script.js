@@ -1,12 +1,9 @@
 let inputValue = 0; // 初期値を設定します
 
 function incrementInput() {
-  inputValue += 1; // 1を加えます
-  document.getElementById("time").value = inputValue; // HTMLのinput要素に値をセットします
-}
-function timestamp() {
-// 1ミリ秒ごとにincrementInput関数を呼び出すタイマーを設定します
-setInterval(incrementInput, 1);
+    inputValue += 1; // 1を加えます
+    document.getElementById("time").value = inputValue; // HTMLのinput要素に値をセットします
+    setTimeout(incrementInput, 1); // 1ミリ秒後に再度incrementInput関数を呼び出します
 }
 
 const mp3FileInput = document.getElementById('mp3File');
@@ -27,7 +24,7 @@ const mp3FileInput = document.getElementById('mp3File');
         }
         function record() {
             setTimeout(() => {
-                timestamp();
+                incrementInput();
                 document.getElementById('audioPlayer').play();
             }, 1500);
         }
