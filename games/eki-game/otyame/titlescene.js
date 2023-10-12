@@ -11,7 +11,7 @@ phina.define('TitleScene', {
 
     // タイトルラベル
     Label({
-      text: "passenger",
+      text: "おちゃめ機能",
       fill: "white",
       stroke: "#2F3CEC",
       strokeWidth: 6,
