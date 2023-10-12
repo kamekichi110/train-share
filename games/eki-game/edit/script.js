@@ -1,12 +1,11 @@
-let inputValue = 0; // 初期値を設定します
 
 
 var startTime;
 var timerInterval;
 
 function incrementInput() {
-    inputValue += 1; // 1を加えます
-    document.getElementById("time").value = inputValue; // HTMLのinput要素に値をセットします
+    var timeMP3 = document.getElementById('audioPlayer');
+    document.getElementById("time").value = timeMP3.currentTime; // HTMLのinput要素に値をセットします
     setTimeout(incrementInput, 1); // 1ミリ秒後に再度incrementInput関数を呼び出します
 }
 
@@ -24,9 +23,7 @@ function incrementInput() {
         function add(track) {
             const resultDiv = document.getElementById('result');
             var time = document.getElementById("time").value;
-            var times = Number(time) / 50 * 1000;
-            var value0 = parseInt(times, 10);
-            resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '},' + '\n';
+            resultDiv.textContent += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${time}` + '},' + '\n';
         }
 
         function updateTime() {
