@@ -31,7 +31,7 @@
     <div class="error">error No. e-L001</div>
     <div class="log">Log: login error.<br>+<br>Log: system error.</div>
     <div class="message"><p>認証エラーです。<br>正しい認証IDを入力してください</p></div>
-    <div class="link"><p><span id="time"></span>秒後にホームに移動します。</p></div>
+    <div class="link"><p><span id="time">'loading...'</span>秒後にホームに移動します。</p></div>
     <script>
         function timer() {
             var timer = document.getElementById("time");
@@ -57,6 +57,9 @@
                 }, 1000);
             }, 1000);
         }
+        window.onload = setTimeout(() => {
+            timer();
+        }, 500);
     </script>
 </body>
 </html>
