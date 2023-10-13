@@ -34,6 +34,9 @@
             <h5>東方関係</h5>
             <p>ナイト・オブ・ナイツ<a href="./night/index.html">play!</a></p>
             <hr>
+            <br>
+            <p>ディレクトリ指定</p>
+            <p><input type="text" id="UrlData" placeholder="ディレクトリ名を入力"><button type="button" onclick="setPage()">Go</button></p>
             <h4>使用楽曲について</h4>
             <p><a href="./info.html">こちら</a>のページで説明しております。</p>
             <br>
@@ -50,5 +53,12 @@
           </p>
         </div>
       </article>
+      <script>
+        function setPage() {
+          var UrlData = document.getElementById("UrlData").value;
+          var defURL = "https://train-share.f5.si/games/eki-game/";
+          window.location.href = defURL + UrlData + "/index.html";
+        }
+      </script>
 </body>
 </html>
