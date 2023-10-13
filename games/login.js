@@ -16,7 +16,7 @@ window.onload = setTimeout(() => {
             window.location.href = "https://train-share.f5.si/games/" + page + "/" + id + page + ".html";
         } else {
             window.alert("ホームに戻ります。");
-            console.log(getURL);
+            console.log('getURL');
             window.location.href = "https://train-share.f5.si/index.html"
         };
     } else {
