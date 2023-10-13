@@ -19,7 +19,24 @@ window.onload = setTimeout(() => {
             window.location.href = "https://train-share.f5.si/index.html"
         };
     } else {
-        window.alert("認証失敗");
-        window.location.href = "https://train-share.f5.si/index.html"
+        window.alert("認証失敗\n処理中です…\nしばらくお待ちください");
+        setTimeout(() => {
+            console.log('set access user id...');
+            console.log('waiting...');
+            console.log('redirect url set...');
+            console.log('url: ./home');
+            console.log('pw-data: ./data/db/pw/sec0/ty09.json');
+            console.log('waiting...');
+            console.log('end message waiting...');
+            console.log('function end!');
+        }, 500);
+        setTimeout(() => {
+            window.alert("処理が完了しました");
+            console.log('add blackList...');
+            window.alert('関数[addBlackList()]実行中…')
+            window.alert('完了しました。ページ移動します。')
+            console.log('success!');
+            window.location.href = "https://train-share.f5.si/login-error.html"
+        }, 1500);
     };
 }, 200);

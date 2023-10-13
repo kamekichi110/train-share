@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR!</title>
+    <style>
+        body {
+            background-color: red;
+        }
+        .header {
+            background-color: brown;
+            color: white;
+        }
+        .error {
+            color: yellow;
+        }
+        .log {
+            color: yellowgreen;
+        }
+        .message {
+            color: white;
+        }
+        .link {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">ERROR!</div>
+    <div class="error">error No. e-L001</div>
+    <div class="log">Log: login error.<br>+<br>Log: system error.</div>
+    <div class="message"><p>認証エラーです。<br>正しい認証IDを入力してください</p></div>
+    <div class="link"><p><span id="time"></span>秒後にホームに移動します。</p></div>
+    <script>
+        function timer() {
+            var timer = document.getElementById("time");
+            setTimeout(() => {
+                timer.innerHTML = 5;
+                setTimeout(() => {
+                    timer.innerHTML = 4;
+                    setTimeout(() => {
+                        timer.innerHTML = 3;
+                        setTimeout(() => {
+                            timer.innerHTML = 2;
+                            setTimeout(() => {
+                                timer.innerHTML = 1;
+                                setTimeout(() => {
+                                    timer.innerHTML = 0;
+                                    setTimeout(() => {
+                                        window.location.href = 'https://train-share.f5.si/index.html'
+                                    }, 500);
+                                }, 1000);
+                            }, 1000);
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
