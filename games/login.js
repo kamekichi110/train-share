@@ -9,8 +9,9 @@ window.onload = setTimeout(() => {
         var pass2 = pass1 - set;
         var pass3 = num * 0;
         var result = pass3 + pass2;
-        var id = key + result + "f";
-        if (id = "tobu8110f") {
+        var id = key + result + "F";
+        if (id = "tobu8110F") {
+            id = "tobu8110f"
             var page = document.getElementById("page").value;
             window.location.href = "https://train-share.f5.si/games/" + page + "/" + id + page + ".html";
         } else {
