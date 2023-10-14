@@ -2,6 +2,11 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
+  <script>
+    window.onload ⁼ setTimeout(() => {
+      
+    }, 200);
+  </script>
   <meta http-equiv="x-ua-compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <title>custom</title>
@@ -36,20 +41,6 @@
   function scriptData() {
     changeValue += 1;
     document.head.innerHTML = `<meta charset="utf-8" /><meta http-equiv="x-ua-compatible" content="IE=Edge"><meta name="viewport" content="width=device-width, user-scalable=no"><title>custom${changeValue + 1}</title>`;
-    var script1 = document.createElement('script');
-    script1.src = 'config.js'; // 新しいJavaScriptファイルのパスを指定
-    document.head.appendChild(script1);
-    
-    var script2 = document.createElement('script');
-    script2.src = 'components.js';
-    document.head.appendChild(script2);
-
-    var script3 = document.createElement('script');
-    var script4 = document.createElement('script');
-    script3.src = 'mainscene.js';
-    script4.src = 'titlescene.js';
-    document.head.appendChild(script3);
-    document.head.appendChild(script4);
     document.getElementById('setting').style.display = 'none';
     document.getElementById('resetting').style.display = 'block';
   }
@@ -58,6 +49,11 @@
     document.getElementById("resetting").style.display = "none";
   }
 </script>
+<script src="./config.js"></script>
+<script src="./components.js"></script>
+<script src="./mainscene.js"></script>
+<script src="./titlescene.js"></script>
+
   <script type="text/javascript">
     phina.main(function() {
       var app = GameApp({
