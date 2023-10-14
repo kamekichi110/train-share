@@ -50,6 +50,16 @@ KEYCODE_TO_KEYDATA_MAP.forIn(function(key, val) {
   INDEX_TO_KEY_MAP[val.id] = val.key;
 });
 
+var ASSETS = {
+  sound: {
+    music: "../8000youkai/assets/youkai.mp3",
+    ring: "./assets/tamborine.mp3",
+  },
+  json: {
+    beatmap: "../8000youkai/assets/youkai.json"
+  }
+};
+
 // HTMLの<input>要素からファイルを選択する
 var inputMP3 = document.getElementById('mp3'); // 'fileInput'は適切なIDに置き換えてください
 
@@ -78,15 +88,6 @@ inputElement.addEventListener('change', function() {
 
 
 
-var ASSETS = {
-  sound: {
-    music: "../8000youkai/assets/youkai.mp3",
-    ring: "./assets/tamborine.mp3",
-  },
-  json: {
-    beatmap: "../8000youkai/assets/youkai.json"
-  }
-};
 
 // テスト用譜面
 // var DEBUG_BEATMAP = {
