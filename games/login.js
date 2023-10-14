@@ -5,7 +5,7 @@ window.onload = setTimeout(() => {
     var pw = window.prompt("認証IDを入力してください。", "a1b2c3d4");
     var pwSet = encodeURI(pw);
     var pwResult = pwSet.replace(/[A-Za-z%2]/g, '');
-    console.log(pwResult);
+    console.log('setting pw in login program...');
     window.alert('認証中です…')
     if (pwResult == "38388383384383338738738") {
         window.alert("認証完了しました。");
