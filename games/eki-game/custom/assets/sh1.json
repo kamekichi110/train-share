@@ -1,38 +1,6 @@
 { "offset": 0,
 "notes": [
 
-{ "track": 1, "targetTime": 955},
-
-{ "track": 2, "targetTime": 1435},
-
-{ "track": 3, "targetTime": 2064},
-
-{ "track": 4, "targetTime": 2395},
-
-{ "track": 2, "targetTime": 2755},
-
-{ "track": 3, "targetTime": 3118},
-
-{ "track": 4, "targetTime": 3444},
-
-{ "track": 3, "targetTime": 3775},
-
-{ "track": 2, "targetTime": 4104},
-
-{ "track": 1, "targetTime": 4435},
-
-{ "track": 2, "targetTime": 4884},
-
-{ "track": 3, "targetTime": 5184},
-
-{ "track": 4, "targetTime": 5514},
-
-{ "track": 5, "targetTime": 5875},
-
-{ "track": 6, "targetTime": 6265},
-
-{ "track": 7, "targetTime": 6714},
-
 { "track": 5, "targetTime": 7165}
 
 ]}

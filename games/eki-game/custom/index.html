@@ -25,10 +25,17 @@
 
     phina.globalize();
   </script>
-  <button onclick="resetting()"></button>
-<div id="setting" style="position: absolute;"></div>
+  <button onclick="resetting()" style="position: absolute; top: 8px; left: 8px;">setting</button>
+<div id="setting" style="position: absolute; top: 8px; left: 8px;">
+<p>mp3:<input type="file" name="sound_" id="mp3"></p>
+<p>mapping-JSON: <input type="file" name="json_" id="json"></p>
+<button type="button" onclick="scriptData()">reload script</button>
+</div>
 <script>
+  var changeValue = 0;
   function scriptData() {
+    changeValue += 1;
+    document.head.innerHTML = `<meta charset="utf-8" /><meta http-equiv="x-ua-compatible" content="IE=Edge"><meta name="viewport" content="width=device-width, user-scalable=no"><title>custom${changeValue + 1}</title>`;
     var script1 = document.createElement('script');
     script1.src = 'config.js'; // 新しいJavaScriptファイルのパスを指定
     document.head.appendChild(script1);
