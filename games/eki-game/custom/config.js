@@ -83,6 +83,7 @@ inputElement.addEventListener('change', function() {
     if (selectedFile) {
         var fileURL = URL.createObjectURL(selectedFile);
         ASSETS.json.beatmap = fileURL; // ファイルのURLを作成
+        console.log
     }
 });
 
