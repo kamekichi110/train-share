@@ -52,11 +52,11 @@ KEYCODE_TO_KEYDATA_MAP.forIn(function(key, val) {
 
 var ASSETS = {
   sound: {
-    music: "../8000youkai/assets/youkai.mp3",
+    music: mp3,
     ring: "./assets/tamborine.mp3",
   },
   json: {
-    beatmap: "../8000youkai/assets/youkai.json"
+    beatmap: json
   }
 };
 var mp3 = "";
@@ -87,8 +87,8 @@ var selectedFile = inputElement.files[0]; // 最初に選択されたファイ�
         json = fileURL;
         console.log(fileURL);
     }
+    console.lo
 };
-
 
 
 
