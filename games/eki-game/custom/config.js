@@ -59,7 +59,8 @@ var ASSETS = {
     beatmap: "../8000youkai/assets/youkai.json"
   }
 };
-
+var mp3 = "";
+var json = "";
 // HTMLの<input>要素からファイルを選択する
 var inputMP3 = document.getElementById('mp3'); // 'fileInput'は適切なIDに置き換えてください
 
@@ -70,6 +71,7 @@ var selected1 = inputElement.files[0]; // 最初に選択されたファイル�
         var fileURL1 = URL.createObjectURL(selected1);
         ASSETS.sound.music = fileURL1; // ファイルのURLを作成
         console.log(fileURL1);
+        mp3 = fileURL1;
     }
   }
 // HTMLの<input>要素からファイルを選択する
@@ -82,6 +84,7 @@ var selectedFile = inputElement.files[0]; // 最初に選択されたファイ�
     if (selectedFile) {
         var fileURL = URL.createObjectURL(selectedFile);
         ASSETS.json.beatmap = fileURL; // ファイルのURLを作成
+        json = fileURL;
         console.log(fileURL);
     }
 };
