@@ -30,6 +30,26 @@
   <script src="./mainscene.js"></script>
   <script src="./titlescene.js"></script>
 <div id="setting" style="position: absolute;"></div>
+<script>
+  function scriptData() {
+    var script1 = document.createElement('script');
+    script1.src = 'config.js'; // 新しいJavaScriptファイルのパスを指定
+    document.head.appendChild(script1);
+    
+    var script2 = document.createElement('script');
+    script2.src = 'components.js';
+    document.head.appendChild(script2);
+
+    var script3 = document.createElement('script');
+    var script4 = document.createElement('script');
+    script3.src = 'mainscene.js';
+    script4.src = 'titlescene.js';
+    document.head.appendChild(script3);
+    document.head.appendChild(script4);
+    document.getElementById('setting').style.display = 'none';
+    document.getElementById('setOpen').style.display = 'block';
+  }
+</script>
   <script type="text/javascript">
     phina.main(function() {
       var app = GameApp({
