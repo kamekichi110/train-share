@@ -36,6 +36,8 @@
   function scriptData() {
     changeValue += 1;
     document.head.innerHTML = `<meta charset="utf-8" /><meta http-equiv="x-ua-compatible" content="IE=Edge"><meta name="viewport" content="width=device-width, user-scalable=no"><title>custom${changeValue + 1}</title>`;
+    mp3Set();
+    jsonSet();
     document.getElementById('setting').style.display = 'none';
     document.getElementById('resetting').style.display = 'block';
 

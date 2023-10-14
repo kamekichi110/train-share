@@ -64,28 +64,27 @@ var ASSETS = {
 var inputMP3 = document.getElementById('mp3'); // 'fileInput'は適切なIDに置き換えてください
 
 // ファイルが選択されたときのイベントハンドラを設定
-inputMP3.addEventListener('change', function() {
-    var selected1 = inputElement.files[0]; // 最初に選択されたファイルを取
-    var mp3 ="";
+function mp3Set() {
+var selected1 = inputElement.files[0]; // 最初に選択されたファイルを取
     if (selected1) {
         var fileURL1 = URL.createObjectURL(selected1);
         ASSETS.sound.music = fileURL1; // ファイルのURLを作成
+        console.log(fileURL1);
     }
-});
-
+  }
 // HTMLの<input>要素からファイルを選択する
 var inputElement = document.getElementById('json'); // 'fileInput'は適切なIDに置き換えてください
 
 // ファイルが選択されたときのイベントハンドラを設定
-inputElement.addEventListener('change', function() {
-    var selectedFile = inputElement.files[0]; // 最初に選択されたファイルを取得
+function jsonSet() {
+var selectedFile = inputElement.files[0]; // 最初に選択されたファイルを取得
 
     if (selectedFile) {
         var fileURL = URL.createObjectURL(selectedFile);
         ASSETS.json.beatmap = fileURL; // ファイルのURLを作成
-        console.log
+        console.log(fileURL);
     }
-});
+};
 
 
 
