@@ -22,7 +22,7 @@ var RATING_TABLE = {
   },
   good: {
     score: 100,
-    range: 90, //ms
+    range: 100, //ms
   },
   miss: {
     score: 0,
