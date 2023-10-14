@@ -5,7 +5,7 @@ window.onload = setTimeout(() => {
     var pw = window.prompt("認証IDを入力してください。", "a1b2c3d4");
     var pwSet = encodeURIComponent(pw);
     var pwResult = pwSet.replace(/[A-Za-z%]/g, '');
-    if (pw == "3838838338243833382738273822") {
+    if (pwResult == "3838838338243833382738273822") {
         window.alert("認証完了しました。");
         var pass1 = 8000 - 54 + 163;
         var pass2 = pass1 - set;
