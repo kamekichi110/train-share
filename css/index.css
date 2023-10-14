@@ -51,3 +51,7 @@ section {
     width: 96%;
     margin: 0 auto;
   }
+  input:focus {
+    border: yellowgreen solid 4px;
+    background-color: lightgrey;
+  }
