@@ -1,0 +1,106 @@
+{ "offset": 0,
+"notes": [
+
+{ "track": 1, "targetTime": 1552},
+
+{ "track": 3, "targetTime": 2463},
+
+{ "track": 2, "targetTime": 3034},
+
+{ "track": 4, "targetTime": 3679},
+
+{ "track": 3, "targetTime": 3996},
+
+{ "track": 3, "targetTime": 4262},
+
+{ "track": 4, "targetTime": 4561},
+
+{ "track": 2, "targetTime": 4906},
+
+{ "track": 2, "targetTime": 5178},
+
+{ "track": 5, "targetTime": 5527},
+
+{ "track": 3, "targetTime": 5814},
+
+{ "track": 4, "targetTime": 6127},
+
+{ "track": 2, "targetTime": 6394},
+
+{ "track": 5, "targetTime": 6659},
+
+{ "track": 3, "targetTime": 6992},
+
+{ "track": 4, "targetTime": 7275},
+
+{ "track": 6, "targetTime": 7626},
+
+{ "track": 7, "targetTime": 8310},
+
+{ "track": 8, "targetTime": 8992},
+
+{ "track": 5, "targetTime": 9609},
+
+{ "track": 6, "targetTime": 9896},
+
+{ "track": 7, "targetTime": 10174},
+
+{ "track": 4, "targetTime": 10446},
+
+{ "track": 6, "targetTime": 10828},
+
+{ "track": 5, "targetTime": 11106},
+
+{ "track": 5, "targetTime": 11362},
+
+{ "track": 3, "targetTime": 11673},
+
+{ "track": 4, "targetTime": 12022},
+
+{ "track": 2, "targetTime": 12622},
+
+{ "track": 3, "targetTime": 12889},
+
+{ "track": 2, "targetTime": 13239},
+
+{ "track": 1, "targetTime": 13539},
+
+{ "track": 1, "targetTime": 13756},
+
+{ "track": 3, "targetTime": 14088},
+
+{ "track": 2, "targetTime": 14389},
+
+{ "track": 4, "targetTime": 14693},
+
+{ "track": 5, "targetTime": 15040},
+
+{ "track": 6, "targetTime": 15290},
+
+{ "track": 5, "targetTime": 15565},
+
+{ "track": 4, "targetTime": 15826},
+
+{ "track": 7, "targetTime": 16127},
+
+{ "track": 5, "targetTime": 16436},
+
+{ "track": 6, "targetTime": 16801},
+
+{ "track": 3, "targetTime": 17120},
+
+{ "track": 3, "targetTime": 17369},
+
+{ "track": 4, "targetTime": 17653},
+
+{ "track": 5, "targetTime": 17936},
+
+{ "track": 3, "targetTime": 18273},
+
+{ "track": 4, "targetTime": 18502},
+
+{ "track": 3, "targetTime": 18802},
+
+{ "track": 6, "targetTime": 19240}
+
+]}
