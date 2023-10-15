@@ -40,6 +40,508 @@
     jsonSet();
     document.getElementById('setting').style.display = 'none';
     document.getElementById('resetting').style.display = 'block';
+
+var SCREEN_WIDTH = 1024;
+var SCREEN_HEIGHT = 768;
+var MARKER_RADIUS = 70;
+var MARKER_STROKE_WIDTH = 8;
+
+var TRACK_NUM = 9;
+var ICON_INTERVAL_DEGREE = 180 / (TRACK_NUM - 1); // 22.5
+
+var MARKER_APPEARANCE_DELTA = 1000; // ノーツ出現時間(ms): 大きくするほど低速
+var UNIT_ARRANGE_RADIUS = SCREEN_WIDTH * 0.41 | 0;
+var MUSIC_START_DELAY = 2000;
+
+var RATING_TABLE = {
+  perfect: {
+    score: 1000,
+    range: 34, //ms
+  },
+  great: {
+    score: 500,
+    range: 64, //ms
+  },
+  good: {
+    score: 100,
+    range: 100, //ms
+  },
+  miss: {
+    score: 0,
+    range: 134, //ms
+  },
+};
+
+// キーボード操作用
+var KEYCODE_TO_KEYDATA_MAP = {
+  80: {key:"p", id:0},
+  // 187: {key:";", id:0},
+  76: {key:"l", id:1},
+  75: {key:"k", id:2},
+  78: {key:"n", id:3},
+  66: {key:"b", id:4},
+  // 32: {key:"sp", id:4},
+  86: {key:"v", id:5},
+  68: {key:"d", id:6},
+  83: {key:"s", id:7},
+  81: {key:"q", id:8},
+  // 65: {key:"a", id:8},
+};
+var INDEX_TO_KEY_MAP = {};
+KEYCODE_TO_KEYDATA_MAP.forIn(function(key, val) {
+  INDEX_TO_KEY_MAP[val.id] = val.key;
+});
+
+
+var mp3 = "";
+var json = "";
+// HTMLの<input>要素からファイルを選択する
+var inputMP3 = document.getElementById('mp3'); // 'fileInput'は適切なIDに置き換えてください
+
+// ファイルが選択されたときのイベントハンドラを設定
+function mp3Set() {
+var selected1 = inputElement.files[0]; // 最初に選択されたファイルを取
+    if (selected1) {
+        var fileURL1 = URL.createObjectURL(selected1);
+        mp3 = fileURL1; // ファイルのURLを作成
+        console.log(fileURL1);
+        
+    }
+  }
+// HTMLの<input>要素からファイルを選択する
+var inputElement = document.getElementById('json'); // 'fileInput'は適切なIDに置き換えてください
+
+// ファイルが選択されたときのイベントハンドラを設定
+function jsonSet() {
+var selectedFile = inputElement.files[0]; // 最初に選択されたファイルを取得
+
+    if (selectedFile) {
+        var fileURL = URL.createObjectURL(selectedFile);
+        json = fileURL; // ファイルのURLを作成
+        console.log(fileURL);
+    }
+};
+
+var ASSETS = {
+  sound: {
+    music: mp3,
+    ring: "./assets/tamborine.mp3",
+  },
+  json: {
+    beatmap: json
+  }
+};
+
+// テスト用譜面
+// var DEBUG_BEATMAP = {
+//   offset: 0,
+//   notes: [],
+// };
+// (100).times(function(i) {
+//   DEBUG_BEATMAP.notes.push({
+//     track: i%9,
+//     targetTime: 500*i
+//   });
+// });
+
+/*
+ * ユニット表示アイコン
+ */
+ phina.define('UnitIcon', {
+  superClass: 'phina.display.CircleShape',
+
+  init: function(id, label) {
+    this.superInit({
+      radius: MARKER_RADIUS,
+      strokeWidth: MARKER_STROKE_WIDTH,
+      stroke: "magenta",
+      fill: "yellowgreen",
+    });
+    this.setInteractive(true);
+    this.id = id;
+
+    // ナンバー表記
+    label = (label != null) ? label : id+"";
+    Label({
+      text: label,
+      fontSize: 60,
+    })
+    .addChildTo(this)
+    ;
+  },
+
+  fireEffect: function() {
+    EffectWave().addChildTo(this);
+  },
+
+});
+
+
+/**
+ * ターゲットマーカー（ノーツ）
+ */
+phina.define('TargetMarker', {
+  superClass: 'phina.display.CircleShape',
+
+  init: function(targetTime, trackId, type) {
+    this.superInit({
+      radius: MARKER_RADIUS,
+      strokeWidth: MARKER_STROKE_WIDTH,
+      stroke: "red",
+      fill: false,
+    });
+
+    this.visible = false;
+    this.scaleX = this.scaleY = 0;
+    this.isAwake = true;
+
+    this.targetTime = targetTime;
+    this.trackId = trackId;
+    this.vector = phina.geom.Vector2(
+      Math.cos((trackId * ICON_INTERVAL_DEGREE).toRadian()),
+      Math.sin((trackId * ICON_INTERVAL_DEGREE).toRadian())
+    );
+
+    // カウント表示
+    // debug
+    // Label({
+    //   text: targetTime + "",
+    //   fontSize: 60,
+    // })
+    // .addChildTo(this)
+  },
+
+});
+
+
+/**
+ * エフェクト：白フェードアウト円
+ */
+phina.define('EffectWave', {
+  superClass: 'phina.display.CircleShape',
+
+  init: function(options) {
+    this.superInit({
+      radius: MARKER_RADIUS,
+      stroke: false,
+      fill: "white",
+    });
+
+    this.tweener
+    .to({scaleX:1.7, scaleY:1.7, alpha:0}, 250)
+    .call(function() {
+      this.remove();
+    }, this);
+  },
+
+  // fire: function() {
+  // },
+
+  // reset: function() {
+  // }
+
+});
+
+
+/**
+ * エフェクト："PERFECT!"など
+ */
+phina.define('RateLabel', {
+  superClass: 'phina.display.Label',
+
+  init: function(textParam) {
+    this.superInit({
+      text: textParam.text,
+      fontSize: 60,
+      strokeWidth: 8,
+      fill: "pink",
+      stroke: "white",
+    });
+
+    this.tweener
+    .set({scaleX: 0.2, scaleY: 0.2, alpha: 0})
+    .to({scaleX:1, scaleY:1, alpha:1}, 130, "easeOutCirc")
+    .wait(250)
+    .to({alpha:0}, 100)
+    .call(function() {
+      this.remove();
+    }, this);
+  },
+});
+
+/**
+ * メイン
+ */
+ phina.define('MainScene', {
+  superClass: 'DisplayScene',
+
+  init: function(options) {
+    this.superInit(options);
+    this.backgroundColor = "#6BEFD5";
+
+    var self = this;
+    var gx = this.gridX;
+    var gy = this.gridY;
+    var AM = phina.asset.AssetManager;
+
+    // var beatmap = DEBUG_BEATMAP;
+    var beatmap = AM.get('json', 'beatmap').data;
+
+    // タイマーのセット
+    this.elapsedTime = 0; // 経過時間
+    this.gameTime = 0 - MUSIC_START_DELAY + beatmap.offset; // 判定用時間
+
+    this.totalScore = 0;
+    // this.comboNum = 0;
+
+    // 時間が来たら音楽流す
+    this.one('musicstart', function() {
+      SoundManager.playMusic('music', null, false);
+    });
+
+    // ユニットアイコンの配置
+    var iconGroup = DisplayElement()
+    .setPosition(gx.center(), gy.span(5))
+    .addChildTo(this);
+    for (var i = 0; i < TRACK_NUM; i++) {
+      var label = INDEX_TO_KEY_MAP[i].toUpperCase();
+      var rad = (i * ICON_INTERVAL_DEGREE).toRadian();
+      var icon = UnitIcon(i, label)
+      .setPosition(
+        Math.cos(rad) * UNIT_ARRANGE_RADIUS,
+        Math.sin(rad) * UNIT_ARRANGE_RADIUS
+      )
+      .addChildTo(iconGroup);
+
+      // タップ・クリック判定
+      icon.onpointstart = function() {
+        self.judge(this); // 自分を渡す
+      };
+    }
+    // キーボード判定
+    this.on('keydown', function(e) {
+      var keyData = KEYCODE_TO_KEYDATA_MAP[e.keyCode];
+      if (keyData !== undefined) {
+        var icon = iconGroup.getChildAt(keyData.id);
+        this.judge(icon);
+      }
+    });
+
+    // 譜面の展開
+    this.markerGroup = DisplayElement()
+    .setPosition(iconGroup.x, iconGroup.y)
+    .addChildTo(this);
+    beatmap.notes.forEach(function(note) {
+      TargetMarker(note.targetTime, note.track)
+      .addChildTo(self.markerGroup)
+    })
+
+    // score表示
+    this.scoreLabel = Label({
+      text: 0,
+      textAlign: "center",
+      stroke: "magenta",
+      fill: "white",
+      strokeWidth: 2,
+      fontSize: 50,
+    })
+    .setPosition(gx.center(), gy.span(3))
+    .addChildTo(this)
+    .on('enterframe', function() {
+      this.text = self.totalScore;
+    });
+
+    // リセットボタン
+    Button({
+      text: 'RESET',
+      fill: "#78e3e1",
+    })
+    .setOrigin(1, 0)
+    .setPosition(this.width, 0)
+    .addChildTo(this)
+    .on('push', function() {
+      SoundManager.stopMusic();
+      self.exit('main')
+    });
+
+    // Debug用タイマー表示
+    // Label({
+    //   fill: "white",
+    //   fontSize: 50,
+    // })
+    // .setOrigin(0, 1)
+    // .setPosition(gx.span(1), gy.span(15))
+    // .addChildTo(this)
+    // .on('enterframe', function() {
+    //   this.text = self.elapsedTime+" ms";
+    // });
+
+    // this.on('enter', function() {
+    //   this.app.keyboard.on('keydown', function(e) {
+    //     console.log(e.keyCode);
+    //   })
+    // })
+  },
+
+  update: function(app) {
+    var self = this;
+    var ps = app.pointers;
+    var kb = app.keyboard;
+
+    // タイマー加算
+    this.elapsedTime += app.deltaTime;
+    this.gameTime += app.deltaTime;
+
+    // ゲームスタートまでの猶予
+    if (this.has('musicstart') && this.elapsedTime > MUSIC_START_DELAY) {
+      this.flare('musicstart');
+    }
+
+    // マーカー描画
+    var markers = this.markerGroup.children;
+    markers.forEach(function(m) {
+      if (!m.isAwake) return;
+
+      var time = this.gameTime
+      var rTime = m.targetTime - time; // 相対時間
+
+      if (rTime < MARKER_APPEARANCE_DELTA) {
+        // マーカーの位置比率や縮小率（倍率）を計算する
+        // ratioはアイコンに近いほど1.0に近づく
+        var ratio = (time - (m.targetTime - MARKER_APPEARANCE_DELTA)) / MARKER_APPEARANCE_DELTA;
+        var distance = UNIT_ARRANGE_RADIUS * ratio;
+
+        m.setVisible(true)
+        .setPosition(
+          m.vector.x * distance,
+          m.vector.y * distance
+        )
+        .setScale(ratio, ratio);
+      }
+
+      // miss判定
+      if (RATING_TABLE["miss"].range < -rTime) {
+        this.reaction(m, "miss");
+      }
+    }.bind(this));
+
+  },
+
+  // 判定処理
+  judge: function(unitIcon) {
+    var time = this.gameTime;
+
+    // 判定可能マーカーを探索
+    var markers = this.markerGroup.children;
+    markers.some(function(m) {
+      if (!m.isAwake || m.trackId !== unitIcon.id) return;
+
+      // マーカーが有効かつtrackIdが一致、かつ判定範囲内
+      // 判定が狭い順に判定し、該当したらループ拔ける
+      var delta = Math.abs(m.targetTime - time);
+      if (delta <= RATING_TABLE["perfect"].range) {
+        unitIcon.fireEffect();
+        SoundManager.play('ring');
+        this.reaction(m, "perfect");
+        return true;
+      }
+      if (delta <= RATING_TABLE["great"].range) {
+        unitIcon.fireEffect();
+        SoundManager.play('ring');
+        this.reaction(m, "great");
+        return true;
+      }
+      if (delta <= RATING_TABLE["good"].range) {
+        unitIcon.fireEffect();
+        SoundManager.play('ring');
+        this.reaction(m, "good");
+        return true;
+      }
+      if (delta <= RATING_TABLE["miss"].range) {
+        this.reaction(m, "miss");
+        return true;
+      }
+    }.bind(this));
+
+  },
+
+  reaction: function(marker, rating) {
+    // マーカー不可視化
+    marker.isAwake = false;
+    marker.visible = false;
+
+    RateLabel({text: rating.toUpperCase()})
+    .setPosition(this.gridX.center(), this.gridY.center())
+    .addChildTo(this);
+
+    this.totalScore += RATING_TABLE[rating].score;
+  },
+ });
+/**
+ * タイトル
+ */
+ phina.define('TitleScene', {
+  superClass: 'phina.display.DisplayScene',
+
+  init: function(params) {
+    this.superInit(params);
+    this.backgroundColor = params.backgroundColor;
+
+    // タイトルラベル
+    Label({
+      text: "custom",
+      fill: "white",
+      stroke: "#2F3CEC",
+      strokeWidth: 6,
+      fontSize: 100,
+    })
+    .setPosition(this.gridX.center(), this.gridY.span(6))
+    .addChildTo(this)
+
+    var touchLabel = Label({
+      text: "タップでSTART",
+      fill: "white",
+      stroke: "#2F3CEC",
+      strokeWidth: 6,
+      fontSize: 64,
+    })
+    .setPosition(this.gridX.center(), this.gridY.span(12))
+    .addChildTo(this);
+
+    // 明滅させる
+    touchLabel.tweener.clear()
+    .setLoop(true)
+    .to({alpha: 0}, 700)
+    .to({alpha: 1}, 700)
+    ;
+
+    // モバイルでの再生制限アンロックのため、画面タッチ時にSoundを無音再生
+    this.on('enter', function() {
+      var event = "touchstart";
+      var dom = this.app.domElement;
+      dom.addEventListener(event, (function() {
+        return function f() {
+          var context = phina.asset.Sound.getAudioContext();
+          var buf = context.createBuffer(1, 1, 22050);
+          var src = context.createBufferSource();
+          src.buffer = buf;
+          src.connect(context.destination);
+          src.start(0);
+
+          dom.removeEventListener(event, f, false);
+        }
+      }()), false);
+
+      // シーン遷移
+      this.on('pointend', function() {
+        this.exit();
+      });
+    });
+
+  },
+
+});
+
     phina.main(function() {
       var app = GameApp({
         assets: ASSETS,
@@ -53,15 +555,13 @@
     // app.enableStats();
       app.run();
     });
+    console.log('load file list');
+    console.log('set');
   }
   function resetting() {
     document.getElementById("setting").style.display = "block";
     document.getElementById("resetting").style.display = "none";
   }
 </script>
-<script src="./config.js"></script>
-<script src="./components.js"></script>
-<script src="./mainscene.js"></script>
-<script src="./titlescene.js"></script>
 </body>
 </html>
