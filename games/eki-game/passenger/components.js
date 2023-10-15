@@ -109,7 +109,7 @@ phina.define('RateLabel', {
       text: textParam.text,
       fontSize: 60,
       strokeWidth: 8,
-      fill: "pink",
+      fill: "greenn",
       stroke: "white",
     });
 
