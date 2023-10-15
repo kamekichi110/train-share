@@ -40,6 +40,8 @@
     jsonSet();
     document.getElementById('setting').style.display = 'none';
     document.getElementById('resetting').style.display = 'block';
+    app.run();
+  }
 
 /**
  * メイン
@@ -251,7 +253,6 @@ phina.define('MainScene', {
 
 });
 
-  }
   function resetting() {
     document.getElementById("setting").style.display = "block";
     document.getElementById("resetting").style.display = "none";
@@ -274,8 +275,7 @@ phina.define('MainScene', {
         fps: 60,
       });
 
-      // app.enableStats();
-      app.run();
+      // app.enableStats()
     });
 
   </script>

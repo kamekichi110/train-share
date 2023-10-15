@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>custom</title>
+</head>
+<body>
+  <!-- <script src="../phina.js/build/phina.js"></script> -->
+  <script src='../phina.js'></script>
+
+  <script type="text/javascript">
+    'use strict';
+
+    if (!phina.util.Support.webAudio) {
+      alert('webAudioに対応していません！最新のブラウザを使って下さい！');
+    }
+
+    // IE対策
+    // var ua = phina.global.navigator.userAgent;
+    // if (ua.indexOf('Trident') > 0) {
+    //   alert('インターネットエクスプローラーには対応してません！');
+    // }
+
+    phina.globalize();
+  </script>
+  <button onclick="resetting()" style="position: absolute; top: 8px; left: 8px;">setting</button>
+<div id="setting" style="position: absolute; top: 8px; left: 8px;">
+<p>mp3:<input type="file" name="sound_" id="mp3"></p>
+<p>mapping-JSON: <input type="file" name="json_" id="json"></p>
+<button type="button" onclick="scriptData()">reload script</button>
+</div>
+<script>
+  var changeValue = 0;
+  function scriptData() {
+    changeValue += 1;
+    document.head.innerHTML = `<meta charset="utf-8" /><meta http-equiv="x-ua-compatible" content="IE=Edge"><meta name="viewport" content="width=device-width, user-scalable=no"><title>custom${changeValue + 1}</title>`;
+    mp3Set();
+    jsonSet();
+    document.getElementById('setting').style.display = 'none';
+    document.getElementById('resetting').style.display = 'block';
+    phina.main(function() {
+      var app = GameApp({
+        assets: ASSETS,
+        width: SCREEN_WIDTH,
+        height: SCREEN_HEIGHT,
+        startLabel: 'title',
+        backgroundColor: '#389c4c',
+        title: 'custom',
+        fps: 60,
+      });
+    // app.enableStats();
+      app.run();
+    });
+  }
+  function resetting() {
+    document.getElementById("setting").style.display = "block";
+    document.getElementById("resetting").style.display = "none";
+  }
+</script>
+<script src="./config.js"></script>
+<script src="./components.js"></script>
+<script src="./mainscene.js"></script>
+<script src="./titlescene.js"></script>
+</body>
+</html>
