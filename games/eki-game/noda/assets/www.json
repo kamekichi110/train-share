@@ -1,0 +1,118 @@
+{ "offset": 0,
+"notes": [
+
+{ "track": 2, "targetTime": 437},
+
+{ "track": 4, "targetTime": 710},
+
+{ "track": 3, "targetTime": 1060},
+
+{ "track": 5, "targetTime": 1383},
+
+{ "track": 3, "targetTime": 1767},
+
+{ "track": 5, "targetTime": 2069},
+
+{ "track": 3, "targetTime": 2467},
+
+{ "track": 5, "targetTime": 2770},
+
+{ "track": 4, "targetTime": 3092},
+
+{ "track": 5, "targetTime": 3524},
+
+{ "track": 4, "targetTime": 3823},
+
+{ "track": 5, "targetTime": 4190},
+
+{ "track": 6, "targetTime": 4532},
+
+{ "track": 6, "targetTime": 4863},
+
+{ "track": 6, "targetTime": 5130},
+
+{ "track": 4, "targetTime": 5434},
+
+{ "track": 5, "targetTime": 5751},
+
+{ "track": 3, "targetTime": 5999},
+
+{ "track": 3, "targetTime": 6438},
+
+{ "track": 5, "targetTime": 6721},
+
+{ "track": 4, "targetTime": 7113},
+
+{ "track": 3, "targetTime": 7429},
+
+{ "track": 4, "targetTime": 7816},
+
+{ "track": 3, "targetTime": 8068},
+
+{ "track": 5, "targetTime": 8645},
+
+{ "track": 4, "targetTime": 8847},
+
+{ "track": 5, "targetTime": 9330},
+
+{ "track": 4, "targetTime": 9493},
+
+{ "track": 4, "targetTime": 9793},
+
+{ "track": 4, "targetTime": 10083},
+
+{ "track": 3, "targetTime": 10749},
+
+{ "track": 6, "targetTime": 11076},
+
+{ "track": 4, "targetTime": 11432},
+
+{ "track": 5, "targetTime": 11759},
+
+{ "track": 3, "targetTime": 12075},
+
+{ "track": 6, "targetTime": 12393},
+
+{ "track": 4, "targetTime": 12769},
+
+{ "track": 5, "targetTime": 13080},
+
+{ "track": 3, "targetTime": 13453},
+
+{ "track": 6, "targetTime": 13781},
+
+{ "track": 4, "targetTime": 14132},
+
+{ "track": 5, "targetTime": 14417},
+
+{ "track": 3, "targetTime": 14761},
+
+{ "track": 6, "targetTime": 15084},
+
+{ "track": 4, "targetTime": 15408},
+
+{ "track": 5, "targetTime": 15784},
+
+{ "track": 3, "targetTime": 16066},
+
+{ "track": 4, "targetTime": 16662},
+
+{ "track": 4, "targetTime": 17509},
+
+{ "track": 5, "targetTime": 18765},
+
+{ "track": 4, "targetTime": 19126},
+
+{ "track": 6, "targetTime": 19458},
+
+{ "track": 4, "targetTime": 19826},
+
+{ "track": 5, "targetTime": 20129},
+
+{ "track": 5, "targetTime": 20443},
+
+{ "track": 5, "targetTime": 20745},
+
+{ "track": 5, "targetTime": 21072}
+
+]}
