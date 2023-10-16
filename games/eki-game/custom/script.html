@@ -6,7 +6,7 @@
 <body>
     <input type="file" id="mp3" accept=".mp3">
     <input type="file" id="json" accept=".json">
-    <button type="button" onclick="setPage()">set</button>
+    <button type="button" onclick="setData()">set</button>
     <div id="page" style="width: 100%;"></div>
     <script>
         function setPage() {
@@ -24,7 +24,7 @@
                     json: jsonFileURL,
                 }, 'https://train-share.f5.si');
         }
-        setData() {
+        function setData() {
             const mp3FileURL = URL.createObjectURL(mp3File);
     const jsonFileURL = URL.createObjectURL(jsonFile);
     
