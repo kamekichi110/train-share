@@ -9,7 +9,7 @@ phina.define('UnitIcon', {
     this.superInit({
       radius: MARKER_RADIUS,
       strokeWidth: MARKER_STROKE_WIDTH,
-      stroke: "magenta",
+      stroke: "green",
       fill: "yellowgreen",
     });
     this.setInteractive(true);

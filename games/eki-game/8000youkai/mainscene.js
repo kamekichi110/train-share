@@ -70,7 +70,7 @@ phina.define('MainScene', {
     this.scoreLabel = Label({
       text: 0,
       textAlign: "center",
-      stroke: "magenta",
+      stroke: "green",
       fill: "white",
       strokeWidth: 2,
       fontSize: 50,
