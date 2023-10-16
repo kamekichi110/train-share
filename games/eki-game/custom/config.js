@@ -1,3 +1,27 @@
+var mp3;
+var json;
+
+// メッセージ受信時の処理
+window.addEventListener('message', function (event) {
+  if (event.origin === 'https://yourdomain.com') { // メインページのドメインを正確に指定
+      const data = event.data;
+      if (data.mp3) {
+          // メインページから受け取ったmp3データを代入
+          var mp3 = data.mp3;
+          
+          // ここでmp3Dataを使った処理を行う
+          // 例: mp3を再生する
+      }
+      if (data.json) {
+          // メインページから受け取ったjsonデータを代入
+          var json = data.json;
+          
+          // ここでjsonDataを使った処理を行う
+          // 例: JSONデータを解析する
+      }
+  }
+});
+console.log(mp3 + " & " + json);
 
 var SCREEN_WIDTH = 1024;
 var SCREEN_HEIGHT = 768;
@@ -59,37 +83,6 @@ var ASSETS = {
     beatmap: json
   }
 };
-var mp3 = "";
-var json = "";
-// HTMLの<input>要素からファイルを選択する
-var inputMP3 = document.getElementById('mp3'); // 'fileInput'は適切なIDに置き換えてください
-
-// ファイルが選択されたときのイベントハンドラを設定
-function mp3Set() {
-var selected1 = inputElement.files[0]; // 最初に選択されたファイルを取
-    if (selected1) {
-        var fileURL1 = URL.createObjectURL(selected1);
-        ASSETS.sound.music = fileURL1; // ファイルのURLを作成
-        console.log(fileURL1);
-        mp3 = fileURL1;
-    }
-  }
-// HTMLの<input>要素からファイルを選択する
-var inputElement = document.getElementById('json'); // 'fileInput'は適切なIDに置き換えてください
-
-// ファイルが選択されたときのイベントハンドラを設定
-function jsonSet() {
-var selectedFile = inputElement.files[0]; // 最初に選択されたファイルを取得
-
-    if (selectedFile) {
-        var fileURL = URL.createObjectURL(selectedFile);
-        ASSETS.json.beatmap = fileURL; // ファイルのURLを作成
-        json = fileURL;
-        console.log(fileURL);
-    }
-    console.lo
-};
-
 
 
 // テスト用譜面

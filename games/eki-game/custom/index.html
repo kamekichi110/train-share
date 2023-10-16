@@ -25,12 +25,6 @@
 
     phina.globalize();
   </script>
-  <button onclick="resetting()" style="position: absolute; top: 8px; left: 8px;">setting</button>
-<div id="setting" style="position: absolute; top: 8px; left: 8px;">
-<p>mp3:<input type="file" name="sound_" id="mp3"></p>
-<p>mapping-JSON: <input type="file" name="json_" id="json"></p>
-<button type="button" onclick="scriptData()">reload script</button>
-</div>
 <script>
   var changeValue = 0;
   function scriptData() {
@@ -276,6 +270,7 @@ phina.define('MainScene', {
       });
 
       // app.enableStats()
+      app.run();
     });
 
   </script>
