@@ -1,4 +1,3 @@
-range: 200range: 200range: 240range: 240
 var SCREEN_WIDTH = 1024;
 var SCREEN_HEIGHT = 768;
 var MARKER_RADIUS = 70;
@@ -7,7 +6,7 @@ var MARKER_STROKE_WIDTH = 8;
 var TRACK_NUM = 9;
 var ICON_INTERVAL_DEGREE = 180 / (TRACK_NUM - 1); // 22.5
 
-var MARKER_APPEARANCE_DELTA = 1000; // ノーツ出現時間(ms): 大きくするほど低速
+var MARKER_APPEARANCE_DELTA = 1800; // ノーツ出現時間(ms): 大きくするほど低速
 var UNIT_ARRANGE_RADIUS = SCREEN_WIDTH * 0.41 | 0;
 var MUSIC_START_DELAY = 2000;
 
@@ -22,11 +21,11 @@ var RATING_TABLE = {
   },
   good: {
     score: 100,
-    range: 100, //ms
+    range: 200, //ms
   },
   miss: {
     score: 0,
-    range: 134, //ms
+    range: 240, //ms
   },
 };
 
