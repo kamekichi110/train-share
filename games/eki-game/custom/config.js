@@ -1,22 +1,3 @@
-var mp3;
-var json;
-
-window.onload = function() {
-  window.addEventListener('message', function (event) {
-      if (event.origin === 'https://train-share.f5.si') {
-          const data = event.data;
-          if (data.mp3) {
-              mp3 = data.mp3;
-              // ここでmp3URLを使った処理を行う
-          }
-          if (data.json) {
-              json = data.json;
-              // ここでjsonURLを使った処理を行う
-          }
-      }
-  });
-}
-
 console.log(mp3 + " & " + json);
 
 var SCREEN_WIDTH = 1024;

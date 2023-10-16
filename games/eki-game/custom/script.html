@@ -24,6 +24,16 @@
                     json: jsonFileURL,
                 }, 'https://train-share.f5.si');
         }
+        setData() {
+            const mp3FileURL = URL.createObjectURL(mp3File);
+    const jsonFileURL = URL.createObjectURL(jsonFile);
+    
+    const iframe = document.getElementById('iframe').contentWindow;
+    iframe.myData = {
+        mp3: mp3FileURL,
+        json: jsonFileURL
+    };
+        }
     </script>
 </body>
 </html>

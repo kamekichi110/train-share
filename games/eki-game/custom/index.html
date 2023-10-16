@@ -6,6 +6,17 @@
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <title>custom</title>
   <script>
+    const dataFromMainPage = window.parent.myData; // "myData"はメインページで設定した変数名
+    var mp3;
+    var json;
+if (dataFromMainPage && dataFromMainPage.mp3) {
+    mp3 = dataFromMainPage.mp3;
+    // ここでmp3URLを使った処理を行う
+}
+if (dataFromMainPage && dataFromMainPage.json) {
+    json = dataFromMainPage.json;
+    // ここでjsonURLを使った処理を行う
+}
   </script>
 </head>
 <body>
