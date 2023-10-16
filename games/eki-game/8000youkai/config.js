@@ -22,11 +22,11 @@ var RATING_TABLE = {
   },
   good: {
     score: 100,
-    range: 100, //ms
+    range: 200, //ms
   },
   miss: {
     score: 0,
-    range: 134, //ms
+    range: 240, //ms
   },
 };
 

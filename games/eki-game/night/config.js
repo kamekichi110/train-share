@@ -1,4 +1,4 @@
-
+range: 200range: 200range: 240range: 240
 var SCREEN_WIDTH = 1024;
 var SCREEN_HEIGHT = 768;
 var MARKER_RADIUS = 70;
