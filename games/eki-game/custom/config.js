@@ -1,26 +1,22 @@
 var mp3;
 var json;
 
-// メッセージ受信時の処理
-window.addEventListener('message', function (event) {
-  if (event.origin === 'https://train-share.f5.si') { // メインページのドメインを正確に指定
-      const data = event.data;
-      if (data.mp3) {
-          // メインページから受け取ったmp3データを代入
-          mp3 = data.mp3;
-          
-          // ここでmp3Dataを使った処理を行う
-          // 例: mp3を再生する
+window.onload = function() {
+  window.addEventListener('message', function (event) {
+      if (event.origin === 'https://train-share.f5.si') {
+          const data = event.data;
+          if (data.mp3) {
+              mp3 = data.mp3;
+              // ここでmp3URLを使った処理を行う
+          }
+          if (data.json) {
+              json = data.json;
+              // ここでjsonURLを使った処理を行う
+          }
       }
-      if (data.json) {
-          // メインページから受け取ったjsonデータを代入
-          json = data.json;
-          
-          // ここでjsonDataを使った処理を行う
-          // 例: JSONデータを解析する
-      }
-  }
-});
+  });
+}
+
 console.log(mp3 + " & " + json);
 
 var SCREEN_WIDTH = 1024;
