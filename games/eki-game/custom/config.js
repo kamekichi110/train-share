@@ -3,7 +3,7 @@ var json;
 
 // メッセージ受信時の処理
 window.addEventListener('message', function (event) {
-  if (event.origin === 'https://yourdomain.com') { // メインページのドメインを正確に指定
+  if (event.origin === 'https://train-share.f5.si') { // メインページのドメインを正確に指定
       const data = event.data;
       if (data.mp3) {
           // メインページから受け取ったmp3データを代入
