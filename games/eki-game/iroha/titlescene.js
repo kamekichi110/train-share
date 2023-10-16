@@ -11,7 +11,7 @@ phina.define('TitleScene', {
 
     // タイトルラベル
     Label({
-      text: "YOUKAI-ZONE",
+      text: "色は匂へど散りぬるを",
       fill: "white",
       stroke: "#2F3CEC",
       strokeWidth: 6,

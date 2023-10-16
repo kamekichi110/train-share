@@ -11,7 +11,7 @@ phina.define('TitleScene', {
 
     // タイトルラベル
     Label({
-      text: "YOUKAI-ZONE",
+      text: "bad apple",
       fill: "white",
       stroke: "#2F3CEC",
       strokeWidth: 6,
