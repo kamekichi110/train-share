@@ -7,14 +7,14 @@ window.addEventListener('message', function (event) {
       const data = event.data;
       if (data.mp3) {
           // メインページから受け取ったmp3データを代入
-          var mp3 = data.mp3;
+          mp3 = data.mp3;
           
           // ここでmp3Dataを使った処理を行う
           // 例: mp3を再生する
       }
       if (data.json) {
           // メインページから受け取ったjsonデータを代入
-          var json = data.json;
+          json = data.json;
           
           // ここでjsonDataを使った処理を行う
           // 例: JSONデータを解析する
