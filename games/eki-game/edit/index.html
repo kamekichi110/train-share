@@ -19,7 +19,7 @@
             height: 40px;
             background-color: green;
             color: white;
-            border: black solid 2px;
+            border: black solid 4px;
             border-radius: 64px;
         }
     </style>
@@ -28,7 +28,7 @@
     <h1>note editor</h1>
     <br>
     <hr>
-    <input type="file" id="mp3File" accept=".mp3" onchange="changeMP3()">
+    <input type="file" id="mp3File" accept="audio" onchange="changeMP3()">
     <br>
     <audio id="audioPlayer" controls></audio>
     <br>
@@ -38,6 +38,9 @@
     <br>
     <button type="button" onclick="record()">record</button>
     <br>
+    <br>
+    <hr>
+    <p id="count">note数:0個</p>
     <hr>
     <br>
     <div  class= "flex" style="display: flex; width: 100%; text-align: center;">
@@ -49,6 +52,7 @@
     <div onclick="add(6)">6</div>
     <div onclick="add(7)">7</div>
     <div onclick="add(8)">8</div>
+    <div onclick="add(9)">9</div>
     </div>
     <!-- 結果を表示する div 要素 -->
     <p>{ "offset": 0,<br>"notes": [</p>

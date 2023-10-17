@@ -1,7 +1,6 @@
-
-
 var startTime;
 var timerInterval;
+var count = 0;
 
 function incrementInput() {
     var timeMP3 = document.getElementById('audioPlayer');
@@ -21,6 +20,9 @@ function incrementInput() {
         };
 
         function add(track) {
+            var countValue = document.getElementById('count');
+            count += 1;
+            countValue.innerHTML ="note数:" + count + "個";
             const resultDiv = document.getElementById('result');
             var time = document.getElementById("time").value;
             var setTime = Number(time) * 1000;
