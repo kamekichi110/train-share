@@ -1,10 +1,4 @@
 Header set Access-Control-Allow-Origin "*"
-
-AuthType Basic
-AuthName "login"
-AuthUserFile "/.htpasswd"
-require valid-user
-
 # URL 書き換え処理を ON にする
 RewriteEngine on
 # 条件：直リンク許可サイト以外からアクセス
