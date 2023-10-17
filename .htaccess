@@ -4,3 +4,10 @@ AuthType Basic
 AuthName "login"
 AuthUserFile "/.htpasswd"
 require valid-user
+
+# URL 書き換え処理を ON にする
+RewriteEngine on
+# 条件：直リンク許可サイト以外からアクセス
+RewriteCond %{HTTP_REFERER} !^http(s)?://train-share.f5.si [NC]
+# 処理：直リンク禁止ファイルアクセス時にエラーを返す
+RewriteRule \.(jpg|jpeg|png|gif|webp|js|css|mp3|json)$ - [F]
