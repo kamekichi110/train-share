@@ -60,7 +60,4 @@ function download() {
   a.href = window.URL.createObjectURL(blob);
   a.style.display = "block";
   document.getElementById('urls').appendChild(a);
-
-  // リンクをクリックしてダウンロードを開始
-  a.click();
 };
