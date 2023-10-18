@@ -27,7 +27,7 @@ function incrementInput() {
             var time = document.getElementById("time").value;
             var setTime = Number(time) * 1000;
             var value0 = parseInt(setTime, 10);
-            resultDiv.innerHTML += '<p>{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '},</p><br>';
+            resultDiv.innerHTML += '{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '},<br>';
             console.log('{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '}');
             download();
         }
