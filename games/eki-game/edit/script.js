@@ -49,15 +49,5 @@ function download() {
   var inContent = document.getElementById("result").textContent;
   var fotter = document.getElementById("fotter").textContent;
   var myText = header + inContent + fotter;
-
-  // テキストファイルに変換
-  var blob = new Blob([myText], { type: "text/plain" });
-
-  var name = document.getElementById('FileName').value;
-  // ダウンロードリンクを生成し、ボタンの近くに表示
-  var a = document.createElement("a");
-  a.download = name + ".json"; // ファイル名を指定
-  a.href = window.URL.createObjectURL(blob);
-  a.style.display = "block";
-  document.getElementById('urls').appendChild(a);
+  document.getElementById('FileName').value = myText;
 };
