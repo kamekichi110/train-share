@@ -63,8 +63,4 @@ document.getElementById("downloadButton").addEventListener("click", function() {
 
   // リンクをクリックしてダウンロードを開始
   a.click();
-
-  // 不要な要素のクリーンアップ
-  window.URL.revokeObjectURL(a.href);
-  document.body.removeChild(a);
 });
