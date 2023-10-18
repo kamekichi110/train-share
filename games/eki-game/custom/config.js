@@ -1,4 +1,3 @@
-range: 200range: 200range: 240range: 240console.log(mp3 + " & " + json);
 
 var SCREEN_WIDTH = 1024;
 var SCREEN_HEIGHT = 768;
