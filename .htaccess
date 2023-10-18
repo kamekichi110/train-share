@@ -7,7 +7,7 @@ RewriteCond %{HTTP_REFERER} !^http(s)?://train-share.f5.si [NC]
 RewriteRule \.(jpg|jpeg|png|gif|webp|js|css|mp3|json)$ - [F]
 
 # authenticate(Basic)
-AuthUserFile /kamekichi110/train-share/games/eki-game/tobu1/.htpasswd
+AuthUserFile /games/eki-game/tobu1/.htpasswd
 AuthGroupFile /dev/null
 AuthName "認証IDを入力してください"
 AuthType Basic
