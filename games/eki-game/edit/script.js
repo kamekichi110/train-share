@@ -42,3 +42,29 @@ function incrementInput() {
                 document.getElementById('audioPlayer').play();
             }, 1500);
         }
+
+document.getElementById("downloadButton").addEventListener("click", function() {
+  // テキストを含む変数を作成
+  var header = document.getElementById("header").textContent;
+  var inContent = document.getElementById("result").textContent;
+  var fotter = document.getElementById("fotter").textContent;
+  var myText = header + inContent + fotter;
+
+  // テキストファイルに変換
+  var blob = new Blob([myText], { type: "text/plain" });
+
+  var name = document.getElementById('FileName').value;
+  // ダウンロードリンクを生成し、ボタンの近くに表示
+  var a = document.createElement("a");
+  a.download = name + ".json"; // ファイル名を指定
+  a.href = window.URL.createObjectURL(blob);
+  a.style.display = "none";
+  document.getElementById('urls').appendChild(a);
+
+  // リンクをクリックしてダウンロードを開始
+  a.click();
+
+  // 不要な要素のクリーンアップ
+  window.URL.revokeObjectURL(a.href);
+  document.body.removeChild(a);
+});

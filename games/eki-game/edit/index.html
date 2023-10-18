@@ -38,6 +38,10 @@
     <br>
     <button type="button" onclick="record()">record</button>
     <br>
+    <p>FileName:<input type="text" name="file_name" id="FileName" value="NoteData">.json</p>
+    <br>
+    <button id="downloadButton">jsonファイルをダウンロード</button>
+    <br>
     <br>
     <hr>
     <p id="count">note数:0個</p>
@@ -55,10 +59,14 @@
     <div onclick="add(9)">9</div>
     </div>
     <!-- 結果を表示する div 要素 -->
-    <p>{ "offset": 0,<br>"notes": [</p>
+    <div id="header">
+        <p>{ "offset": 0,<br>"notes": [</p>
+    </div>
     <div id="result">
     </div>
-    <p>]}</p>
+    <div id="fotter">
+        <p>]}</p>
+    </div>
     <br>
     <br>
     <hr>
