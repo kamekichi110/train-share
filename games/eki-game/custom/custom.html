@@ -548,6 +548,7 @@ phina.define('RateLabel', {
 
 });};
     function startgame() {
+      phina.main(function() {
       var app = GameApp({
         assets: ASSETS,
         width: SCREEN_WIDTH,
@@ -559,6 +560,7 @@ phina.define('RateLabel', {
       });
     // app.enableStats();
       app.run();
+    })
     };
     console.log('load file list');
     console.log('set');
