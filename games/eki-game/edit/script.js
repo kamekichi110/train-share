@@ -29,6 +29,7 @@ function incrementInput() {
             var value0 = parseInt(setTime, 10);
             resultDiv.innerHTML += '<p>{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '},</p>';
             console.log('{ "track": ' + `${track}` + ',' + ' "targetTime": ' + `${value0}` + '}');
+            download();
         }
 
         function updateTime() {
