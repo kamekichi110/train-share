@@ -104,7 +104,7 @@ var inputMP3 = document.getElementById('mp3'); // 'fileInput'は適切なIDに�
 function mp3Set() {
 var selected1 = inputElement.files[0]; // 最初に選択されたファイルを取
     if (selected1) {
-        var fileURL1 = URL.createObjectURL(selected1);
+        var fileURL1 = URL.createObjectURL(selected1).replace('blob:', '');
         mp3 = fileURL1; // ファイルのURLを作成
         console.log(fileURL1);
         
@@ -118,8 +118,8 @@ function jsonSet() {
 var selectedFile = inputElement.files[0]; // 最初に選択されたファイルを取得
 
     if (selectedFile) {
-        var fileURL = URL.createObjectURL(selectedFile);
-        json = fileURL; // ファイルのURLを作成
+        var fileURL = URL.createObjectURL(selectedFile).replace('blob:', '');
+        json =  fileURL; // ファイルのURLを作成
         console.log(fileURL);
     }
 };
