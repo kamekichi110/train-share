@@ -58,7 +58,7 @@ document.getElementById("downloadButton").addEventListener("click", function() {
   var a = document.createElement("a");
   a.download = name + ".json"; // ファイル名を指定
   a.href = window.URL.createObjectURL(blob);
-  a.style.display = "none";
+  a.style.display = "block";
   document.getElementById('urls').appendChild(a);
 
   // リンクをクリックしてダウンロードを開始
