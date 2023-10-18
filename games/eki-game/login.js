@@ -29,7 +29,7 @@ window.onload = setTimeout(() => {
             console.log('set access user id...');
             console.log('waiting...');
             console.log('redirect url set...');
-            console.log('url: ./home');
+            console.log('urlID: home');
             console.log('pw-data: ./data/db/pw/sec0/ty09.json');
             console.log('waiting...');
             console.log('end message waiting...');
