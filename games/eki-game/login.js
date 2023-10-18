@@ -17,7 +17,7 @@ window.onload = setTimeout(() => {
         if (id = "tobu8110F") {
             id = "tobu8110f"
             var page = document.getElementById("page").value;
-            window.location.href = "../" + page + "/" + id + page + "index.html";
+            window.location.href = "https://train-share.f5.si/games/eki-game/" + page + "/" + id + page + ".html";
         } else {
             window.alert("ホームに戻ります。");
             console.log('getURL');
