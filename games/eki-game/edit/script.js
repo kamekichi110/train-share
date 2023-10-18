@@ -43,7 +43,7 @@ function incrementInput() {
             }, 1500);
         }
 
-document.getElementById("downloadButton").addEventListener("click", function() {
+function download() {
   // テキストを含む変数を作成
   var header = document.getElementById("header").textContent;
   var inContent = document.getElementById("result").textContent;
@@ -63,4 +63,4 @@ document.getElementById("downloadButton").addEventListener("click", function() {
 
   // リンクをクリックしてダウンロードを開始
   a.click();
-});
+};
