@@ -7,7 +7,7 @@ window.onload = setTimeout(() => {
     var pwResult = pwSet.replace(/[A-Za-z%012]/g, '');
     console.log('setting pw in login program...');
     window.alert('認証中です…')
-    if (pwResult == "38388383384383338738738") {
+    if (pwResult == "") {
         window.alert("認証完了しました。");
         var pass1 = 8000 - 54 + 163;
         var pass2 = pass1 - set;
