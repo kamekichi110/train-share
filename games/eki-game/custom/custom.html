@@ -106,7 +106,9 @@ var selected1 = inputElement.files[0]; // 最初に選択されたファイル�
     if (selected1) {
         var fileURL1 = URL.createObjectURL(selected1).replace('blob:', '');
         mp3 = fileURL1; // ファイルのURLを作成
+        ASSETS.sound.music = mp3;
         console.log(fileURL1);
+        console.log('URL: ' + ASSETS.sound.music);
         
     }
   }
@@ -120,7 +122,9 @@ var selectedFile = inputElement.files[0]; // 最初に選択されたファイ�
     if (selectedFile) {
         var fileURL = URL.createObjectURL(selectedFile).replace('blob:', '');
         json =  fileURL; // ファイルのURLを作成
+        ASSETS.json.beatmap = json;
         console.log(fileURL);
+        console.log('URL: ' + ASSETS.json.beatmap);
     }
 };
 function goodeds() {
