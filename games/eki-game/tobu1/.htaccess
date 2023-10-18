@@ -1,4 +1,4 @@
 AuthType Basic
 AuthName "login"
-AuthUserFile "/.htpasswd"
+AuthUserFile "kamekichi110/train-share/games/eki-game/tobu1/.htpasswd"
 require valid-user
