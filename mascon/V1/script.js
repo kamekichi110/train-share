@@ -14,7 +14,7 @@ function power() {
     console.log('B5');
   } else {
     console.log('error!');
-  }
+  };
   if (Number(speedText.value) < 0) {
     speedText.value = 0;
   } else if (Number(speedText.value) > 110) {
@@ -63,6 +63,8 @@ function vvvf2() {
 
 function P() {
   document.getElementById("noti").value = 1;
+  document.getElementById("output").innerHTML = "力行4";
+  document.getElementById("output").style.color = "yellowgreen";
   vvvf1();
   var p = document.getElementById("P");
   var b = document.getElementById("B");
@@ -80,6 +82,8 @@ function N() {
   notiOff.currentTime = 0;
   notiOff.play();
   document.getElementById("noti").value = 0;
+  document.getElementById("output").innerHTML = "切";
+  document.getElementById("output").style.color = "black";
   vvvf1();
   var vvvf = document.getElementById("vvvf").value;
   var n = document.getElementById("N");
@@ -93,6 +97,8 @@ function N() {
 }
 function B() {
   document.getElementById("noti").value = 2;
+  document.getElementById("output").innerHTML = "制動5";
+  document.getElementById("output").style.color = "red";
   vvvf1();
   var b = document.getElementById("B");
   var n = document.getElementById("N");
