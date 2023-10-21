@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+body {
+  min-width: 252px;
+  background: black;
+  color: white;
+  font-family: 'DotGothic16', sans-serif;
+}
+div.speed {
+  width: 100%;
+  height: 72px;
+  background: green;
+  text-align: center;
+}
+div.mascon {
+  background: darkgreen;
+  min-height: 100px;
+  width: 100%;
+}
+div.mascon div {
+  width: 80%;
+  aspect-ratio: 2/1;
+  border: black solid 2px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 64px;
+  color: black;
+}
+.masB {
+  background: red;
+}
+.masN {
+  background: yellow;
+}
+.masP {
+  background: yellowgreen;
+}
+div.masP:hover {
+  border: orange solid 4px;
+}
+div.masN:hover {
+  border: orange solid 4px;
+}
+div.masB:hover {
+  border: orange solid 4px;
+}
+.debug {
+  display: none;
+}

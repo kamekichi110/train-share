@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja" >
+<head>
+  <meta charset="UTF-8">
+  <title>FMGTインバーター</title>
+  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" href="../../asset/vvvf/B.mp3">
+  <link rel="preload" href="../../asset/vvvf/P.mp3">
+  <link rel="preload" href="../../asset/vvvf/N.mp3">
+  <link rel="preload" href="./off.mp3">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="speed">
+  <p><input type="number" id="speedNum" value=0>km/h</p>
+  <p>ノッチ:<input type="number" id="noti" value=0></p>
+</div>
+<hr>
+<hr>
+<div class="mascon">
+  <br>
+  <div class="masB" onclick="B()">B5</div>
+  <div class="masN" onclick="N()">N</div>
+  <div class="masP" onclick="P()">P4</div>
+  <br>
+</div>
+<div class="credit">
+  <p>&copy;sirokuma_8110F</p>
+</div>
+<div class="debug">
+  <p>vvvfTime:<input type="text" id="vvvf" value=0></p>
+</div><br>
+<!-- assets -->
+<audio src="../../asset/vvvf/B.mp3" preload="auto" id="B"></audio>
+<audio src="../../asset/vvvf/N.mp3" preload="auto" id="N" loop></audio>
+<audio src="../../asset/vvvf/P.mp3" preload="auto" id="P"></audio>
+<audio src="./off.mp3" preload="auto" id="noti-off"></audio>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
