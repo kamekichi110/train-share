@@ -17,6 +17,8 @@ function power() {
   }
   if (Number(speedText.value) < 0) {
     speedText.value = 0;
+  } else if (Number(speedText.value) > 110) {
+    speedText.value = 110;
   }
   speedText = speedNum;
     setTimeout(power, 200);
