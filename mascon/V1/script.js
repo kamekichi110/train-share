@@ -15,8 +15,10 @@ function power() {
   } else {
     console.log('error!');
   }
+  if (Number(speedText.value) < 0) {
+    speedText.value = 0;
+  }
   speedText = speedNum;
-  
     setTimeout(power, 200);
 }
 
