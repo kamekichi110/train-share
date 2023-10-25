@@ -15,6 +15,9 @@ header {
   color: white;
   display: flex;
   border-radius: 8px;
+  position: sticky;
+  top: 4px;
+  left: 4px;
 }
 article {
   background: grey;
