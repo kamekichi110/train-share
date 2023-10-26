@@ -82,6 +82,37 @@ downloadMp3Button.addEventListener('click', () => {
 });
 
 // Canvas描画（前回のコードを保持）
+function generateAndDrawRectangularWaveform() {
+    const canvasContext = canvas.getContext('2d');
+    const sampleRate = 44100; // サンプルレート
+    const duration = 5; // 録音の長さ（秒）
+
+    // 矩形波の波形データを生成
+    const numSamples = sampleRate * duration;
+    const channelData = [new Float32Array(numSamples)];
+
+    for (let i = 0; i < numSamples; i++) {
+        channelData[0][i] = i % 2 === 0 ? 1 : -1; // 矩形波
+    }
+
+    // Canvasに波形を描画
+    canvasContext.clearRect(0, 0, canvas.width, canvas.height);
+    canvasContext.beginPath();
+    for (let i = 0; i < numSamples; i++) {
+        const x = (i / numSamples) * canvas.width;
+        const y = (0.5 - (channelData[0][i] / 2)) * canvas.height;
+        if (i === 0) {
+            canvasContext.moveTo(x, y);
+        } else {
+            canvasContext.lineTo(x, y);
+        }
+    }
+    canvasContext.strokeStyle = 'blue';
+    canvasContext.lineWidth = 2;
+    canvasContext.stroke();
+}
+
+generateAndDrawRectangularWaveform();
 
 // ここにWAVからMP3への変換関数を追加する必要があります。
 function convertWavToMp3(wavData, callback) {
