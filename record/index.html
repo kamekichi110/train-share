@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>record tool</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<header>
+  <img src="https://train-share.f5.si/asset/icon/main.png" class="icon">
+<h2>音声レコーダー<br>Ver.1.2(@sv1434)</h2>
+</header>
+<button id="recordButton">録音開始</button>
+<button onclick="download()" class="down">
+  download .wav file
+</button>
+<br>
+<br>
+  <audio id="audioPlayer" controls></audio>
+  <canvas id="waveform" width="300" height="240"></canvas>
+<a id="down" style="display: none;" href="">download</a>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
