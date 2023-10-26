@@ -79,6 +79,7 @@ const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
         waveformContext.lineTo(waveformCanvas.width, waveformCanvas.height / 2);
         waveformContext.stroke();
+        waveformContext.imageSmoothingEnabled = true;
 
         requestAnimationFrame(draw);
       }
