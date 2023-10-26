@@ -91,6 +91,6 @@ function download() {
   var link = document.getElementById("down");
   var url = document.getElementById("audioPlayer");
   link.href = url.src;
-  link.download = Date.now() + "(train-share_record-tool)" + ".wav";
+  link.download = Date.now() + "(train-share_record-tool)" + ".mp3";
   link.click();
 }
