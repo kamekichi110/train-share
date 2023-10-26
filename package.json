@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "node-wav": "^0.0.2"
+    "fs": "^0.0.1-security",
+    "node-wav": "^0.0.2",
+    "wav": "^1.0.2"
   }
 }
