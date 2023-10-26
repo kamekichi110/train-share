@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>MP3ファイルを矩形波に変換してダウンロード</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.31/Tone.js"></script>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="mp3Input" accept=".mp3">
+    <audio controls id="audioPlayer"></audio>
+    <canvas id="waveformCanvas" width="320" height="240"></canvas>
+    <a id="downloadLink" style="display: none;">ダウンロード</a>
+
+    <script>
+        const mp3Input = document.getElementById("mp3Input");
+        const audioPlayer = document.getElementById("audioPlayer");
+        const waveformCanvas = document.getElementById("waveformCanvas");
+        const canvasContext = waveformCanvas.getContext("2d");
+        const downloadLink = document.getElementById("downloadLink");
+
+        mp3Input.addEventListener("change", function() {
+            const selectedFile = mp3Input.files[0];
+
+            if (selectedFile) {
+                const audioURL = URL.createObjectURL(selectedFile);
+
+                // MP3ファイルの再生
+                audioPlayer.src = audioURL;
+                const player = new Tone.Player(audioURL).toDestination();
+
+                audioPlayer.addEventListener('play', function() {
+                    player.start();
+
+                    // 波形の描画
+                    player.connect(Tone.Master);
+                    const waveform = new Tone.Waveform(256);
+                    player.connect(waveform);
+                    
+                    const bufferLength = waveform.size;
+                    const dataArray = new Float32Array(bufferLength);
+                    
+                    function draw() {
+                        waveform.getValue(dataArray);
+                        canvasContext.clearRect(0, 0, waveformCanvas.width, waveformCanvas.height);
+                        canvasContext.beginPath();
+                        const sliceWidth = waveformCanvas.width * 1.0 / bufferLength;
+                        let x = 0;
+                    
+                        for (let i = 0; i < bufferLength; i++) {
+                            const v = dataArray[i];
+                            const y = (v + 1) * waveformCanvas.height / 2;
+                            if (i === 0) {
+                                canvasContext.moveTo(x, y);
+                            } else {
+                                canvasContext.lineTo(x, y);
+                            }
+                            x += sliceWidth;
+                        }
+                    
+                        canvasContext.strokeStyle = 'red';
+                        canvasContext.lineWidth = 2;
+                        canvasContext.stroke();
+                    
+                        requestAnimationFrame(draw);
+                    }
+                    
+                    draw();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
