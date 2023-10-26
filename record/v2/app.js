@@ -53,6 +53,7 @@ downloadWavButton.addEventListener('click', () => {
     if (audioChunks.length > 0) {
         const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
         downloadLink.href = URL.createObjectURL(audioBlob);
+        downloadLink.download = Date.now() + "_(train-share).wav"
         downloadLink.style.display = 'block';
     }
 });
@@ -72,7 +73,7 @@ downloadMp3Button.addEventListener('click', () => {
                 const mp3Blob = new Blob([mp3Data], { type: 'audio/mp3' });
                 downloadLink.href = URL.createObjectURL(mp3Blob);
                 downloadLink.style.display = 'block';
-                downloadLink.download = 'recording.mp3';
+                downloadLink.download = Date.now() + "_(train-share).mp3"
             });
         };
 
