@@ -90,7 +90,8 @@ const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 function download() {
   var link = document.getElementById("down");
   var url = document.getElementById("audioPlayer");
-  link.href = url.src;
+  var data = new Blob([url.src], { type: "audio/wav" });
+  link.href = URL.createObjectURL(data);
   link.download = Date.now() + "(train-share_record-tool)" + ".wav";
   link.click();
 }
