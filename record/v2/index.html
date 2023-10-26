@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>録音(矩形波ver)</title>
+    <link rel="shortcut icon" href="../../asset/icon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <button id="startRecord">録音開始</button>
+    <button id="stopRecord">録音停止</button>
+    <button id="playAudio">再生</button>
+    <button id="downloadWav">WAVとしてダウンロード</button>
+    <button id="downloadMp3">MP3としてダウンロード</button>
+    <a id="downloadLink" style="display: none" download="recording">ダウンロードリンク</a>
+    <canvas id="waveformCanvas" width="400" height="100"></canvas>
+    <audio id="audioPlayer"></audio>
+    <script src="app.js"></script>
+</body>
+</html>
