@@ -6,6 +6,7 @@
     "start_url": "https://train-share.f5.si/",
     "name": "Train-Share",
     "short_name": "train-share",
+    "version": "v1.34",
     "icons": [
         {
             "src": "/icon-192x192.png",
