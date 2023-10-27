@@ -1,122 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="UTF-8">
-    <title>録音</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/4.5.7/wavesurfer.min.js"></script>
-    <style>
-        /* CSSスタイリング */
-        body {
-            text-align: center;
-        }
-        #waveform {
-            width: 100%;
-            height: 150px; /* 波形の高さを調整 */
-        }
-        #controls {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>カスタム録音設定</h1>
+  <style>
+      body {
+            font-family: Arial, sans-serif;
+                  text-align: center;
+                      }
 
-    <div id="controls">
-        <label for="sampleRate">サンプリングレート:</label>
-        <select id="sampleRate">
-            <option value="44100">44100 Hz</option>
-            <option value="48000">48000 Hz</option>
-            <option value="96000">96000 Hz</option>
-        </select>
-        <br>
-        <label for="bitDepth">ビット深度:</label>
-        <select id="bitDepth">
-            <option value="16">16 bit</option>
-            <option value="24">24 bit</option>
-            <option value="32">32 bit</option>
-        </select>
-        <br>
-        <button id="recordButton">録音開始</button>
-        <button id="stopButton" style="display: none;">停止</button>
-    </div>
+                          .controls {
+                                margin: 20px;
+                                    }
 
-    <!-- 波形を描画するためのSVG要素 -->
-    <svg id="waveform" xmlns="http://www.w3.org/2000/svg"></svg>
+                                        .btn {
+                                              padding: 10px 20px;
+                                                    font-size: 16px;
+                                                        }
 
-    <script>
-        var sampleRateInput = document.getElementById('sampleRate');
-        var bitDepthInput = document.getElementById('bitDepth');
+                                                            .audio-controls {
+                                                                  margin: 20px;
+                                                                      }
 
-        // サンプリングレートとビット深度を取得
-        var selectedSampleRate = sampleRateInput.value;
-        var selectedBitDepth = bitDepthInput.value;
+                                                                          .settings {
+                                                                                margin: 20px;
+                                                                                    }
 
-        // サンプリングレートとビット深度の選択が変更されたときのハンドラ
-        sampleRateInput.addEventListener('change', function () {
-            selectedSampleRate = sampleRateInput.value;
-        });
+                                                                                        select {
+                                                                                              padding: 5px;
+                                                                                                    font-size: 14px;
+                                                                                                        }
 
-        bitDepthInput.addEventListener('change', function () {
-            selectedBitDepth = bitDepthInput.value;
-        });
+                                                                                                            label {
+                                                                                                                  margin-right: 10px;
+                                                                                                                      }
+                                                                                                                        </style>
+                                                                                                                        </head>
+                                                                                                                        <body>
+                                                                                                                          <div class="controls">
+                                                                                                                              <button id="recordButton" class="btn">録音開始</button>
+                                                                                                                                  <button id="stopButton" class="btn" disabled>録音停止</button>
+                                                                                                                                    </div>
+                                                                                                                                      <div class="audio-controls">
+                                                                                                                                          <audio id="audioPlayer" controls></audio>
+                                                                                                                                            </div>
+                                                                                                                                              <div class="settings">
+                                                                                                                                                  <label for="sampleRateSelect">サンプリングレート:</label>
+                                                                                                                                                      <select id="sampleRateSelect">
+                                                                                                                                                            <option value="44100">44.1 kHz</option>
+                                                                                                                                                                  <option value="48000">48 kHz</option>
+                                                                                                                                                                        <option value="96000">96 kHz</option>
+                                                                                                                                                                            </select>
+                                                                                                                                                                                <label for="bitDepthSelect">ビット深度:</label>
+                                                                                                                                                                                    <select id="bitDepthSelect">
+                                                                                                                                                                                          <option value="16">16 bit</option>
+                                                                                                                                                                                                <option value="24">24 bit</option>
+                                                                                                                                                                                                      <option value="32">32 bit</option>
+                                                                                                                                                                                                          </select>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                              <script>
+                                                                                                                                                                                                                  const recordButton = document.getElementById('recordButton');
+                                                                                                                                                                                                                      const stopButton = document.getElementById('stopButton');
+                                                                                                                                                                                                                          const audioPlayer = document.getElementById('audioPlayer');
+                                                                                                                                                                                                                              const sampleRateSelect = document.getElementById('sampleRateSelect');
+                                                                                                                                                                                                                                  const bitDepthSelect = document.getElementById('bitDepthSelect');
 
-        // WaveSurfer.jsを初期化
-        var wavesurfer = WaveSurfer.create({
-            container: '#waveform',
-            waveColor: 'blue',        // 波形の色
-            progressColor: 'purple',  // 進行状況の色
-            cursorWidth: 1,           // カーソルの太さ
-            height: 150,              // 波形の高さ
-        });
+                                                                                                                                                                                                                                      let mediaRecorder;
+                                                                                                                                                                                                                                          let audioChunks = [];
+                                                                                                                                                                                                                                              let audioConstraints = {
+                                                                                                                                                                                                                                                    audio: {
+                                                                                                                                                                                                                                                            sampleRate: 44100,
+                                                                                                                                                                                                                                                                    channelCount: 2,
+                                                                                                                                                                                                                                                                            bitDepth: 16,
+                                                                                                                                                                                                                                                                                  },
+                                                                                                                                                                                                                                                                                      };
 
-        // 録音用変数
-        var mediaRecorder;
-        var recordedChunks = [];
+                                                                                                                                                                                                                                                                                          sampleRateSelect.addEventListener('change', updateAudioConstraints);
+                                                                                                                                                                                                                                                                                              bitDepthSelect.addEventListener('change', updateAudioConstraints);
 
-        // 録音ボタンのクリックハンドラ
-        document.getElementById('recordButton').addEventListener('click', function () {
-            navigator.mediaDevices.getUserMedia({ audio: { sampleRate: selectedSampleRate, bitDepth: selectedBitDepth } })
-                .then(function (stream) {
-                    // 録音を開始
-                    mediaRecorder = new MediaRecorder(stream);
-                    mediaRecorder.ondataavailable = function (e) {
-                        if (e.data.size > 0) {
-                            recordedChunks.push(e.data);
-                        }
-                    };
-                    mediaRecorder.start();
+                                                                                                                                                                                                                                                                                                  function updateAudioConstraints() {
+                                                                                                                                                                                                                                                                                                        audioConstraints.audio.sampleRate = parseInt(sampleRateSelect.value);
+                                                                                                                                                                                                                                                                                                              audioConstraints.audio.bitDepth = parseInt(bitDepthSelect.value);
+                                                                                                                                                                                                                                                                                                                  }
 
-                    // ボタンの表示を切り替え
-                    document.getElementById('recordButton').style.display = 'none';
-                    document.getElementById('stopButton').style.display = 'inline-block';
-                })
-                .catch(function (err) {
-                    console.error('マイクへのアクセスに失敗しました: ', err);
-                });
-        });
+                                                                                                                                                                                                                                                                                                                      recordButton.addEventListener('click', startRecording);
+                                                                                                                                                                                                                                                                                                                          stopButton.addEventListener('click', stopRecording);
 
-        // 停止ボタンのクリックハンドラ
-        document.getElementById('stopButton').addEventListener('click', function () {
-            mediaRecorder.stop();
-            mediaRecorder.onstop = function () {
-                var blob = new Blob(recordedChunks, { type: 'audio/wav' });
-                // タイムスタンプを取得
-                var timestamp = new Date().getTime();
-                // ファイル名を生成
-                var fileName = 'recording-' + timestamp + '.wav';
+                                                                                                                                                                                                                                                                                                                              async function startRecording() {
+                                                                                                                                                                                                                                                                                                                                    try {
+                                                                                                                                                                                                                                                                                                                                            const stream = await navigator.mediaDevices.getUserMedia(audioConstraints);
+                                                                                                                                                                                                                                                                                                                                                    mediaRecorder = new MediaRecorder(stream);
 
-                // WAVファイルをダウンロード用のリンクとして提供
-                var url = URL.createObjectURL(blob);
-                var downloadLink = document.createElement('a');
-                downloadLink.href = url;
-                downloadLink.download = fileName;
-                downloadLink.style.display = 'none';
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-            };
-        });
-    </script>
-</body>
-</html>
+                                                                                                                                                                                                                                                                                                                                                            mediaRecorder.ondataavailable = (e) => {
+                                                                                                                                                                                                                                                                                                                                                                      if (e.data.size > 0) {
+                                                                                                                                                                                                                                                                                                                                                                                  audioChunks.push(e.data);
+                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                    };
+
+                                                                                                                                                                                                                                                                                                                                                                                                            mediaRecorder.onstop = () => {
+                                                                                                                                                                                                                                                                                                                                                                                                                      const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                                                                                                                                                                                                                                                                                                                                                                                                                                audioChunks = [];
+                                                                                                                                                                                                                                                                                                                                                                                                                                          const audioUrl = URL.createObjectURL(audioBlob);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    audioPlayer.src = audioUrl;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            };
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                    mediaRecorder.start();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                            recordButton.disabled = true;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    stopButton.disabled = false;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          } catch (error) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  console.error('録音を開始できません: ', error);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                function stopRecording() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      mediaRecorder.stop();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            recordButton.disabled = false;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  stopButton.disabled = true;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </body>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
