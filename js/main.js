@@ -15,3 +15,6 @@ window.onload = setTimeout(() => {
 function home() {
     window.location.href = "https://kamekichi110.github.io/train-share/index.html"
 }
+document.querySelector('header').addEventListener('click', function() {
+    window.location.href = 'https://train-share.f5.si/';
+});  

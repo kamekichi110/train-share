@@ -87,7 +87,7 @@ let audioConstraints = {
 
                                                                                                                                                                                 canvasContext.clearRect(0, 0, WIDTH, HEIGHT);
                                                                                                                                                                                   canvasContext.strokeStyle = 'black';
-                                                                                                                                                                                    canvasContext.lineWidth = 2;
+                                                                                                                                                                                    canvasContext.lineWidth = 4;
 
                                                                                                                                                                                       canvasContext.beginPath();
 
