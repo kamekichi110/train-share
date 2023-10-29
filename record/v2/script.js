@@ -84,6 +84,7 @@ let audioConstraints = {
 
                                                                                                                                                                                         const a = document.createElement('a');
                                                                                                                                                                                           a.href = URL.createObjectURL(wavBlob);
+                                                                                                                                                                                          audioPlayer.src = a.href;
                                                                                                                                                                                             a.download = fileName;
                                                                                                                                                                                               a.style.display = 'none';
                                                                                                                                                                                                 document.body.appendChild(a);
