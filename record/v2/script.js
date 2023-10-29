@@ -71,7 +71,6 @@ let audioConstraints = {
                                                                                                                                           // ダウンロード用のリンクを作成
                                                                                                                                               const a = document.createElement('a');
                                                                                                                                                   a.href = URL.createObjectURL(wavBlob);
-                                                                                                                                                  audioPlayer.src = a.href;
                                                                                                                                                       a.download = fileName;
                                                                                                                                                           a.style.display = 'none';
                                                                                                                                                               document.body.appendChild(a);
@@ -88,7 +87,7 @@ let audioConstraints = {
 
                                                                                                                                                                                 canvasContext.clearRect(0, 0, WIDTH, HEIGHT);
                                                                                                                                                                                   canvasContext.strokeStyle = 'black';
-                                                                                                                                                                                    canvasContext.lineWidth = 4;
+                                                                                                                                                                                    canvasContext.lineWidth = 2;
 
                                                                                                                                                                                       canvasContext.beginPath();
 
@@ -98,7 +97,7 @@ let audioConstraints = {
                                                                                                                                                                                             audioChunks.forEach((chunk) => {
                                                                                                                                                                                                 const dataView = new DataView(chunk);
                                                                                                                                                                                                     for (let i = 0; i < dataView.byteLength; i += 2) {
-                                                                                                                                                                                                          const y = (dataView.getInt16(i, true) / 32768.0) * HEIGHT / 2;
+                                                                                                                                                                                                          const y = (dataView.getInt16(i, true) / 32768.0) * (HEIGHT / 2); // 正確な描画位置に修正
                                                                                                                                                                                                                 if (i === 0) {
                                                                                                                                                                                                                         canvasContext.moveTo(x, y);
                                                                                                                                                                                                                               } else {
