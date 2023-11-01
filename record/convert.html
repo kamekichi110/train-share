@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>カスタムWAVファイルフォーマット変更</title>
+</head>
+<body>
+  <input type="file" id="fileInput" accept=".wav">
+  <label for="sampleRateSelect">サンプリングレート:</label>
+  <select id="sampleRateSelect">
+    <option value="44100">44.1kHz</option>
+    <option value="48000">48kHz</option>
+    <option value="96000">96kHz</option>
+  </select>
+  <label for="bitDepthSelect">ビット深度:</label>
+  <select id="bitDepthSelect">
+    <option value="16">16-bit</option>
+    <option value="24">24-bit</option>
+    <option value="32">32-bit</option>
+  </select>
+  <button id="convertButton">変換</button>
+  <p id="message"></p>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wav-file/1.0.0/wav.min.js"></script>
+  <script>
+    document.getElementById('convertButton').addEventListener('click', convertToCustomFormat);
+
+    function convertToCustomFormat() {
+      const fileInput = document.getElementById('fileInput');
+      const sampleRateSelect = document.getElementById('sampleRateSelect');
+      const bitDepthSelect = document.getElementById('bitDepthSelect');
+      const messageElement = document.getElementById('message');
+
+      if (fileInput.files.length === 0) {
+        messageElement.textContent = 'ファイルが選択されていません。';
+        return;
+      }
+
+      const originalFileName = fileInput.files[0].name;
+      const newSampleRate = parseInt(sampleRateSelect.value, 10);
+      const newBitDepth = parseInt(bitDepthSelect.value, 10);
+      const newFileName = originalFileName.replace('.wav', `_custom_${newSampleRate}Hz_${newBitDepth}bit.wav`);
+      const reader = new wav.FileReadStream(fileInput.files[0]);
+      const outputFileName = newFileName;
+      const writer = new wav.FileWriteStream(outputFileName, {
+        format: {
+          audioFormat: 1,  // PCM
+          sampleRate: newSampleRate,
+          bitDepth: newBitDepth,
+          channels: 2,       // ステレオなら2、モノラルなら1
+        }
+      });
+
+      reader.pipe(writer);
+
+      writer.on('close', () => {
+        messageElement.textContent = `WAVファイルの変換が完了し、ダウンロードが始まります。`;
+        const downloadLink = document.createElement('a');
+        downloadLink.href = URL.createObjectURL(new Blob([writer.toBuffer()], { type: 'audio/wav' }));
+        downloadLink.download = newFileName;
+        downloadLink.click();
+      });
+    }
+  </script>
+</body>
+</html>
