@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <link rel="stylesheet" href="https://kamekichi110.github.io/train-share/css/index.css">
+    <script src="https://kamekichi110.github.io/train-share/js/main.js"></script>
+    <link rel="shortcut icon" href="https://train-share.f5.si/asset/icon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <img src="https://kamekichi110.github.io/train-share/asset/icon/main.png" class="icon">
+        <h2>
+          Train-Share
+          <br>
+          鉄道情報掲載サイト
+        </h2>
+      </header>
+      <article>
+        <br>
+        <section>
+          <h3>service woker更新</h3>
+          <p>
+            アプリデータを更新できます
+          </p>
+        </section>
+        <br>
+        <main>
+            <button id="updateServiceWorker">データ更新</button>
+        </main>
+        <br>
+        <div class="footer">
+          <p><p id="day"></p>
+            <br>管理者X(旧Twitter)<a href="https://twitter.com/sirokuma_8110F">link</a>
+            <br>各種ツール
+            <br><a href="https://kamekichi110.github.io/train-share/view/train-info.html">列車情報ビューアー</a>
+            <a href="https://kamekichi110.github.io/train-share/photo/index.html">思い出写真</a>
+          </p>
+        </div>
+      </article>
+      <script>
+        document.getElementById('updateServiceWorker').addEventListener('click', function() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistration().then(function(registration) {
+      if (registration) {
+        registration.update().then(function() {
+          // Service Workerの更新が成功した場合
+          alert('Service Workerが更新されました。');
+        }).catch(function(error) {
+          // Service Workerの更新に失敗した場合
+          console.error('Service Workerの更新に失敗しました:', error);
+        });
+      }
+    });
+  }
+});
+
+      </script>
+</body>
+</html>

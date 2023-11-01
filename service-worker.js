@@ -5,7 +5,8 @@ var urlsToCache = [
     './css/index.css',
     './asset/icon/main.png',
     './info.html',
-    './readme.html'
+    './readme.html',
+    '/'
     ];
 
     // インストール処理
