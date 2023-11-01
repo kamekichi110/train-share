@@ -24,7 +24,15 @@
     var URL6 = "&key=";
     var key = "LE_DDLV9n4GxgPku";
     var plane = document.getElementById("plane").value;
-    var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + plane + URL3 + shinkansen + URL4 + exp + URL5 +URL6 + key;
+    var date = document.getElementById("date").value;
+    var time = document.getElementById("time").value;
+    var type0 = document.getElementById("type0").value;
+    var dateSet = date.replace("-", "");
+    var DateValue = "&date=" + dateSet.replace("-", "");
+    var TimeValue = "&time=" + time.replace(":", "");
+    var TypeValue = "&searchType=" + type0;
+    var searchType = DateValue + TimeValue + TypeValue;
+    var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + plane + URL3 + shinkansen + URL4 + exp + searchType + URL5 +URL6 + key;
     console.log(urlLink);
     alert('検索完了しました。表示されるまでお待ちください。');
     setTimeout(() => {
@@ -130,6 +138,16 @@
         <select name="plane_" id="plane">
             <option value="&plane=false">利用しない</option>
             <option value="&plane=true">利用する</option>
+        </select>
+    </p>
+    <hr>
+    <h5>日時指定(<span style="color: red;">※必須</span>)</h5>
+    <p>日付:<input type="date" id="date"></p>
+    <p>時間:<input type="time" id="time"></p>
+    <p>検索種別:
+        <select id="type0">
+            <option value="departure">出発</option>
+            <option value="arrival">到着</option>
         </select>
     </p>
     <br>
