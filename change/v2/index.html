@@ -25,10 +25,11 @@ function search_list() {
     var plane = document.getElementById("plane").value;
     var date = document.getElementById("date").value;
     var time = document.getElementById("time").value;
+    var slice0 = time.replace(":", "");
     var type0 = document.getElementById("type0").value;
     var dateSet = date.replace("-", "");
     var DateValue = "&date=" + dateSet.replace("-", "");
-    var TimeValue = "&time=" + time.replace(":", "");
+    var TimeValue = "&time=" + slice0.slice(0, 4);
     var TypeValue = "&searchType=" + type0;
     var searchType = DateValue + TimeValue.slice(0, 4) + TypeValue;
     var urlLink = URL0 + from + URL1 + for0 + via + plane + URL3 + shinkansen + URL4 + exp + searchType + URL5 +URL6 + key;
