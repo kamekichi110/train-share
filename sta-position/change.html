@@ -31,7 +31,7 @@
     var DateValue = "&date=" + dateSet.replace("-", "");
     var TimeValue = "&time=" + time.replace(":", "");
     var TypeValue = "&searchType=" + type0;
-    var searchType = DateValue + TimeValue + TypeValue;
+    var searchType = DateValue + TimeValue.slice(0, 4) + TypeValue;
     var urlLink = URL0 + from + URL1 + for0 + via + URL2 + type + plane + URL3 + shinkansen + URL4 + exp + searchType + URL5 +URL6 + key;
     console.log(urlLink);
     alert('検索完了しました。表示されるまでお待ちください。');
