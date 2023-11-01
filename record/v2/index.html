@@ -2,85 +2,76 @@
 <html>
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>レコーダー</title>
-        <style>
-            body {
-                  font-family: Arial, sans-serif;
-                        text-align: center;
-                              margin: 0;
-                                    padding: 0;
-                                        }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レコーダー</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
 
-                                            .controls {
-                                                  margin: 20px;
-                                                      }
+    .controls {
+      margin: 20px;
+    }
 
-                                                          .btn {
-                                                                padding: 10px 20px;
-                                                                      font-size: 16px;
-                                                                          }
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
 
-                                                                              .audio-controls {
-                                                                                    margin: 20px;
-                                                                                        }
+    .audio-controls {
+      margin: 20px;
+    }
 
-                                                                                            .settings {
-                                                                                                  margin: 20px;
-                                                                                                      }
+    .settings {
+      margin: 20px;
+    }
 
-                                                                                                          select {
-                                                                                                                padding: 5px;
-                                                                                                                      font-size: 14px;
-                                                                                                                          }
+    select {
+      padding: 5px;
+      font-size: 14px;
+    }
 
-                                                                                                                              label {
-                                                                                                                                    margin-right: 10px;
-                                                                                                                                        }
+    label {
+      margin-right: 10px;
+    }
 
-                                                                                                                                            canvas {
-                                                                                                                                                  display: block;
-                                                                                                                                                        margin: 20px auto;
-                                                                                                                                                              border: 1px solid #000;
-                                                                                                                                                                    width: 100%;
-                                                                                                                                                                          max-width: 800px;
-                                                                                                                                                                              }
-                                                                                                                                                                                </style>
-                                                                                                                                                                                </head>
-                                                                                                                                                                                <body>
-                                                                                                                                                                                  <div class="controls">
-                                                                                                                                                                                      <button id="recordButton" class="btn">録音開始</button>
-                                                                                                                                                                                          <button id="stopButton" class="btn" disabled>録音停止</button>
-                                                                                                                                                                                            </div>
-                                                                                                                                                                                              <div class="audio-controls">
-                                                                                                                                                                                                  <audio id="audioPlayer" controls></audio>
-                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                      <div class="settings">
-                                                                                                                                                                                                          <label for="sampleRateSelect">サンプリングレート:</label>
-                                                                                                                                                                                                              <select id="sampleRateSelect">
-                                                                                                                                                                                                                    <option value="44100" selected>44.1 kHz</option>
-                                                                                                                                                                                                                          <option value="48000">48 kHz</option>
-                                                                                                                                                                                                                                <option value="96000">96 kHz</option>
-                                                                                                                                                                                                                                      <option value="192000">192 kHz</option>
-                                                                                                                                                                                                                                            <option value="384000">384 kHz</option>
-                                                                                                                                                                                                                                                </select>
-                                                                                                                                                                                                                                                <br>
-                                                                                                                                                                                                                                                    <label for="bitDepthSelect">ビット深度:</label>
-                                                                                                                                                                                                                                                        <select id="bitDepthSelect">
-                                                                                                                                                                                                                                                              <option value="16" selected>16 bit</option>
-                                                                                                                                                                                                                                                                    <option value="24">24 bit</option>
-                                                                                                                                                                                                                                                                          <option value="32">32 bit</option>
-                                                                                                                                                                                                                                                                              </select>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                <br>
-                                                                                                                                                                                                                                                                                <div>
-                                                                                                                                                                                                                                                                                  <h4>！注意！</h4>
-                                                                                                                                                                                                                                                                                  <p>このレコーダーで録音したものを<br>ダウンロードする際、<br>正しくwavファイルの<br>形式になっていないことが<br>あります。<br>その為、ダウンロードしても<br>流れないまたは時間の表記が<br>おかしい場合は変換ツールを<br>使用すると改善されると思います</p>
-                                                                                                                                                                                                                                                                                  <p></p>
-                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                  <canvas id="waveform"></canvas>
-                                                                                                                                                                                                                                                                                  <br>
-                                                                                                                                                                                                                                                                                  <br>
-                                                                                                                                                                                                                                                                                <br>                                                                                                                                                                                                                                                                                    <script src="script.js"></script>
-                                                                                                                                                                                                                                                                                    </body>
-                                                                                                                                                                                                                                                                                    </html>
+    canvas {
+      display: block;
+      margin: 20px auto;
+      border: 1px solid #000;
+      width: 100%; /* レスポンシブ対応 */
+      max-width: 800px; /* 最大幅設定（適宜調整） */
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button id="recordButton" class="btn">録音開始</button>
+    <button id="stopButton" class="btn" disabled>録音停止</button>
+  </div>
+  <div class="audio-controls">
+    <audio id="audioPlayer" controls></audio>
+  </div>
+  <div class="settings">
+    <label for="sampleRateSelect">サンプリングレート:</label>
+    <select id="sampleRateSelect">
+      <option value="44100">44.1 kHz</option>
+      <option value="48000">48 kHz</option>
+      <option value="96000">96 kHz</option>
+      <option value="192000">192 kHz</option>
+      <option value="384000">384 kHz</option>
+    </select>
+    <label for="bitDepthSelect">ビット深度:</label>
+    <select id="bitDepthSelect">
+      <option value="16">16 bit</option>
+      <option value="24">24 bit</option>
+      <option value="32">32 bit</option>
+    </select>
+  </div>
+  <canvas id="waveform"></canvas>
+  <script src="script.js"></script>
+</body>
+</html>
