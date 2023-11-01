@@ -31,7 +31,7 @@ function search_list() {
     var DateValue = "&date=" + dateSet.replace("-", "");
     var TimeValue = "&time=" + slice0.slice(0, 4);
     var TypeValue = "&searchType=" + type0;
-    var searchType = DateValue + TimeValue.slice(0, 4) + TypeValue;
+    var searchType = DateValue + TimeValue + TypeValue;
     var urlLink = URL0 + from + URL1 + for0 + via + plane + URL3 + shinkansen + URL4 + exp + searchType + URL5 +URL6 + key;
     var textURL = document.getElementById("url");
     console.log(urlLink);
