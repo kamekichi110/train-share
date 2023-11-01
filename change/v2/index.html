@@ -168,5 +168,21 @@ function search_list() {
           </p>
         </div>
       </article>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+  setTimeout(function () {
+    const dateInput = document.getElementById('date');
+    const timeInput = document.getElementById('time');
+
+    const currentDate = new Date();
+    const currentDateString = currentDate.toISOString().split('T')[0];
+    const currentTimeString = currentDate.toTimeString().split(' ')[0];
+
+    dateInput.value = currentDateString;
+    timeInput.value = currentTimeString;
+  }, 200);
+});
+
+      </script>
 </body>
 </html>
