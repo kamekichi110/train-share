@@ -20,19 +20,18 @@
             var output = document.getElementById("timer");
             var timer = 5;
             setTimeout(() => {
-                timer =- 1;
+                timer = timer - 1;
                 output.innerHTML = timer;
                 setTimeout(() => {
-                    timer =- 1;
+                    timer = timer - 1;
                     output.innerHTML = timer;
                     setTimeout(() => {
-                        timer =- 1;
+                        timer = timer - 1;
                         output.innerHTML = timer;
                         setTimeout(() => {
-                            timer =- 1;
+                            timer = timer - 1;
                             output.innerHTML = timer;
                             setTimeout(() => {
-                                
                                 window.location.href = "./app"
                             }, 1000);
                         }, 1000);
