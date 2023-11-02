@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>スジ情報app</h1>
+    <p>スジ情報appを起動できます。</p>
+    <p>非公開のため、パスワードが必要です。</p>
+    <p>862MB中、<span id="value"></span>MB読み込み完了</p>
+    <p><span id="timer" style="color: red;">5</span>秒後に転送します…</p>
+    <script>
+        window.onload = setTimeout(() => {
+            var data = 862;
+            load(data);
+        }, 200);
+        function timer() {
+            var output = document.getElementById("timer");
+            var timer = 5;
+            setTimeout(() => {
+                timer =- 1;
+                output.innerHTML = timer;
+                setTimeout(() => {
+                    timer =- 1;
+                    output.innerHTML = timer;
+                    setTimeout(() => {
+                        timer =- 1;
+                        output.innerHTML = timer;
+                        setTimeout(() => {
+                            timer =- 1;
+                            output.innerHTML = timer;
+                            setTimeout(() => {
+                                
+                                window.location.href = "./app"
+                            }, 1000);
+                        }, 1000);
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        }
+    </script>
+    <script>
+        function load(size) {
+            var outCTX = document.getElementById("value");
+            var DataCount = 0;
+            setInterval(() => {
+                if (DataCount > size) {
+                    outCTX.innerHTML = size;
+                    timer();
+                } else {
+                    DataCount =+ 1;
+                    outCTX.innerHTML = DataCount;
+                }
+            }, 50);
+        }
+    </script>
+</body>
+</html>
