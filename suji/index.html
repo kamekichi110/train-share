@@ -10,7 +10,7 @@
     <p>スジ情報appを起動できます。</p>
     <p>非公開のため、パスワードが必要です。</p>
     <p>862MB中、<span id="value">0</span>MB読み込み完了</p>
-    <p><span id="timer" style="color: red;">5</span>秒後に転送します…</p>
+    <p id="bar"><span id="timer" style="color: red;">5</span>秒後に転送します…</p>
     <script>
         window.onload = setTimeout(() => {
             load();
@@ -41,6 +41,7 @@
     </script>
     <script>
         function load() {
+            document.getElementById("bar").style.display = "none";
             var size = 862;
             var outCTX = document.getElementById("value");
                 if (Number(outCTX.textContent) > size) {
@@ -68,6 +69,7 @@
                                                     outCTX.innerHTML = 785;
                                                     setTimeout(() => {
                                                         outCTX.innerHTML = 862;
+                                                        document.getElementById("bar").style.display = "block";
                                                         timer();
                                                     }, 150);
                                                 }, 250);
