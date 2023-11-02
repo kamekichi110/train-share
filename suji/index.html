@@ -15,12 +15,15 @@
     <br>
     <hr>
     <br>
+    <div id="dataArea">
     <p id="data">862MB中、<span id="value">0</span>MB読み込み完了</p>
     <p id="bar"><span id="timer" style="color: red;">5</span>秒後に転送します…</p>
+    </div>
     <script>
         window.onload = setTimeout(() => {
             console.error("data is not found!");
             console.error("pw is not found!");
+            document.getElementById("dataArea").style.display = "none";
         }, 200);
         function timer() {
             var output = document.getElementById("timer");
@@ -48,6 +51,7 @@
     </script>
     <script>
         function load() {
+            document.getElementById("dataArea").style.display = "block";
             document.getElementById("bar").style.display = "none";
             var size = 862;
             var outCTX = document.getElementById("value");

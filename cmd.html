@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cmd</title>
+    <link rel="stylesheet" href="https://kamekichi110.github.io/train-share/css/index.css">
+    <script src="https://kamekichi110.github.io/train-share/js/main.js"></script>
+    <link rel="shortcut icon" href="./asset/icon/cmd.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <img src="https://kamekichi110.github.io/train-share/asset/icon/main.png" class="icon">
+        <h2>
+          Train-Share
+          <br>
+          鉄道情報掲載サイト
+        </h2>
+      </header>
+      <article>
+        <br>
+        <section>
+          <img src="./asset/icon/cmd.png" alt="cmd icon" style="width: 100%;">
+          <p>
+            コマンドページ
+          </p>
+        </section>
+        <br>
+        <main>
+            <p>cmd</p>
+            <p>
+                <select name="part" id="select">
+                    <option value="0">locate</option>
+                    <option value="1">log</option>
+                </select>
+                <input type="text" name="txt" id="cmd">
+                <button onclick="cmd()">実行</button>
+            </p>
+        </main>
+        <div class="footer">
+          <p><p id="day"></p>
+            <br>管理者X(旧Twitter)<a href="https://twitter.com/sirokuma_8110F">link</a>
+            <br>各種ツール
+            <br><a href="https://kamekichi110.github.io/train-share/view/train-info.html">列車情報ビューアー</a>
+            <a href="https://kamekichi110.github.io/train-share/photo/index.html">思い出写真</a>
+          </p>
+        </div>
+      </article>
+      <script>
+        function cmd() {
+            var select = document.getElementById("select").value;
+            var cmd = document.getElementById("cmd").value;
+            if (select == 0) {
+                console.log("locate change:" + cmd + ":moved");
+                window.location.href = cmd;
+            } else if (select == 1) {
+                console.log("user-setting log:" + cmd + ":set log data.")
+                console.log(cmd);
+                console.debug(cmd);
+                console.error(cmd);
+            }
+        }
+      </script>
+</body>
+</html>
