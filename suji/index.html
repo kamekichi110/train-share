@@ -14,7 +14,6 @@
     <script>
         window.onload = setTimeout(() => {
             load();
-            timer();
         }, 200);
         function timer() {
             var output = document.getElementById("timer");
@@ -69,6 +68,7 @@
                                                     outCTX.innerHTML = 785;
                                                     setTimeout(() => {
                                                         outCTX.innerHTML = 862;
+                                                        timer();
                                                     }, 150);
                                                 }, 250);
                                             }, 200);
