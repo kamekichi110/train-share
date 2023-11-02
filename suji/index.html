@@ -13,8 +13,7 @@
     <p><span id="timer" style="color: red;">5</span>秒後に転送します…</p>
     <script>
         window.onload = setTimeout(() => {
-            var data = 862;
-            load(data);
+            load();
         }, 200);
         function timer() {
             var output = document.getElementById("timer");
@@ -42,19 +41,22 @@
         }
     </script>
     <script>
-        function load(size) {
+        function load() {
+            var size = 862;
             var outCTX = document.getElementById("value");
-            var DataCount = 0;
-            setInterval(() => {
+            var Count = document.getElementById("num").value;
+            var DataCount = Number(Count);
                 if (DataCount > size) {
                     outCTX.innerHTML = size;
                     timer();
                 } else {
                     DataCount =+ 1;
-                    outCTX.innerHTML = DataCount;
+                    Count = DataCount;
+                    outCTX.innerHTML = Count;
                 }
-            }, 50);
+                setTimeout(load, 50);
         }
     </script>
+    <input type="text" name="count" id="num" style="display: none;" value=0>
 </body>
 </html>
