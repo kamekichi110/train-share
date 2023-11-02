@@ -9,11 +9,18 @@
     <h1>スジ情報app</h1>
     <p>スジ情報appを起動できます。</p>
     <p>非公開のため、パスワードが必要です。</p>
-    <p>862MB中、<span id="value">0</span>MB読み込み完了</p>
+    <br>
+    <button type="button" onclick="load()" style="font-size: 32px;">起動</button>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <p id="data">862MB中、<span id="value">0</span>MB読み込み完了</p>
     <p id="bar"><span id="timer" style="color: red;">5</span>秒後に転送します…</p>
     <script>
         window.onload = setTimeout(() => {
-            load();
+            console.error("data is not found!");
+            console.error("pw is not found!");
         }, 200);
         function timer() {
             var output = document.getElementById("timer");
