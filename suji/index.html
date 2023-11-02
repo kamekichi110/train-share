@@ -44,15 +44,13 @@
         function load() {
             var size = 862;
             var outCTX = document.getElementById("value");
-            var Count = document.getElementById("num").value;
-            var DataCount = Number(Count);
-                if (DataCount > size) {
+                if (Number(outCTX.textContent) > size) {
                     outCTX.innerHTML = size;
                     timer();
                 } else {
-                    DataCount =+ 1;
-                    Count = DataCount;
-                    outCTX.innerHTML = Count;
+                    var DataValue = Number(outCTX.textContent);
+                    DataValue =+ 1;
+                    outCTX.innerHTML = DataValue;
                 }
                 setTimeout(load(), 50);
         }
