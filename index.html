@@ -13,16 +13,38 @@
     <link rel="manifest" href="./manifest.webmanifest">
     <script src="./app.js"></script>
     <script src="./sw.js"></script>
+    <style>
+      header {
+  width: 100%;
+  height: 64px;
+  background: darkgreen;
+  display: flex;
+  position: sticky;
+  top: 0px;
+}
+img.icon {
+  height: 64px;
+}
+.image-btn {
+  opacity: 0%;
+  border: none;
+}
+div.side {
+  width: 100%;
+  background: green;
+  min-height: 128px;
+  position: sticky;
+  top: 64px;
+}
+    </style>
 </head>
 <body>
-    <header>
-        <img src="./asset/icon/main.png" class="icon">
-        <h2>
-          Train-Share
-          <br>
-          鉄道情報掲載サイト
-        </h2>
-      </header>
+  <header>
+    <img class="icon" src="https://train-share.f5.si/asset/icon/main.png">
+    <h1 style="margin-top: 8px; color: white; margin-left: 12px;">train-share</h1>
+      <img src="https://train-share.f5.si/asset/btn/menu-open.png" style="height: 64px; margin:0 0 0 auto;" onclick="menu_open()" id="menu-btn">
+  </header>
+  <div class="side" id="side" style="display: none;"></div>
       <article>
         <br>
         <section>
@@ -116,5 +138,23 @@
           </p>
         </div>
       </article>
+      <script>
+        var menu_num = 0;
+function menu_open() {
+  var btn = document.getElementById("menu-btn");
+  var menu = document.getElementById("side");
+  var img = "https://train-share.f5.si/asset/btn/menu-close.png";
+  var img1 = "https://train-share.f5.si/asset/btn/menu-open.png";
+  if (menu_num == 0) {
+  menu_num = 1;
+  btn.src = img1;
+  menu.style.display = "block";
+  } else {
+    menu_num = 0;
+  btn.src = img;
+  menu.style.display = "none";
+  }
+}
+      </script>
 </body>
 </html>
