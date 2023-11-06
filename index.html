@@ -36,6 +36,13 @@ div.side {
   position: sticky;
   top: 64px;
 }
+button.btn {
+    background-image: url(https://train-share.f5.si/asset/btn/btn_bg.png);
+      background-size: 144px 48px;
+        width: 144px;
+          aspect-ratio: 3/1;
+            border: none;
+            }
     </style>
 </head>
 <body>
@@ -44,7 +51,9 @@ div.side {
     <h1 style="margin-top: 8px; color: white; margin-left: 12px;">train-share</h1>
       <img src="https://train-share.f5.si/asset/btn/menu-open.png" style="height: 64px; margin:0 0 0 auto;" onclick="menu_open()" id="menu-btn">
   </header>
-  <div class="side" id="side" style="display: none;"></div>
+  <div class="side" id="side" style="display: none;">
+    <button type="button" class="btn" onclick="window.location.href='./sta-position/change.html'">乗り換え検索</button>
+  </div>
       <article>
         <br>
         <section>
