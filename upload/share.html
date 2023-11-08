@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写真表示ページ</title>
+
+    <style>
+        /* 共通のスタイル */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #photoContainer {
+            display: flex;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="photoContainer"></div>
+
+    <script>
+        // URLを構築する
+        var share; // または必要な値に置き換えてください
+        const baseUrl = "https://trainshare1.starfree.jp/upload/";
+        const url = baseUrl + share;
+
+        let currentIndex = 0;
+        const photoContainer = document.getElementById("photoContainer");
+        const images = [];
+
+        // 写真を読み込む関数
+        function loadPhotos() {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, "text/html");
+                    const imgElements = doc.querySelectorAll("img");
+
+                    imgElements.forEach(img => {
+                        images.push(img.src);
+                        const imgElement = new Image();
+                        imgElement.src = img.src;
+                        photoContainer.appendChild(imgElement);
+                    });
+                    showPhoto(currentIndex);
+                })
+                .catch(error => {
+                    console.error("写真を取得できませんでした: " + error);
+                });
+        }
+
+        // 写真を表示する関数
+        function showPhoto(index) {
+            currentIndex = index;
+            photoContainer.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        // タッチイベントの処理
+        let touchstartX = 0;
+        let touchendX = 0;
+
+        photoContainer.addEventListener("touchstart", (e) => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        photoContainer.addEventListener("touchend", (e) => {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchendX < touchstartX) {
+                // 左にスワイプ
+                if (currentIndex < images.length - 1) {
+                    showPhoto(currentIndex + 1);
+                }
+            }
+
+            if (touchendX > touchstartX) {
+                // 右にスワイプ
+                if (currentIndex > 0) {
+                    showPhoto(currentIndex - 1);
+                }
+            }
+        }
+
+        // ページ読み込み時に写真を読み込む
+        window.addEventListener("load", loadPhotos);
+    </script>
+</body>
+</html>
