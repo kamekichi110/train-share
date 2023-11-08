@@ -16,7 +16,7 @@
         var currentUrl = window.location.href;
 
         // URLからshareの値を抽出
-        var shareParam = new URLSearchParams(currentUrl).get("share");
+        var shareParam = currentUrl.replace("https://train-share.f5.si/upload/view.html?share=", "");
 
         if (shareParam) {
             // URLを生成
