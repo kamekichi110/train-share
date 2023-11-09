@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja" >
+<head>
+  <meta charset="UTF-8">
+  <title>typing noda</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <link rel="shortcut icon" href="../asset/icon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html>
+  <head>
+    <title>東武野田線ひらがなタイピングゲーム</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: lightgrey;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .line {
+        width: 100%;
+        height: 32px;
+      }
+      .color0 {
+        background: blue;
+      }
+      .color1 {
+        background: skyblue;
+      }
+      #startScreen, #scoreScreen {
+        display: block;
+      }
+
+      #gameScreen, #pauseMenu {
+        display: none;
+      }
+
+      #startButton, #returnToStartButton {
+        font-size: 32px;
+        padding: 10px 20px;
+        background-color: #0078d7;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        border: darkblue solid 2px;
+        border-radius: 12px;
+      }
+
+      #startButton:hover, #returnToStartButton:hover {
+        background-color: #0056b3;
+      }
+
+      #stationInput {
+        font-size: 32px;
+        padding: 5px;
+      }
+
+      #stationName, #message, #score, #timer {
+        font-size: 32px;
+        margin: 10px;
+      }
+
+      #pauseButton, #resumeButton, #restartButton {
+        font-size: 32px;
+        padding: 10px 20px;
+        background-color: #0078d7;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+      }
+
+      #pauseButton:hover, #resumeButton:hover, #restartButton:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="startScreen">
+      <div class="line color1"></div>
+      <div class="line color0"></div>
+      <h1>東武東上線<br>(池袋-志木)<br>ひらがな駅名<br>タイピングゲーム</h1>
+      <p>1分間で何駅正解できるか挑戦しよう！</p>
+      <button id="startButton">ゲームを始める</button>
+    </div>
+
+    <div id="gameScreen">
+      <p id="stationName">駅名:</p>
+      <input id="stationInput" type="text" autofocus autocomplete="off" autocorrect="off">
+      <p id="message"></p>
+      <p id="score">スコア: 0</p>
+      <p id="timer">残り時間: 60</p>
+      <button id="pauseButton">一時停止</button>
+    </div>
+
+    <div id="pauseMenu">
+      <h2>ポーズメニュー</h2>
+      <button id="resumeButton">再開</button>
+      <button id="restartButton">再スタート</button>
+      <button id="returnToStartButton">スタートメニューに戻る</button>
+    </div>
+
+    <div id="scoreScreen" style="display: none;">
+      <h1>ゲーム終了！</h1>
+      <p>スコア: <span id="finalScore">0</span></p>
+      <button id="playAgainButton">もう一度プレイ</button>
+    </div>
+
+    <script>
+      const startScreen = document.getElementById("startScreen");
+      const gameScreen = document.getElementById("gameScreen");
+      const pauseMenu = document.getElementById("pauseMenu");
+      const scoreScreen = document.getElementById("scoreScreen");
+      const startButton = document.getElementById("startButton");
+      const stationNameDisplay = document.getElementById("stationName");
+      const stationInput = document.getElementById("stationInput");
+      const message = document.getElementById("message");
+      const scoreDisplay = document.getElementById("score");
+      const timerDisplay = document.getElementById("timer");
+      const pauseButton = document.getElementById("pauseButton");
+      const resumeButton = document.getElementById("resumeButton");
+      const restartButton = document.getElementById("restartButton");
+      const returnToStartButton = document.getElementById("returnToStartButton");
+      const scoreScreenFinalScore = document.getElementById("finalScore");
+      const playAgainButton = document.getElementById("playAgainButton");
+
+      let stationNames = [];
+      let currentStation = "";
+      let score = 0;
+      let timeLeft = 180; // タイマーの初期値 (60秒)
+      let gamePaused = false;
+
+      function loadStationNames() {
+        fetch('./json/tojo.json')
+          .then(response => response.json())
+          .then(data => {
+            stationNames = data.stations;
+            initializeGame();
+          })
+          .catch(error => console.error(error));
+      }
+
+      function initializeGame() {
+        currentStation = stationNames[Math.floor(Math.random() * stationNames.length)];
+        stationNameDisplay.textContent = `駅名: ${currentStation}`;
+        message.innerHTML = "ひらがなで<br>入力してください";
+        stationInput.value = "";
+      }
+
+      function updateTimer() {
+        timerDisplay.textContent = `残り時間: ${timeLeft}`;
+        if (timeLeft === 0) {
+          // ゲーム終了
+          stationInput.disabled = true;
+          message.textContent = `ゲーム終了！スコア: ${score}`;
+          pauseButton.disabled = true;
+          scoreScreenFinalScore.textContent = score;
+          scoreScreen.style.display = "block";
+        } else {
+          if (!gamePaused) {
+            timeLeft--;
+          }
+          setTimeout(updateTimer, 1000); // 1秒ごとにタイマーを更新
+        }
+      }
+
+      startButton.addEventListener("click", () => {
+        // ゲーム画面を表示してゲームを開始
+        startScreen.style.display = "none";
+        gameScreen.style.display = "block";
+        stationInput.focus();
+        pauseButton.disabled = false; // ポーズボタンを有効化
+        // ゲーム開始時にタイマーを開始
+        updateTimer();
+        // ゲーム開始
+        loadStationNames();
+      });
+
+      stationInput.addEventListener("keyup", (event) => {
+        if (event.key === "Enter") {
+          // Enterキーが押されたときに正解か判断する処理を追加
+          const userTypedStation = stationInput.value.trim();
+          if (userTypedStation === currentStation) {
+            score += 100; // 正解ごとに100ポイント追加
+            scoreDisplay.textContent = `スコア: ${score}`;
+            stationInput.value = ""; // テキストボックスをクリア
+            timeLeft += 2; // 正解時に2秒追加
+            initializeGame(); // 次の問題に進む
+          }
+        }
+      });
+
+      pauseButton.addEventListener("click", () => {
+        gamePaused = true;
+        pauseMenu.style.display = "block";
+      });
+
+      resumeButton.addEventListener("click", () => {
+        gamePaused = false;
+        pauseMenu.style.display = "none";
+      });
+
+      restartButton.addEventListener("click", () => {
+        gamePaused = false;
+        pauseMenu.style.display = "none";
+        score = 0;
+        timeLeft = 60;
+        scoreDisplay.textContent = `スコア: ${score}`;
+        stationInput.disabled = false;
+        loadStationNames();
+      });
+
+      returnToStartButton.addEventListener("click", () => {
+        gamePaused = false;
+        pauseMenu.style.display = "none";
+        startScreen.style.display = "block";
+        gameScreen.style.display = "none";
+        score = 0;
+        timeLeft = 60;
+        scoreDisplay.textContent = `スコア: ${score}`;
+      });
+
+      playAgainButton.addEventListener("click", () => {
+        startScreen.style.display = "block";
+        scoreScreen.style.display = "none";
+        score = 0;
+        timeLeft = 60;
+        scoreDisplay.textContent = `スコア: ${score}`;
+      });
+    </script>
+  </body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
