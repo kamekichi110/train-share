@@ -17,10 +17,10 @@
 
         // URLからshareの値を抽出
         var shareParam = currentUrl.replace("https://train-share.f5.si/upload/view.html?share=", "");
-        // XMLHttpRequestを使用して画像を取得する関数
+        // XMLHttpRequestを使用してJSONを取得する関数
 function getImages() {
   var xhr = new XMLHttpRequest();
-  var folderUrl = "http://trainshare1starfree.jp/upload/" + shareParam + "/";
+  var phpUrl = "http://trainshare1.starfree.jp/upload/" + shareParam + "/index.php";
 
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
@@ -30,7 +30,7 @@ function getImages() {
     }
   };
 
-  xhr.open("GET", folderUrl, true);
+  xhr.open("GET", phpUrl, true);
   xhr.send();
 }
 
@@ -46,7 +46,7 @@ function displayImages(images) {
   });
 }
 
-// ページが読み込まれたら画像を取得する
+// ページが読み込まれたらJSONを取得し、画像を表示する
 window.onload = getImages;
     </script>
 </body>
