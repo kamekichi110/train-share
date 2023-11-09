@@ -9,6 +9,10 @@
     </style>
 </head>
 <body>
+  <div>
+    <p id="url"></p>
+    <p id="folder"></p>
+  </div>
     <div id="photoGallery"></div>
 
     <script>
@@ -21,7 +25,8 @@
 function getImages() {
   var xhr = new XMLHttpRequest();
   var phpUrl = "http://trainshare1.starfree.jp/upload/" + shareParam + "/index.php";
-
+document.getElementById("url") = shareParam;
+document.getElementById("folder") = phpUrl;
   xhr.onreadystatechange = function () {
     if (xhr.readyState == 4 && xhr.status == 200) {
       // レスポンスをJSONとして解析
