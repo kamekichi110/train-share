@@ -17,30 +17,37 @@
 
         // URLからshareの値を抽出
         var shareParam = currentUrl.replace("https://train-share.f5.si/upload/view.html?share=", "");
+        // XMLHttpRequestを使用して画像を取得する関数
+function getImages() {
+  var xhr = new XMLHttpRequest();
+  var folderUrl = "http://trainshare1starfree.jp/upload/" + shareParam + "/";
 
-        if (shareParam) {
-            // URLを生成
-            var baseUrl = "http://trainshare1.starfree.jp/upload/" + shareParam;
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      // レスポンスをJSONとして解析
+      var images = JSON.parse(xhr.responseText);
+      displayImages(images);
+    }
+  };
 
-            // APIから写真を取得して表示
-            fetch(baseUrl)
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(photoUrl => {
-                        var img = document.createElement("img");
-                        img.src = photoUrl;
-                        img.className = "photo";
-                        document.getElementById("photoGallery").appendChild(img);
-                        var hr = document.createElement("hr");
-                        document.getElementById("photoGallery").appendChild(hr);
-                    });
-                })
-                .catch(error => {
-                    window.alert("写真を取得できませんでした: " + error);
-                });
-        } else {
-            window.alert("shareの値がURLから取得できませんでした。");
-        }
+  xhr.open("GET", folderUrl, true);
+  xhr.send();
+}
+
+// 画像を表示する関数
+function displayImages(images) {
+  var gallery = document.getElementById("photoGallery");
+
+  // 各画像に対してimg要素を作成して追加
+  images.forEach(function (image) {
+    var imgElement = document.createElement("img");
+    imgElement.src = image;
+    gallery.appendChild(imgElement);
+  });
+}
+
+// ページが読み込まれたら画像を取得する
+window.onload = getImages;
     </script>
 </body>
 </html>
