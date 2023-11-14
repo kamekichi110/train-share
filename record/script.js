@@ -8,7 +8,7 @@ const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     let mediaRecorder;
     let audioChunks = [];
 
-    navigator.mediaDevices.getUserMedia({ audio: true })
+    navigator.mediaDevices.getUserMedia({ audio: true, sampleRate: 96000 })
       .then((stream) => {
         mediaRecorder = new MediaRecorder(stream);
 
