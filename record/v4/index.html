@@ -1,34 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>高音質音声レコーダー</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-  <div id="timer" class="timer">経過時間: 00:00</div>
-  
-  <label for="sampleRateSelect">サンプリングレート:</label>
-  <select id="sampleRateSelect" class="selectOption">
-    <option value="44100">44100</option>
-    <option value="48000">48000</option>
-    <option value="96000">96000</option>
-    <!-- 他の選択肢を追加 -->
-  </select>
+  <div class="container">
+    <h1>高音質音声レコーダー</h1>
+    <label for="sampleRateSelect">サンプリングレート：</label>
+    <div class="custom-select">
+      <span class="placeholder">サンプリングレートを選択</span>
+      <ul class="options">
+        <li data-value="44100">44100</li>
+        <li data-value="48000">48000</li>
+        <li data-value="96000">96000</li>
+        <!-- 他のオプションを追加 -->
+      </ul>
+      <select id="sampleRateSelect" name="sampleRateSelect" style="display: none;">
+        <option value="44100">44100</option>
+        <option value="48000">48000</option>
+        <option value="96000">96000</option>
+        <!-- 他のオプションを追加 -->
+      </select>
+    </div>
+    <button id="startRecordingButton">録音開始</button>
+    <button id="stopRecordingButton" disabled>録音停止</button>
+    <audio controls id="recordedAudio" style="display: none;"></audio>
+  </div>
 
-  <label for="bitDepthSelect">ビット深度:</label>
-  <select id="bitDepthSelect" class="selectOption">
-    <option value="16">16 bit</option>
-    <option value="24">24 bit</option>
-    <option value="32">32 bit</option>
-    <!-- 他の選択肢を追加 -->
-  </select>
-  
-  <button id="startRecording" class="recordButton">録音開始</button>
-  <button id="stopRecording" class="recordButton" disabled>録音停止</button>
-  <audio id="audioPlayer" controls class="audioPlayer"></audio>
-
-  <script src="script.js"></script>
+  <script src="./script.js">
+    // JavaScriptのコードがここに入ります
+  </script>
 </body>
+
 </html>
