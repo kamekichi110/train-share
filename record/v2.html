@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,7 @@
   <script src="https://cdn.rawgit.com/ejci/Recorderjs/0.1.0/dist/mp3-encoder.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.0/lame.all.min.js"></script>
   <style>
+    /* 既存のスタイル */
     body {
       font-family: 'Open Sans', Arial, sans-serif;
       margin: 0;
@@ -180,35 +181,33 @@
         downloadRecording();
       });
 
-      function startRecording() {
-        navigator.mediaDevices.getUserMedia({ audio: true })
-          .then((userStream) => {
-            stream = userStream;
-            mediaRecorder = new MediaRecorder(userStream, {
-              mimeType: `audio/wav; samplerate=${sampleRateSelect.val()}; bitdepth=${bitDepthSelect.val()}`
-            });
-
-            mediaRecorder.ondataavailable = (e) => {
-              if (e.data.size > 0) {
-                chunks.push(e.data);
-                drawWaveform();
-              }
-            };
-
-            mediaRecorder.onstop = () => {
-              const audioBlob = new Blob(chunks, { type: 'audio/wav' });
-              convertToMP3(audioBlob);
-            };
-
-            mediaRecorder.start();
-            startRecordingButton.prop('disabled', true);
-            stopRecordingButton.prop('disabled', false);
-            downloadButton.prop('disabled', true);
-            startRecordingButton.addClass('recording');
-          })
-          .catch((error) => {
-            console.error('Error accessing the microphone:', error);
+      async function startRecording() {
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          mediaRecorder = new MediaRecorder(stream, {
+            mimeType: `audio/wav; samplerate=${sampleRateSelect.val()}; bitdepth=${bitDepthSelect.val()}`
           });
+
+          mediaRecorder.ondataavailable = (e) => {
+            if (e.data.size > 0) {
+              chunks.push(e.data);
+              drawWaveform();
+            }
+          };
+
+          mediaRecorder.onstop = () => {
+            const audioBlob = new Blob(chunks, { type: 'audio/wav' });
+            convertToMP3(audioBlob);
+          };
+
+          mediaRecorder.start();
+          startRecordingButton.prop('disabled', true);
+          stopRecordingButton.prop('disabled', false);
+          downloadButton.prop('disabled', true);
+          startRecordingButton.addClass('recording');
+        } catch (error) {
+          console.error('Error accessing the microphone:', error);
+        }
       }
 
       function stopRecording() {
@@ -275,35 +274,49 @@
         return result;
       }
 
-      function drawWaveform(data) {
-      const canvas = document.getElementById('waveform');
-      const canvasCtx = canvas.getContext('2d');
-      const width = canvas.width;
-      const height = canvas.height;
+      function drawWaveform() {
+        const dataArray = new Float32Array(chunks.length * 100); // Set an appropriate multiplier
+        let offset = 0;
 
-      canvasCtx.clearRect(0, 0, width, height);
-      canvasCtx.beginPath();
-      canvasCtx.strokeStyle = '#3498db';
-      canvasCtx.lineWidth = 2;
-      const sliceWidth = width * 1.0 / data.length;
-      let x = 0;
+        for (const chunk of chunks) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const audioContext = new AudioContext();
+            audioContext.decodeAudioData(reader.result, (buffer) => {
+              const channelData = buffer.getChannelData(0);
+              dataArray.set(channelData, offset);
+              offset += channelData.length;
 
-      for (let i = 0; i < data.length; i++) {
-        const v = data[i] / 128.0;
-        const y = (v * height) / 2;
+              if (offset === dataArray.length) {
+                canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
+                canvasCtx.beginPath();
+                canvasCtx.strokeStyle = '#3498db';
+                canvasCtx.lineWidth = 2;
+                const sliceWidth = canvas.width * 1.0 / dataArray.length;
+                let x = 0;
 
-        if (i === 0) {
-          canvasCtx.moveTo(x, y);
-        } else {
-          canvasCtx.lineTo(x, y);
+                for (let i = 0; i < dataArray.length; i++) {
+                  const v = dataArray[i];
+                  const y = (v + 1) * canvas.height / 2;
+
+                  if (i === 0) {
+                    canvasCtx.moveTo(x, y);
+                  } else {
+                    canvasCtx.lineTo(x, y);
+                  }
+
+                  x += sliceWidth;
+                }
+
+                canvasCtx.lineTo(canvas.width, canvas.height / 2);
+                canvasCtx.stroke();
+              }
+            });
+          };
+
+          reader.readAsArrayBuffer(chunk);
         }
-
-        x += sliceWidth;
       }
-
-      canvasCtx.lineTo(canvas.width, canvas.height / 2);
-      canvasCtx.stroke();
-    };
     });
   </script>
 </body>
