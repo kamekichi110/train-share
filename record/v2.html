@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MP3 Recorder</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+  <script src="https://cdn.rawgit.com/ejci/Recorderjs/0.1.0/dist/mp3-encoder.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.0/lame.all.min.js"></script>
+  <style>
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      background-color: #f5f5f5;
+    }
+
+    #container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    canvas {
+      border: 1px solid #ddd;
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 4px;
+      display: block;
+    }
+
+    audio::-webkit-media-controls-panel {
+      background-color: #3498db;
+      color: white;
+      border-radius: 4px;
+    }
+
+    audio::-webkit-media-controls-play-button {
+      background-color: #3498db;
+      color: white;
+      border-radius: 4px;
+    }
+
+    audio::-webkit-media-controls-timeline {
+      color: #3498db;
+    }
+
+    audio::-webkit-media-controls-current-time-display,
+    audio::-webkit-media-controls-time-remaining-display {
+      color: #3498db;
+    }
+
+    .recording {
+      color: #e74c3c;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    label {
+      font-size: 16px;
+      margin-bottom: 8px;
+      display: block;
+      text-align: left;
+    }
+
+    select {
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 4px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <label for="sampleRate">サンプリングレート:</label>
+    <select id="sampleRate">
+      <option value="8000">8000 Hz</option>
+      <option value="16000">16000 Hz</option>
+      <option value="44100" selected>44100 Hz</option>
+      <option value="48000">48000 Hz</option>
+      <option value="96000">96000 Hz</option>
+    </select>
+    <br>
+    <label for="bitDepth">ビット深度:</label>
+    <select id="bitDepth">
+      <option value="16">16-bit</option>
+      <option value="32">32-bit</option>
+    </select>
+    <br>
+    <canvas id="waveform"></canvas>
+    <br>
+    <button class="btn" id="startRecording">録音開始</button>
+    <button class="btn" id="stopRecording" disabled>録音停止</button>
+    <button class="btn" id="download" disabled>ダウンロード</button>
+    <audio controls id="audioPreview"></audio>
+  </div>
+  <script>
+    $(document).ready(() => {
+      const sampleRateSelect = $('#sampleRate');
+      const bitDepthSelect = $('#bitDepth');
+      const canvas = document.getElementById('waveform');
+      const canvasCtx = canvas.getContext('2d');
+      const startRecordingButton = $('#startRecording');
+      const stopRecordingButton = $('#stopRecording');
+      const downloadButton = $('#download');
+      const audioPreview = $('#audioPreview');
+      let mediaRecorder;
+      let stream;
+      let chunks = [];
+
+      sampleRateSelect.formSelect();
+
+      sampleRateSelect.on('change', () => {
+        // サンプリングレートを更新
+      });
+
+      bitDepthSelect.formSelect();
+
+      bitDepthSelect.on('change', () => {
+        // ビット深度を更新
+      });
+
+      startRecordingButton.on('click', () => {
+        startRecording();
+      });
+
+      stopRecordingButton.on('click', () => {
+        stopRecording();
+      });
+
+      downloadButton.on('click', () => {
+        downloadRecording();
+      });
+
+      function startRecording() {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then((userStream) => {
+            stream = userStream;
+            mediaRecorder = new MediaRecorder(userStream, {
+              mimeType: `audio/wav; samplerate=${sampleRateSelect.val()}; bitdepth=${bitDepthSelect.val()}`
+            });
+
+            mediaRecorder.ondataavailable = (e) => {
+              if (e.data.size > 0) {
+                chunks.push(e.data);
+                drawWaveform();
+              }
+            };
+
+            mediaRecorder.onstop = () => {
+              const audioBlob = new Blob(chunks, { type: 'audio/wav' });
+              convertToMP3(audioBlob);
+            };
+
+            mediaRecorder.start();
+            startRecordingButton.prop('disabled', true);
+            stopRecordingButton.prop('disabled', false);
+            downloadButton.prop('disabled', true);
+            startRecordingButton.addClass('recording');
+          })
+          .catch((error) => {
+            console.error('Error accessing the microphone:', error);
+          });
+      }
+
+      function stopRecording() {
+        stopRecordingButton.prop('disabled', true);
+        startRecordingButton.prop('disabled', false);
+
+        if (chunks.length > 0) {
+          mediaRecorder.stop();
+          stream.getTracks().forEach(track => track.stop());
+          startRecordingButton.removeClass('recording');
+        }
+      }
+
+      function downloadRecording() {
+        if (chunks.length > 0) {
+          const timestamp = new Date().toISOString().replace(/[:.]/g, '');
+          const filename = `recording_${timestamp}_(train-share).mp3`;
+          const audioBlob = new Blob(chunks, { type: 'audio/mp3' });
+          const url = URL.createObjectURL(audioBlob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+      }
+
+      function convertToMP3(wavBlob) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const arrayBuffer = reader.result;
+          const context = new (window.AudioContext || window.webkitAudioContext)();
+          context.decodeAudioData(arrayBuffer, (buffer) => {
+            const mp3Blob = encodeMP3(buffer);
+            chunks = []; // Reset chunks for the next recording
+            const url = URL.createObjectURL(mp3Blob);
+            audioPreview.attr('src', url);
+            downloadButton.prop('disabled', false);
+          });
+        };
+        reader.readAsArrayBuffer(wavBlob);
+      }
+
+      function encodeMP3(audioBuffer) {
+        const mp3encoder = new lamejs.Mp3Encoder(audioBuffer.numberOfChannels, audioBuffer.sampleRate, 128);
+        const interleaved = interleave(audioBuffer.getChannelData(0), audioBuffer.getChannelData(1));
+        const mp3Data = mp3encoder.encodeBuffer(interleaved);
+        const finalBuffer = mp3encoder.flush();
+        return new Blob([finalBuffer], { type: 'audio/mp3' });
+      }
+
+      function interleave(left, right) {
+        const totalLength = left.length + right.length;
+        const result = new Float32Array(totalLength);
+        let inputIndex = 0;
+
+        for (let outputIndex = 0; outputIndex < totalLength; ) {
+          result[outputIndex++] = left[inputIndex];
+          result[outputIndex++] = right[inputIndex];
+          inputIndex++;
+        }
+
+        return result;
+      }
+
+      function drawWaveform(data) {
+      const canvas = document.getElementById('waveform');
+      const canvasCtx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      canvasCtx.clearRect(0, 0, width, height);
+      canvasCtx.beginPath();
+      canvasCtx.strokeStyle = '#3498db';
+      canvasCtx.lineWidth = 2;
+      const sliceWidth = width * 1.0 / data.length;
+      let x = 0;
+
+      for (let i = 0; i < data.length; i++) {
+        const v = data[i] / 128.0;
+        const y = (v * height) / 2;
+
+        if (i === 0) {
+          canvasCtx.moveTo(x, y);
+        } else {
+          canvasCtx.lineTo(x, y);
+        }
+
+        x += sliceWidth;
+      }
+
+      canvasCtx.lineTo(canvas.width, canvas.height / 2);
+      canvasCtx.stroke();
+    };
+    });
+  </script>
+</body>
+</html>
