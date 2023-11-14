@@ -1,101 +1,73 @@
-const startRecordingButton = document.getElementById('startRecording');
-const stopRecordingButton = document.getElementById('stopRecording');
-const audioPlayer = document.getElementById('audioPlayer');
-const timerElement = document.getElementById('timer');
-const sampleRateSelect = document.getElementById('sampleRateSelect');
-const bitDepthSelect = document.getElementById('bitDepthSelect');
+// 録音を制御するための変数
 let mediaRecorder;
-let recordedChunks = [];
-let startTime;
-let selectedSampleRate = sampleRateSelect.value;
-let selectedBitDepth = bitDepthSelect.value;
+let audioChunks = [];
+let selectedSampleRate = 44100;
 
-function formatTime(seconds) {
-  const min = Math.floor(seconds / 60).toString().padStart(2, '0');
-  const sec = (seconds % 60).toString().padStart(2, '0');
-  return `${min}:${sec}`;
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const startRecordingButton = document.getElementById('startRecordingButton');
+  const stopRecordingButton = document.getElementById('stopRecordingButton');
+  const recordedAudio = document.getElementById('recordedAudio');
+  const sampleRateSelect = document.getElementById('sampleRateSelect');
+  const customSelect = document.querySelector('.custom-select');
+  const placeholder = document.querySelector('.placeholder');
+  const options = document.querySelector('.options');
 
-function updateTime() {
-  const currentTime = Math.floor((Date.now() - startTime) / 1000);
-  timerElement.textContent = `経過時間: ${formatTime(currentTime)}`;
-}
+  // セレクトボックスの値を取得し、録音のサンプリングレートを変更
+  sampleRateSelect.addEventListener('change', () => {
+    selectedSampleRate = parseInt(sampleRateSelect.value);
+  });
 
-function updateSampleRate() {
-  selectedSampleRate = sampleRateSelect.value;
-}
+  // カスタムセレクトボックスの開閉を制御
+  placeholder.addEventListener('click', () => {
+    options.classList.toggle('active');
+  });
 
-function updateBitDepth() {
-  selectedBitDepth = bitDepthSelect.value;
-}
+  // カスタムセレクトボックスの選択された値を反映
+  options.querySelectorAll('li').forEach(option => {
+    option.addEventListener('click', () => {
+      placeholder.textContent = option.textContent;
+      selectedSampleRate = parseInt(option.getAttribute('data-value'));
+      options.classList.remove('active');
+    });
+  });
 
-function stopRecording() {
-  mediaRecorder.stop();
-  startRecordingButton.disabled = false;
-  stopRecordingButton.disabled = true;
-  clearInterval();
-  timerElement.textContent = '経過時間: 00:00';
-  
-  const audioBlob = new Blob(recordedChunks, { type: 'audio/wav' });
-  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-  const fileName = `${timestamp} (train-share).wav`;
-
-  const downloadLink = document.createElement('a');
-  downloadLink.href = URL.createObjectURL(audioBlob);
-  downloadLink.download = fileName;
-  document.body.appendChild(downloadLink);
-  downloadLink.click();
-  document.body.removeChild(downloadLink);
-}
-
-navigator.mediaDevices.getUserMedia({ audio: {
-  sampleRate: selectedSampleRate,
-  channelCount: 1,
-  bitDepth: selectedBitDepth
-}})
-.then(stream => {
-  mediaRecorder = new MediaRecorder(stream);
-
+  // 録音開始
   startRecordingButton.addEventListener('click', () => {
-    startTime = Date.now();
-    mediaRecorder.start();
+    startRecording();
     startRecordingButton.disabled = true;
     stopRecordingButton.disabled = false;
-    recordedChunks = [];
-    setInterval(updateTime, 1000);
   });
 
-  stopRecordingButton.addEventListener('click', stopRecording);
+  // 録音停止
+  stopRecordingButton.addEventListener('click', () => {
+    stopRecording();
+    startRecordingButton.disabled = false;
+    stopRecordingButton.disabled = true;
+  });
 
-  mediaRecorder.ondataavailable = event => {
-    recordedChunks.push(event.data);
-  };
+  // 録音の開始
+  function startRecording() {
+    audioChunks = [];
+    navigator.mediaDevices.getUserMedia({ audio: true, sampleRate: selectedSampleRate })
+      .then(stream => {
+        mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder.ondataavailable = event => {
+          audioChunks.push(event.data);
+        };
+        mediaRecorder.onstop = () => {
+          const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+          recordedAudio.src = URL.createObjectURL(audioBlob);
+          recordedAudio.style.display = 'block';
+        };
+        mediaRecorder.start();
+      })
+      .catch(error => console.error('録音の開始に失敗しました:', error));
+  }
 
-  mediaRecorder.onstop = stopRecording;
-
-  sampleRateSelect.addEventListener('change', updateSampleRate);
-  bitDepthSelect.addEventListener('change', updateBitDepth);
-})
-.catch(err => {
-  console.error('録音エラー:', err);
+  // 録音の停止
+  function stopRecording() {
+    if (mediaRecorder.state === 'recording') {
+      mediaRecorder.stop();
+    }
+  }
 });
-
-// カスタムセレクトボックスの動作
-document.addEventListener('DOMContentLoaded', function() {
-    const select = document.querySelector('.custom-select');
-    const placeholder = select.querySelector('.placeholder');
-    const options = select.querySelector('.options');
-    const selectElement = select.querySelector('select');
-  
-    placeholder.addEventListener('click', function() {
-      options.classList.toggle('active');
-    });
-  
-    options.querySelectorAll('li').forEach(option => {
-      option.addEventListener('click', function() {
-        placeholder.textContent = option.textContent;
-        selectElement.value = option.getAttribute('data-value');
-        options.classList.remove('active');
-      });
-    });
-  });
