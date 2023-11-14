@@ -79,3 +79,23 @@ navigator.mediaDevices.getUserMedia({ audio: {
 .catch(err => {
   console.error('録音エラー:', err);
 });
+
+// カスタムセレクトボックスの動作
+document.addEventListener('DOMContentLoaded', function() {
+    const select = document.querySelector('.custom-select');
+    const placeholder = select.querySelector('.placeholder');
+    const options = select.querySelector('.options');
+    const selectElement = select.querySelector('select');
+  
+    placeholder.addEventListener('click', function() {
+      options.classList.toggle('active');
+    });
+  
+    options.querySelectorAll('li').forEach(option => {
+      option.addEventListener('click', function() {
+        placeholder.textContent = option.textContent;
+        selectElement.value = option.getAttribute('data-value');
+        options.classList.remove('active');
+      });
+    });
+  });

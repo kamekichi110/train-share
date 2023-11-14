@@ -1,64 +1,105 @@
+/* リセットと基本的なスタイル */
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
-    background-color: #f2f2f2;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f6f7f9;
   }
   
   .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    width: 80%;
+    max-width: 600px;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    box-sizing: border-box;
   }
   
-  .timer {
-    font-size: 1.5em;
-    margin-bottom: 15px;
+  h1 {
+    text-align: center;
     color: #333;
+    margin-bottom: 20px;
   }
   
-  .selectOption {
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    margin: 5px;
-  }
-  
-  .recordButton {
-    padding: 12px 20px;
-    margin: 10px;
+  /* ボタンスタイル */
+  button {
+    padding: 12px 24px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #3498db;
+    background-color: #4CAF50;
     color: white;
     transition: background-color 0.3s ease;
+    display: block;
+    margin: 10px auto;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   }
   
-  .recordButton:disabled {
+  button:disabled {
     background-color: #95a5a6;
     cursor: not-allowed;
   }
   
-  .recordButton:hover {
-    background-color: #2980b9;
+  button:hover {
+    background-color: #45a049;
   }
   
-  .audioPlayer {
-    margin-top: 20px;
-    width: 70%;
-    max-width: 400px;
-  }  
+  /* セレクトボックススタイル */
+  .custom-select {
+    position: relative;
+    width: 200px;
+  }
+  
+  .placeholder {
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .options {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s ease;
+  }
+  
+  .options.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .options li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .options li:hover {
+    background-color: #f2f2f2;
+  }
+  
+  /* オーディオプレーヤーのスタイル */
   audio {
     display: block;
     width: 100%;
@@ -68,4 +109,6 @@ body {
     outline: none;
     padding: 10px;
     box-sizing: border-box;
-  }
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }  
