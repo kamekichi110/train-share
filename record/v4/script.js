@@ -1,7 +1,7 @@
 // 録音を制御するための変数
 let mediaRecorder;
 let audioChunks = [];
-let selectedSampleRate = 44100;
+let selectedSampleRate = 48000;
 
 document.addEventListener('DOMContentLoaded', () => {
   const startRecordingButton = document.getElementById('startRecordingButton');
