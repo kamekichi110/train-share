@@ -2,6 +2,7 @@
 let mediaRecorder;
 let audioChunks = [];
 let selectedSampleRate = 96000;
+let timer = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
   const startRecordingButton = document.getElementById('startRecordingButton');
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const customSelect = document.querySelector('.custom-select');
   const placeholder = document.querySelector('.placeholder');
   const options = document.querySelector('.options');
+  const downloadButton = document.getElementById("downloadButton");
 
   // セレクトボックスの値を取得し、録音のサンプリングレートを変更
   sampleRateSelect.addEventListener('change', () => {
@@ -34,15 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // 録音開始
   startRecordingButton.addEventListener('click', () => {
     startRecording();
+    timer = 0;
+    timerInfo = 1;
+    timerValue();
     startRecordingButton.disabled = true;
     stopRecordingButton.disabled = false;
+    downloadButton.disabled = true;
   });
 
   // 録音停止
   stopRecordingButton.addEventListener('click', () => {
     stopRecording();
+    clearTimeout(timerFunction);
     startRecordingButton.disabled = false;
     stopRecordingButton.disabled = true;
+    downloadButton.disabled = false;
+    window.alert("録音時間:" + timer + "秒");
   });
 
   // 録音の開始
@@ -124,4 +133,16 @@ function draw() {
 draw();
 function downloadWav() {
   window.location.href = document.getElementById("recordedAudio").src;
+}
+let timerInfo = 0;
+let timerFunction;
+function timerValue() {
+  if (timerInfo === 0) {
+    timer = 0;
+  } else if (timerInfo === 1) {
+    timer += 1;
+  };
+  timerFunction = setTimeout(() => {
+    timerValue();
+  }, 1000);
 }
