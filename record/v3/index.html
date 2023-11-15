@@ -1,210 +1,115 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>音声レコーダー</title>
+    <meta charset="UTF-8">
+  <title>録音アプリ</title>
+  <style>
+    /* 全体のスタイル */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* 録音ボタンのスタイル */
+    #recordButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      animation: pulse 1s infinite;
+    }
+
+    /* 録音中の点滅アニメーション */
+    @keyframes pulse {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* ダウンロードリンクのスタイル */
+    #downloadLink {
+      display: none;
+      padding: 8px 16px;
+      font-size: 14px;
+      text-decoration: none;
+      background-color: #3498db;
+      color: white;
+      border-radius: 5px;
+    }
+
+    #downloadLink:hover {
+      background-color: #2980b9;
+    }
+
+    /* オーディオプレーヤーのスタイル */
+    #audioElement {
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <h1>音声レコーダー</h1>
+  <button id="recordButton">録音開始</button>
+  <a id="downloadLink">Download録音</a>
+  <audio id="audioElement" controls></audio>
+  
+  <script>
+    const recordButton = document.getElementById('recordButton');
+    const downloadLink = document.getElementById('downloadLink');
+    let mediaRecorder;
+    let chunks = [];
 
-    <button id="recordButton">録音開始</button>
-    <button id="stopButton" disabled>録音停止</button>
-    <select id="sampleRateSelect">
-        <option value="44100">44100 Hz</option>
-        <option value="48000">48000 Hz</option>
-        <option value="96000">96000 Hz</option>
-    </select>
-    <select id="bitDepthSelect">
-        <option value="16">16-bit</option>
-        <option value="24">24-bit</option>
-        <option value="32">32-bit</option>
-    </select>
-    <br>
-    <canvas id="waveform" width="800" height="200"></canvas>
-    <br>
-    <audio id="audioPlayer"></audio>
+    const options = {
+      audioBitsPerSecond : 320000, // 32-bit
+      sampleRate: 96000 // 96,000 Hz
+    };
 
-    <a id="downloadLink" style="display: none;"></a>
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(function(stream) {
+        mediaRecorder = new MediaRecorder(stream, options);
 
-    <script>
-        const recordButton = document.getElementById('recordButton');
-        const stopButton = document.getElementById('stopButton');
-        const audioPlayer = document.getElementById('audioPlayer');
-        const sampleRateSelect = document.getElementById('sampleRateSelect');
-        const bitDepthSelect = document.getElementById('bitDepthSelect');
-        const canvas = document.getElementById('waveform');
-        const canvasContext = canvas.getContext('2d');
-        const downloadLink = document.getElementById('downloadLink');
-
-        let mediaRecorder;
-        let audioChunks = [];
-        let audioConstraints = {
-            audio: {
-                sampleRate: parseInt(sampleRateSelect.value),
-                channelCount: 2,
-                bitDepth: parseInt(bitDepthSelect.value),
-            },
+        mediaRecorder.ondataavailable = function(e) {
+          chunks.push(e.data);
         };
 
-        sampleRateSelect.addEventListener('change', updateAudioConstraints);
-        bitDepthSelect.addEventListener('change', updateAudioConstraints);
+        mediaRecorder.onstop = function() {
+          const blob = new Blob(chunks, { type: 'audio/wav' });
+          chunks = [];
+          const audioURL = window.URL.createObjectURL(blob);
+          const audioElement = document.getElementById('audioElement');
+          audioElement.src = audioURL;
 
-        function updateAudioConstraints() {
-            audioConstraints.audio.sampleRate = parseInt(sampleRateSelect.value);
-            audioConstraints.audio.bitDepth = parseInt(bitDepthSelect.value);
-        }
+          const timeStamp = new Date().toISOString().replace(/:/g, '-');
+          const fileName = timeStamp + ' (train-share).wav';
 
-        recordButton.addEventListener('click', startRecording);
-        stopButton.addEventListener('click', stopRecording);
+          downloadLink.href = audioURL;
+          downloadLink.download = fileName;
+          downloadLink.style.display = 'block';
+        };
+      });
 
-        async function startRecording() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia(audioConstraints);
-                mediaRecorder = new MediaRecorder(stream);
-
-                mediaRecorder.ondataavailable = (e) => {
-                    if (e.data.size > 0) {
-                        audioChunks.push(e.data);
-                        drawWaveform();
-                    }
-                };
-
-                mediaRecorder.onstop = () => {
-                    encodeWav(audioChunks, audioConstraints.audio.bitDepth);
-                    audioChunks = [];
-                };
-
-                mediaRecorder.start();
-                recordButton.disabled = true;
-                stopButton.disabled = false;
-            } catch (error) {
-                console.error('録音を開始できません: ', error);
-            }
-        }
-
-        function stopRecording() {
-            mediaRecorder.stop();
-            recordButton.disabled = false;
-            stopButton.disabled = true;
-        }
-
-        function encodeWav(audioChunks, bitDepth) {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const audioBuffer = audioContext.createBuffer(2, audioChunks.length * 4096, audioContext.sampleRate);
-
-            for (let channel = 0; channel < 2; channel++) {
-                const nowBuffering = audioBuffer.getChannelData(channel);
-                for (let i = 0; i < audioChunks.length; i++) {
-                    const chunk = audioChunks[i];
-                    const dataView = new DataView(chunk);
-                    const buffer = new Float32Array(dataView.byteLength / 4);
-
-                    for (let j = 0; j < dataView.byteLength; j += 4) {
-                        buffer[j / 4] = dataView.getInt32(j, true) / (bitDepth === 32 ? 0x7FFFFFFF : bitDepth === 24 ? 0x7FFFFF : 0x7FFF);
-                    }
-
-                    nowBuffering.set(buffer, i * 4096);
-                }
-            }
-
-            const wavBlob = encodeWavFromAudioBuffer(audioBuffer);
-
-            const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-            const bitDepthLabel = bitDepth === 32 ? '32bit' : bitDepth === 24 ? '24bit' : '16bit';
-            const fileName = `${timestamp} (train-share.f5.si) ${bitDepthLabel}.wav`;
-
-            // ダウンロードリンクのURLを設定
-            downloadLink.href = URL.createObjectURL(wavBlob);
-            downloadLink.download = fileName;
-            downloadLink.style.display = 'block';
-        }
-
-        function encodeWavFromAudioBuffer(audioBuffer) {
-            const numberOfChannels = audioBuffer.numberOfChannels;
-            const sampleRate = audioBuffer.sampleRate;
-            const interleaved = interleave(audioBuffer);
-            const dataLength = interleaved.length * 4;
-            const buffer = new ArrayBuffer(44 + dataLength);
-            const view = new DataView(buffer);
-
-            writeString(view, 0, 'RIFF');
-            view.setUint32(4, 36 + dataLength, true);
-            writeString(view, 8, 'WAVE');
-            writeString(view, 12, 'fmt ');
-            view.setUint32(16, 16, true);
-            view.setUint16(20, 1, true);
-            view.setUint16(22, numberOfChannels, true);
-            view.setUint32(24, sampleRate, true);
-            view.setUint32(28, sampleRate * 4, true);
-            view.setUint16(32, numberOfChannels * 4, true);
-            view.setUint16(34, bitDepth, true);
-
-            writeString(view, 36, 'data');
-            view.setUint32(40, dataLength, true);
-
-            floatTo32BitPCM(view, 44, interleaved);
-
-            return new Blob([view], { type: 'audio/wav' });
-        }
-
-        function interleave(audioBuffer) {
-            const numberOfChannels = audioBuffer.numberOfChannels;
-            const length = audioBuffer.length * numberOfChannels;
-            const result = new Float32Array(length);
-            const inputL = audioBuffer.getChannelData(0);
-            const inputR = audioBuffer.getChannelData(1);
-
-            for (let i = 0; i < length; i += 2) {
-                result[i] = inputL[i / 2];
-                result[i + 1] = inputR[i / 2];
-            }
-
-            return result;
-        }
-
-        function floatTo32BitPCM(output, offset, input) {
-            for (let i = 0; i < input.length; i++, offset += 4) {
-                const s = Math.max(-1, Math.min(1, input[i]));
-                output.setInt32(offset, s < 0 ? s * 0x7FFFFFFF : s * 0x7FFFFFFF, true);
-            }
-        }
-
-        function writeString(view, offset, string) {
-            for (let i = 0; i < string.length; i++) {
-                view.setUint8(offset + i, string.charCodeAt(i));
-            }
-        }
-
-        function drawWaveform() {
-            const WIDTH = canvas.width;
-            const HEIGHT = canvas.height;
-
-            canvasContext.clearRect(0, 0, WIDTH, HEIGHT);
-            canvasContext.strokeStyle = 'black';
-            canvasContext.lineWidth = 2;
-
-            canvasContext.beginPath();
-
-            let x = 0;
-            const sliceWidth = WIDTH * 1.0 / audioChunks.length;
-
-            audioChunks.forEach((chunk) => {
-                const dataView = new DataView(chunk);
-                for (let i = 0; i < dataView.byteLength; i += 4) {
-                    const y = (dataView.getInt32(i, true) / (bitDepth === 32 ? 0x7FFFFFFF : bitDepth === 24 ? 0x7FFFFF : 0x7FFF)) * (HEIGHT / 2);
-                    if (i === 0) {
-                        canvasContext.moveTo(x, y);
-                    } else {
-                        canvasContext.lineTo(x, y);
-                    }
-                    x += sliceWidth;
-                }
-            });
-
-            canvasContext.lineTo(WIDTH, HEIGHT / 2);
-            canvasContext.stroke();
-        }
-    </script>
+    recordButton.addEventListener('click', function() {
+      if (mediaRecorder.state === 'inactive') {
+        mediaRecorder.start();
+        recordButton.textContent = '録音停止';
+      } else {
+        mediaRecorder.stop();
+        recordButton.textContent = '録音開始';
+      }
+    });
+  </script>
 </body>
 </html>
