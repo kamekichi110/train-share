@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
-const audio = document.getElementById('audioPreview');
+const audio = document.getElementById('recordedAudio');
 const canvas = document.getElementById('playWave');
 const canvasCtx = canvas.getContext('2d');
 
@@ -122,3 +122,6 @@ function draw() {
 }
 
 draw();
+function downloadWav() {
+  window.location.href = document.getElementById("recordedAudio").src;
+}
