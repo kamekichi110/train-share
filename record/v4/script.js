@@ -36,9 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 録音開始
   startRecordingButton.addEventListener('click', () => {
     startRecording();
-    timer = 0;
-    timerInfo = 1;
-    timerValue();
     startRecordingButton.disabled = true;
     stopRecordingButton.disabled = false;
     downloadButton.disabled = true;
@@ -47,11 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 録音停止
   stopRecordingButton.addEventListener('click', () => {
     stopRecording();
-    clearTimeout(timerFunction);
     startRecordingButton.disabled = false;
     stopRecordingButton.disabled = true;
     downloadButton.disabled = false;
-    window.alert("録音時間:" + timer + "秒");
   });
 
   // 録音の開始
